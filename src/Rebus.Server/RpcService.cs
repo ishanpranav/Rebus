@@ -89,6 +89,10 @@ namespace Rebus.Server
                     .Where(x => unitIds.Contains(x.Id))
                     .OrderByDescending(x => x.CargoMass)
                     .ToListAsync();
+                Player adversary = await context.Zones
+                    .Where(x => x.Id == invaders[0].ZoneId)
+                    .Select(x => x.Player)
+                    .SingleAsync();
                 ZoneFunctions functions = new ZoneFunctions(playerId, context.Zones, _map, _rules);
 
                 if (invaders.Count > 0)
@@ -146,9 +150,11 @@ namespace Rebus.Server
                             }
                             else
                             {
+                                adversary.Wealth -= functions.Cost(occupant.Zone, occupant.Sanctuary);
                                 occupant.Zone = occupant.Sanctuary;
-                                occupant.Sanctuary = null;
                             }
+
+                            occupant.Sanctuary = null;
                         }
 
                         player.Wealth -= invaders.Count * functions.Cost(previous, current);
@@ -162,10 +168,7 @@ namespace Rebus.Server
                         else
                         {
                             Fleet invader = new Fleet(player.Username, invaders.Count);
-                            Fleet occupant = new Fleet(await context.Zones
-                                .Where(x => x.Id == occupants[0].ZoneId)
-                                .Select(x => x.Player.Username)
-                                .SingleAsync(), occupants.Count);
+                            Fleet occupant = new Fleet(adversary.Username, occupants.Count);
 
                             if (defenders.Count == 0)
                             {

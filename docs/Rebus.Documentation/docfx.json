@@ -27,11 +27,12 @@
       {
         "files": [
           "pages/*.yml",
+          "index.md",
           "toc.yml"
         ]
       }
     ],
-    "dest": "../site/",
+    "dest": "../",
     "fileMetadataFiles": [],
     "globalMetadata": {
       "_appFaviconPath": "icons/Rebus.ico",
@@ -73,14 +74,14 @@
         "src": "../../src/Rebus.Client.Windows/"
       }
     ],
-    "template": [
-      "statictoc"
-    ],
     "sitemap": {
       "baseUrl": "https://ishanpranav.github.io/rebus/",
       "priority": 0.1,
       "changeFreq": "monthly"
     },
+    "template": [
+      "statictoc"
+    ],
     "xrefService": [
       "https://xref.docs.microsoft.com/query?uid={uid}"
     ]

@@ -4,7 +4,7 @@
 # Ishan Pranav\'s REBUS
 A student-developed multiplayer space trading game. Please see the details of the design [here](Design.md).
 ## Documentation
-The public API is documented [here](ishanpranav.github.io/rebus/index.md).
+The public API is documented [here](https://ishanpranav.github.io/rebus/pages/Rebus.html).
 ## License
 This repository is licensed with the [MIT](LICENSE.txt) license.
 ## Attribution
