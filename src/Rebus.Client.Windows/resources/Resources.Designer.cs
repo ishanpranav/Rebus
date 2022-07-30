@@ -61,6 +61,15 @@ namespace Rebus.Client.Windows {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credits: {0::c0}.
+        /// </summary>
+        internal static string CreditFormat {
+            get {
+                return ResourceManager.GetString("CreditFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Defeat.
         /// </summary>
         internal static string DefeatMessage {
@@ -175,15 +184,6 @@ namespace Rebus.Client.Windows {
         internal static string WarningMessage {
             get {
                 return ResourceManager.GetString("WarningMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wealth: {0:c0}.
-        /// </summary>
-        internal static string WealthFormat {
-            get {
-                return ResourceManager.GetString("WealthFormat", resourceCulture);
             }
         }
         

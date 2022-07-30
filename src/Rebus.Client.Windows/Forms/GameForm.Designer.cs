@@ -41,7 +41,7 @@ namespace Rebus.Client.Windows.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.usernameToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.wealthToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.creditsToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.messageToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.unitDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -84,7 +84,7 @@ namespace Rebus.Client.Windows.Forms
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usernameToolStripLabel,
-            this.wealthToolStripLabel,
+            this.creditsToolStripLabel,
             this.messageToolStripButton});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
@@ -96,8 +96,8 @@ namespace Rebus.Client.Windows.Forms
             // 
             // wealthToolStripLabel
             // 
-            this.wealthToolStripLabel.Name = "wealthToolStripLabel";
-            resources.ApplyResources(this.wealthToolStripLabel, "wealthToolStripLabel");
+            this.creditsToolStripLabel.Name = "wealthToolStripLabel";
+            resources.ApplyResources(this.creditsToolStripLabel, "wealthToolStripLabel");
             // 
             // messageToolStripButton
             // 
@@ -208,7 +208,7 @@ namespace Rebus.Client.Windows.Forms
         private Panel panel1;
         private ToolStrip toolStrip1;
         private ToolStripLabel usernameToolStripLabel;
-        private ToolStripLabel wealthToolStripLabel;
+        private ToolStripLabel creditsToolStripLabel;
         private ToolStripButton messageToolStripButton;
         private DataGridView unitDataGridView;
         private NotifyIcon myNotifyIcon;

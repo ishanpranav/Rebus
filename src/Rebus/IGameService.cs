@@ -18,7 +18,7 @@ namespace Rebus
 
         IAsyncEnumerable<ZoneResult> GetZonesAsync(int playerId);
 
-        Task<int> GetWealthAsync(int playerId);
+        Task<int> GetCreditsAsync(int playerId);
 
         Task<bool> ExecuteAsync(Command command);
     }

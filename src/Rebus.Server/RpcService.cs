@@ -150,14 +150,14 @@ namespace Rebus.Server
                             }
                             else
                             {
-                                adversary.Wealth -= functions.Cost(occupant.Zone, occupant.Sanctuary);
+                                adversary.Credits -= functions.Cost(occupant.Zone, occupant.Sanctuary);
                                 occupant.Zone = occupant.Sanctuary;
                             }
 
                             occupant.Sanctuary = null;
                         }
 
-                        player.Wealth -= invaders.Count * functions.Cost(previous, current);
+                        player.Credits -= invaders.Count * functions.Cost(previous, current);
 
                         if (occupants.Count == 0)
                         {
@@ -290,13 +290,13 @@ namespace Rebus.Server
             }
         }
 
-        public async Task<int> GetWealthAsync(int playerId)
+        public async Task<int> GetCreditsAsync(int playerId)
         {
             await using (RebusDbContext context = await _contextFactory.CreateDbContextAsync())
             {
                 return await context.Players
                     .Where(x => x.Id == playerId)
-                    .Select(x => x.Wealth)
+                    .Select(x => x.Credits)
                     .SingleAsync();
             }
         }

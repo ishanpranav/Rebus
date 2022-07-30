@@ -38,7 +38,7 @@ namespace Rebus.Client.Windows.Forms
 #nullable enable
 
         private HexPoint _location;
-        private int _wealth;
+        private int _credits;
 
         public GameForm(IEnumerable<Command> commands, IEnumerable<ILens> lenses, IServiceProvider serviceProvider, Credentials credentials)
         {
@@ -110,9 +110,9 @@ namespace Rebus.Client.Windows.Forms
                 HexagonWidth = hexagonSize,
                 HexagonHeight = hexagonSize
             };
-            _wealth = await _service.GetWealthAsync(_credentials.PlayerId);
+            _credits = await _service.GetCreditsAsync(_credentials.PlayerId);
 
-            DrawWealth();
+            DrawCredits();
 
             await RequestAsync();
 
@@ -226,9 +226,9 @@ namespace Rebus.Client.Windows.Forms
             visionPictureBox.Refresh();
         }
 
-        private void DrawWealth()
+        private void DrawCredits()
         {
-            wealthToolStripLabel.Text = string.Format(Resources.WealthFormat, _wealth);
+            creditsToolStripLabel.Text = string.Format(Resources.CreditFormat, _credits);
         }
 
         private void OnMessageToolStripButtonClick(object sender, System.EventArgs e)

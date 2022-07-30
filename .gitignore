@@ -389,13 +389,13 @@ FodyWeavers.xsd
 # DocFx
 docs/Rebus.Documentation/log.txt
 docs/Rebus.Documentation/pages/
-docs/site/styles/lunr.js
-docs/site/styles/main.js
-docs/site/styles/main.css
-docs/site/favicon.ico
-docs/site/logo.svg
-docs/site/manifest.json
-docs/site/xrefmap.yml
+docs/styles/lunr.js
+docs/styles/main.js
+docs/styles/main.css
+docs/favicon.ico
+docs/logo.svg
+docs/manifest.json
+docs/xrefmap.yml
 
 # SQLite
 *.db
