@@ -1,0 +1,10 @@
+﻿# Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
+# Licensed under the MIT License.
+
+# Spanish
+
+Culture = Tu idioma y cultura preferidos.
+IPAddress = La dirección del Protocolo de Internet del servidor.
+Password = La contraseña opcional utilizada para proteger su cuenta.
+Port = El número de puerto del servidor.
+Username = Su nombre de usuario único en el servidor.

@@ -1,0 +1,1591 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct HexPoint
+   | Ishan Pranav's REBUS </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct HexPoint
+   | Ishan Pranav's REBUS ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../icons/Rebus.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/Rebus.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../pages/Rebus.html" title="API Documentation">API Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.html" title="Rebus" class="">Rebus</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Biome.html" title="Biome" class="">Biome</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Configuration.html" title="Configuration" class="">Configuration</a>
+                          </li>
+                          <li class="active">
+                            <a href="Rebus.HexPoint.html" title="HexPoint" class="active">HexPoint</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.IExecutor.html" title="IExecutor" class="">IExecutor</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.IGameService.html" title="IGameService" class="">IGameService</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.ILoginService.html" title="ILoginService" class="">ILoginService</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.IMessageService.html" title="IMessageService" class="">IMessageService</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.JsonIPAddressConverter.html" title="JsonIPAddressConverter" class="">JsonIPAddressConverter</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Player.html" title="Player" class="">Player</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.WealthResult.html" title="WealthResult" class="">WealthResult</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.ZoneResult.html" title="ZoneResult" class="">ZoneResult</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Client.html" title="Rebus.Client" class="">Rebus.Client</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Client.GraphicsEngine.html" title="GraphicsEngine" class="">GraphicsEngine</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.Layout.html" title="Layout" class="">Layout</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.RpcClient.html" title="RpcClient" class="">RpcClient</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.ZoneVisualizer.html" title="ZoneVisualizer" class="">ZoneVisualizer</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Client.Lenses.html" title="Rebus.Client.Lenses" class="">Rebus.Client.Lenses</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Client.Lenses.BiomeLens.html" title="BiomeLens" class="">BiomeLens</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.Lenses.ConstellationLens.html" title="ConstellationLens" class="">ConstellationLens</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.Lenses.ILens.html" title="ILens" class="">ILens</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Commands.html" title="Rebus.Commands" class="">Rebus.Commands</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Commands.AutopilotCommand.html" title="AutopilotCommand" class="">AutopilotCommand</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commands.Command.html" title="Command" class="">Command</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commands.DefendCommand.html" title="DefendCommand" class="">DefendCommand</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commands.ExploreCommand.html" title="ExploreCommand" class="">ExploreCommand</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commands.JettisonCommand.html" title="JettisonCommand" class="">JettisonCommand</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commands.MoveCommand.html" title="MoveCommand" class="">MoveCommand</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commands.RetreatCommand.html" title="RetreatCommand" class="">RetreatCommand</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.EventArgs.html" title="Rebus.EventArgs" class="">Rebus.EventArgs</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.EventArgs.ConflictEventArgs.html" title="ConflictEventArgs" class="">ConflictEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.EventArgs.Fleet.html" title="Fleet" class="">Fleet</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.EventArgs.MessageEventArgs.html" title="MessageEventArgs" class="">MessageEventArgs</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Server.html" title="Rebus.Server" class="">Rebus.Server</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Server.AStarSearch.html" title="AStarSearch" class="">AStarSearch</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.FisherYatesShuffle.html" title="FisherYatesShuffle" class="">FisherYatesShuffle</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Map.html" title="Map" class="">Map</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Namer.html" title="Namer" class="">Namer</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.RebusDbContext.html" title="RebusDbContext" class="">RebusDbContext</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.RpcListener.html" title="RpcListener" class="">RpcListener</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.RpcService.html" title="RpcService" class="">RpcService</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.RuleSet.html" title="RuleSet" class="">RuleSet</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Server.Functions.html" title="Rebus.Server.Functions" class="">Rebus.Server.Functions</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Functions.ZoneFunctions.html" title="ZoneFunctions" class="">ZoneFunctions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Server.NumeralSystems.html" title="Rebus.Server.NumeralSystems" class="">Rebus.Server.NumeralSystems</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Server.NumeralSystems.BayerNumeralSystem.html" title="BayerNumeralSystem" class="">BayerNumeralSystem</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.NumeralSystems.INumeralSystem.html" title="INumeralSystem" class="">INumeralSystem</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.NumeralSystems.RomanNumeralSystem.html" title="RomanNumeralSystem" class="">RomanNumeralSystem</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Rebus.HexPoint">
+  
+  
+  <h1 id="Rebus_HexPoint" data-uid="Rebus.HexPoint" class="text-break">Struct HexPoint
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a cubic coordinate in three dimensions (<em>Q</em>, <em>R</em>, and <em>S</em>) used to identify a location in a grid of hexagons.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icomparable">IComparable</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.html">Rebus</a></h6>
+  <h6><strong>Assembly</strong>: Rebus.dll</h6>
+  <h5 id="Rebus_HexPoint_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataContract]
+public readonly struct HexPoint : IComparable, IComparable&lt;HexPoint&gt;, IEquatable&lt;HexPoint&gt;</code></pre>
+  </div>
+  <h5 id="Rebus_HexPoint_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The implementation of this struct was inspired by and based on <a href="https://www.redblobgames.com/grids/hexagons/">this</a> article by <a href="http://www-cs-students.stanford.edu/~amitp/">Amit Patel</a>.</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Rebus_HexPoint__ctor_" data-uid="Rebus.HexPoint.#ctor*"></a>
+  <h4 id="Rebus_HexPoint__ctor_System_Int32_System_Int32_" data-uid="Rebus.HexPoint.#ctor(System.Int32,System.Int32)">HexPoint(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Rebus.HexPoint.html">HexPoint</a> struct.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HexPoint(int q, int r)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">q</span></td>
+        <td><p>The <em>Q</em> coordinate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">r</span></td>
+        <td><p>The <em>R</em> coordinate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="Rebus_HexPoint_Empty" data-uid="Rebus.HexPoint.Empty">Empty</h4>
+  <div class="markdown level1 summary"><p>Specifies the coordinate whose three axes are zero.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly HexPoint Empty</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>The coordinate (0, 0, 0).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Rebus_HexPoint_Q_" data-uid="Rebus.HexPoint.Q*"></a>
+  <h4 id="Rebus_HexPoint_Q" data-uid="Rebus.HexPoint.Q">Q</h4>
+  <div class="markdown level1 summary"><p>Gets the <em>Q</em> coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 0)]
+public readonly int Q { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The <em>Q</em> coordinate. The default is 0.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_R_" data-uid="Rebus.HexPoint.R*"></a>
+  <h4 id="Rebus_HexPoint_R" data-uid="Rebus.HexPoint.R">R</h4>
+  <div class="markdown level1 summary"><p>Gets the <em>R</em> coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+public readonly int R { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The <em>R</em> coordinate. The default is 0.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_S_" data-uid="Rebus.HexPoint.S*"></a>
+  <h4 id="Rebus_HexPoint_S" data-uid="Rebus.HexPoint.S">S</h4>
+  <div class="markdown level1 summary"><p>Gets the <em>S</em> coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly int S { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The <em>S</em> coordinate. The default is 0.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Rebus_HexPoint_Add_" data-uid="Rebus.HexPoint.Add*"></a>
+  <h4 id="Rebus_HexPoint_Add_Rebus_HexPoint_" data-uid="Rebus.HexPoint.Add(Rebus.HexPoint)">Add(HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="Rebus.HexPoint.html">HexPoint</a> that adds the value of the specified <a class="xref" href="Rebus.HexPoint.html">HexPoint</a> to the value of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly HexPoint Add(HexPoint other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>A positive or negative hexagonal coordinate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>An object whose value is the sum of the hexagonal coordinates represented by this instance and the <code data-dev-comment-type="paramref" class="paramref">other</code> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_CompareTo_" data-uid="Rebus.HexPoint.CompareTo*"></a>
+  <h4 id="Rebus_HexPoint_CompareTo_Rebus_HexPoint_" data-uid="Rebus.HexPoint.CompareTo(Rebus.HexPoint)">CompareTo(HexPoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly int CompareTo(HexPoint other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_CompareTo_" data-uid="Rebus.HexPoint.CompareTo*"></a>
+  <h4 id="Rebus_HexPoint_CompareTo_System_Object_" data-uid="Rebus.HexPoint.CompareTo(System.Object)">CompareTo(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly int CompareTo(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Distance_" data-uid="Rebus.HexPoint.Distance*"></a>
+  <h4 id="Rebus_HexPoint_Distance_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.Distance(Rebus.HexPoint,Rebus.HexPoint)">Distance(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Gets the distance between two hexagonal coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int Distance(HexPoint value1, HexPoint value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The distance between <code data-dev-comment-type="paramref" class="paramref">value1</code> and <code data-dev-comment-type="paramref" class="paramref">value2</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Equals_" data-uid="Rebus.HexPoint.Equals*"></a>
+  <h4 id="Rebus_HexPoint_Equals_Rebus_HexPoint_" data-uid="Rebus.HexPoint.Equals(Rebus.HexPoint)">Equals(HexPoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(HexPoint other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Equals_" data-uid="Rebus.HexPoint.Equals*"></a>
+  <h4 id="Rebus_HexPoint_Equals_System_Object_" data-uid="Rebus.HexPoint.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetype.equals#system-valuetype-equals(system-object)">ValueType.Equals(Object)</a></div>
+  
+  
+  <a id="Rebus_HexPoint_GetHashCode_" data-uid="Rebus.HexPoint.GetHashCode*"></a>
+  <h4 id="Rebus_HexPoint_GetHashCode" data-uid="Rebus.HexPoint.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetype.gethashcode#system-valuetype-gethashcode">ValueType.GetHashCode()</a></div>
+  
+  
+  <a id="Rebus_HexPoint_Multiply_" data-uid="Rebus.HexPoint.Multiply*"></a>
+  <h4 id="Rebus_HexPoint_Multiply_System_Int32_" data-uid="Rebus.HexPoint.Multiply(System.Int32)">Multiply(Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the value that results from multiplying the specified factor by the value of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly HexPoint Multiply(int factor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">factor</span></td>
+        <td><p>The factor to multiply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>A hexagonal coordinate that is equal to this instance times the <code data-dev-comment-type="paramref" class="paramref">factor</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Neighbors_" data-uid="Rebus.HexPoint.Neighbors*"></a>
+  <h4 id="Rebus_HexPoint_Neighbors" data-uid="Rebus.HexPoint.Neighbors">Neighbors()</h4>
+  <div class="markdown level1 summary"><p>Gets the six coordinates adjacent to this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly IEnumerable&lt;HexPoint&gt; Neighbors()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</td>
+        <td><p>The neighboring coordinates.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Range_" data-uid="Rebus.HexPoint.Range*"></a>
+  <h4 id="Rebus_HexPoint_Range_System_Int32_" data-uid="Rebus.HexPoint.Range(System.Int32)">Range(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the coordinates within a hexagonal range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly IEnumerable&lt;HexPoint&gt; Range(int radius)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">radius</span></td>
+        <td><p>The radius of the range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</td>
+        <td><p>The coordinates within the range defined by the given <code data-dev-comment-type="paramref" class="paramref">radius</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Ring_" data-uid="Rebus.HexPoint.Ring*"></a>
+  <h4 id="Rebus_HexPoint_Ring_System_Int32_" data-uid="Rebus.HexPoint.Ring(System.Int32)">Ring(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the coordinates within a hexagonal ring.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly IEnumerable&lt;HexPoint&gt; Ring(int radius)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">radius</span></td>
+        <td><p>The radius of the ring.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</td>
+        <td><p>The coordinates within the ring defined by the given <code data-dev-comment-type="paramref" class="paramref">radius</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Spiral_" data-uid="Rebus.HexPoint.Spiral*"></a>
+  <h4 id="Rebus_HexPoint_Spiral_System_Int32_" data-uid="Rebus.HexPoint.Spiral(System.Int32)">Spiral(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the coordinates within a hexagonal spiral.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly IEnumerable&lt;HexPoint&gt; Spiral(int radius)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">radius</span></td>
+        <td><p>The radius of the spiral.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</td>
+        <td><p>The coordinates within the spiral defined by the given <code data-dev-comment-type="paramref" class="paramref">radius</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_Subtract_" data-uid="Rebus.HexPoint.Subtract*"></a>
+  <h4 id="Rebus_HexPoint_Subtract_Rebus_HexPoint_" data-uid="Rebus.HexPoint.Subtract(Rebus.HexPoint)">Subtract(HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns the value that results from subtracting the specified hexagonal coordinate from the value of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly HexPoint Subtract(HexPoint other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The hexagonal coordinate to subtract.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>A hexagonal coordinate that is equal to this instance minus the <code data-dev-comment-type="paramref" class="paramref">other</code> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_ToString_" data-uid="Rebus.HexPoint.ToString*"></a>
+  <h4 id="Rebus_HexPoint_ToString" data-uid="Rebus.HexPoint.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetype.tostring#system-valuetype-tostring">ValueType.ToString()</a></div>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="Rebus_HexPoint_op_Addition_" data-uid="Rebus.HexPoint.op_Addition*"></a>
+  <h4 id="Rebus_HexPoint_op_Addition_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_Addition(Rebus.HexPoint,Rebus.HexPoint)">Addition(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Adds a specified coordinate to another specified coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static HexPoint operator +(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first coordinate to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second coordinate to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>The sum of <code data-dev-comment-type="paramref" class="paramref">left</code> and <code data-dev-comment-type="paramref" class="paramref">right</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_Equality_" data-uid="Rebus.HexPoint.op_Equality*"></a>
+  <h4 id="Rebus_HexPoint_op_Equality_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_Equality(Rebus.HexPoint,Rebus.HexPoint)">Equality(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether two coordinates are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first coordinate to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second coordinate to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">left</code> and <code data-dev-comment-type="paramref" class="paramref">right</code> are equal; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_GreaterThan_" data-uid="Rebus.HexPoint.op_GreaterThan*"></a>
+  <h4 id="Rebus_HexPoint_op_GreaterThan_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_GreaterThan(Rebus.HexPoint,Rebus.HexPoint)">GreaterThan(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether a specified value is greater than another specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator&gt;(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">left</code> is greater than <code data-dev-comment-type="paramref" class="paramref">right</code>; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_GreaterThanOrEqual_" data-uid="Rebus.HexPoint.op_GreaterThanOrEqual*"></a>
+  <h4 id="Rebus_HexPoint_op_GreaterThanOrEqual_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_GreaterThanOrEqual(Rebus.HexPoint,Rebus.HexPoint)">GreaterThanOrEqual(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether a specified value is greater than or equal to another specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;=(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">left</code> is greater than or equal to <code data-dev-comment-type="paramref" class="paramref">right</code>; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_Inequality_" data-uid="Rebus.HexPoint.op_Inequality*"></a>
+  <h4 id="Rebus_HexPoint_op_Inequality_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_Inequality(Rebus.HexPoint,Rebus.HexPoint)">Inequality(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether two coordinates are not equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first coordinate to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second coordinate to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">left</code> and <code data-dev-comment-type="paramref" class="paramref">right</code> are not equal; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_LessThan_" data-uid="Rebus.HexPoint.op_LessThan*"></a>
+  <h4 id="Rebus_HexPoint_op_LessThan_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_LessThan(Rebus.HexPoint,Rebus.HexPoint)">LessThan(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether a specified value is less than another specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">left</code> is less than <code data-dev-comment-type="paramref" class="paramref">right</code>; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_LessThanOrEqual_" data-uid="Rebus.HexPoint.op_LessThanOrEqual*"></a>
+  <h4 id="Rebus_HexPoint_op_LessThanOrEqual_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_LessThanOrEqual(Rebus.HexPoint,Rebus.HexPoint)">LessThanOrEqual(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether a specified value is less than or equal to another specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;=(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">left</code> is less than or equal to <code data-dev-comment-type="paramref" class="paramref">right</code>; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_Multiply_" data-uid="Rebus.HexPoint.op_Multiply*"></a>
+  <h4 id="Rebus_HexPoint_op_Multiply_Rebus_HexPoint_System_Int32_" data-uid="Rebus.HexPoint.op_Multiply(Rebus.HexPoint,System.Int32)">Multiply(HexPoint, Int32)</h4>
+  <div class="markdown level1 summary"><p>Multiplies a specified coordinate by a number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static HexPoint operator *(HexPoint left, int right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The coordinate to multiply.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The number to multiply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>The product of <code data-dev-comment-type="paramref" class="paramref">left</code> and <code data-dev-comment-type="paramref" class="paramref">right</code>, as a hexagonal coordinate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_Multiply_" data-uid="Rebus.HexPoint.op_Multiply*"></a>
+  <h4 id="Rebus_HexPoint_op_Multiply_System_Int32_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_Multiply(System.Int32,Rebus.HexPoint)">Multiply(Int32, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Multiplies a number by a specified coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static HexPoint operator *(int left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The number to multiply.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The coordinate to multiply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>The product of <code data-dev-comment-type="paramref" class="paramref">left</code> and <code data-dev-comment-type="paramref" class="paramref">right</code>, as a hexagonal coordinate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_HexPoint_op_Subtraction_" data-uid="Rebus.HexPoint.op_Subtraction*"></a>
+  <h4 id="Rebus_HexPoint_op_Subtraction_Rebus_HexPoint_Rebus_HexPoint_" data-uid="Rebus.HexPoint.op_Subtraction(Rebus.HexPoint,Rebus.HexPoint)">Subtraction(HexPoint, HexPoint)</h4>
+  <div class="markdown level1 summary"><p>Subtracts a specified coordinate from another specified coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static HexPoint operator -(HexPoint left, HexPoint right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The value to subtract from (the minuend).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The value to subtract (the subtrahend).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><p>The result of subtracting <code data-dev-comment-type="paramref" class="paramref">right</code> from <code data-dev-comment-type="paramref" class="paramref">left</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icomparable">System.IComparable</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icomparable-1">System.IComparable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iequatable-1">System.IEquatable&lt;T&gt;</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><span><a href="https://www.redblobgames.com/grids/hexagons/">Red Blob Games - Hexagonal Grids</a></span></div>
+      <div><span><a href="http://www-cs-students.stanford.edu/~amitp/">Amit Patel&amp;apos;s Home Page</a></span></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © 2021-2022 Ishan Pranav. All rights reserved. Licensed under the MIT License.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+﻿# Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
+# Licensed under the MIT License.
+
+# Spanish
+
+AutopilotCommand = Usa el piloto automático para viajar a...
+BiomeLens = Biomas
+ConstellationLens = Constelaciones
+DefendCommand = Durante un ataque, quédate aquí y defienda.
+ExploreCommand = Explora...
+JettisonCommand = ¡Echa la carga por la borda!
+RetreatCommand = Durante un ataque, retírate a...

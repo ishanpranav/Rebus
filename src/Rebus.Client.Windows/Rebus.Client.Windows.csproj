@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/ishanpranav/rebus</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <StartupObject>Rebus.Client.Windows.Program</StartupObject>
+    <ApplicationIcon>Icons\Rebus.ico</ApplicationIcon>
+    <AppDesignerFolder>resources</AppDesignerFolder>
+    <Authors>Ishan Pranav</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Attributes\LocalizedDescriptionAttribute.es.restext" />
+    <None Remove="images\Rebus.png" />
+    <None Remove="objects\credentials.json" />
+    <None Remove="resources\Strings.restext" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\LICENSE.txt" Link="resources\LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\THIRD-PARTY-NOTICES.txt" Link="resources\THIRD-PARTY-NOTICES.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\Rebus.ico" />
+    <Content Include="images\Rebus.png" />
+    <Content Update="images\Rebus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="objects\credentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Attributes\LocalizedDescriptionAttribute.es.restext" />
+    <EmbeddedResource Include="Attributes\LocalizedDescriptionAttribute.restext" />
+    <EmbeddedResource Include="Attributes\LocalizedDisplayNameAttribute.es.restext" />
+    <EmbeddedResource Include="Attributes\LocalizedDisplayNameAttribute.restext" />
+    <EmbeddedResource Include="resources\Strings.restext" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rebus.Client\Rebus.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Forms\GameForm.cs" />
+    <Compile Update="resources\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="resources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Rebus.Client.Windows</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="objects\credentials.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,88 @@
+// Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
+// Licensed under the MIT License.
+
+{
+  "metadata": [
+    {
+      "dest": "pages/",
+      "disableDefaultFilter": false,
+      "disableGitFeatures": false,
+      "src": [
+        {
+          "files": [
+            "**.csproj"
+          ],
+          "src": "../../src",
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ]
+        }
+      ]
+    }
+  ],
+  "build": {
+    "cleanupCacheHistory": false,
+    "content": [
+      {
+        "files": [
+          "pages/*.yml",
+          "toc.yml"
+        ]
+      }
+    ],
+    "dest": "../site/",
+    "fileMetadataFiles": [],
+    "globalMetadata": {
+      "_appFaviconPath": "icons/Rebus.ico",
+      "_appFooter": "© 2021-2022 Ishan Pranav. All rights reserved. Licensed under the MIT License.",
+      "_appLogoPath": "images/Rebus.png",
+      "_appTitle": "Ishan Pranav's REBUS",
+      "_gitContribute": {
+        "repo": "https://github.com/ishanpranav/rebus",
+        "branch": "master"
+      },
+      "_gitUrlPattern": "github",
+      "newFileRepository": {
+        "branch": "master"
+      }
+    },
+    "globalMetadataFiles": [],
+    "markdownEngineName": "markdig",
+    "overwrite": [
+      {
+        "files": [
+          "articles/*.md"
+        ],
+        "exclude": [
+          "obj/**"
+        ]
+      }
+    ],
+    "postProcessors": [],
+    "resource": [
+      {
+        "files": [
+          "images/*"
+        ]
+      },
+      {
+        "files": [
+          "icons/Rebus.ico"
+        ],
+        "src": "../../src/Rebus.Client.Windows/"
+      }
+    ],
+    "template": [
+      "statictoc"
+    ],
+    "sitemap": {
+      "baseUrl": "https://ishanpranav.github.io/rebus/",
+      "priority": 0.1,
+      "changeFreq": "monthly"
+    },
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ]
+  }
+}

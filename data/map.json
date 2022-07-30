@@ -1,0 +1,17 @@
+// Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
+// Licensed under the MIT License.
+
+{
+  "depth": 3,
+  "juliaSet": {
+    "c": "-0.7269 + 0.1889i",
+    "maxIterations": 300,
+    "r": 2.0
+  },
+  "origin": {
+    "q": 0,
+    "r": 0
+  },
+  "radius": 48,
+  "zoom": 9.0
+}
