@@ -4,18 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Rebus.Server
 {
     public class Map
     {
-        public const int ConstellationDepth = 1;
-        public const int StarDepth = 2;
-        public const int PlanetDepth = 3;
-
         private readonly int _size;
-        private readonly int _stars;
-        private readonly int _planets;
         private readonly Dictionary<HexPoint, int[]> _zones = new Dictionary<HexPoint, int[]>();
 
         public JuliaSet JuliaSet { get; }
@@ -24,6 +19,9 @@ namespace Rebus.Server
         public double Zoom { get; }
 
         public HexPoint Origin { get; }
+
+        public int Stars { get; }
+        public int Planets { get; }
 
         public Map(JuliaSet juliaSet, HexPoint origin, int radius, int depth, double zoom)
         {
@@ -48,37 +46,37 @@ namespace Rebus.Server
 
                     switch (layers)
                     {
-                        case StarDepth:
-                            _stars++;
+                        case Depths.Star:
+                            Stars++;
                             break;
 
-                        case PlanetDepth:
-                            _planets++;
+                        case Depths.Planet:
+                            Planets++;
                             break;
                     }
                 }
             }
 
-            Array.Fill(buffer, value: 1);
+            Array.Fill(buffer, Depths.FirstValue);
 
             foreach (HexPoint location in Origin.Spiral(Radius))
             {
                 if (recurse(location))
                 {
-                    move(ConstellationDepth);
+                    move(Depths.Constellation);
                 }
             }
 
             bool recurse(HexPoint location)
             {
-                if (_zones.TryGetValue(location, out int[]? zone) && zone.Length > ConstellationDepth && zone[ConstellationDepth - 1] == default)
+                if (_zones.TryGetValue(location, out int[]? layers) && layers.Length > Depths.Constellation && Depths.Layer(layers, Depths.Constellation) == Depths.EmptyValue)
                 {
-                    for (int i = 0; i < zone.Length; i++)
+                    for (int i = 0; i < layers.Length; i++)
                     {
-                        zone[i] = buffer[i];
+                        layers[i] = buffer[i];
                     }
 
-                    move(zone.Length);
+                    move(layers.Length);
 
                     foreach (HexPoint neighbor in location.Neighbors())
                     {
@@ -113,39 +111,39 @@ namespace Rebus.Server
 
         public bool IsStar(HexPoint location)
         {
-            return _zones.TryGetValue(location, out int[]? layers) && layers.Length == StarDepth;
+            return _zones.TryGetValue(location, out int[]? layers) && layers.Length == Depths.Star;
         }
 
-        public void GetDetails(HexPoint location, Namer namer, out Biome biome, out string? name, out int constellation)
+        public bool TryGetLayers(HexPoint location, [MaybeNullWhen(false)] out IReadOnlyList<int> layers)
         {
-            if (_zones.TryGetValue(location, out int[]? layers))
+            if (_zones.TryGetValue(location, out int[]? results))
             {
-                biome = getBiome();
-                name = namer.Name(_stars, _planets, layers);
-                constellation = layers[ConstellationDepth - 1];
+                layers = results;
 
-                Biome getBiome()
-                {
-                    switch (layers.Length)
-                    {
-                        case StarDepth:
-                            return Biome.Stellar;
-
-                        case PlanetDepth:
-                            const Biome min = Biome.Urban;
-
-                            return (int)((StarDepth - JuliaDepth(location)) * (Biome.Tundra - min)) + min;
-
-                        default:
-                            return Biome.None;
-                    }
-                }
+                return true;
             }
             else
             {
-                constellation = 0;
-                biome = Biome.None;
-                name = null;
+                layers = null;
+
+                return false;
+            }
+        }
+
+        public Biome GetBiome(HexPoint location, IReadOnlyList<int> layers)
+        {
+            switch (layers.Count)
+            {
+                case Depths.Star:
+                    return Biome.Stellar;
+
+                case Depths.Planet:
+                    const Biome min = Biome.Urban;
+
+                    return (int)((Depths.Star - JuliaDepth(location)) * (Biome.Tundra - min)) + min;
+
+                default:
+                    return Biome.None;
             }
         }
     }

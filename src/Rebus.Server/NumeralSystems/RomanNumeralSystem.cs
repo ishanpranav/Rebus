@@ -65,7 +65,7 @@ namespace Rebus.Server.NumeralSystems
         public RomanNumeralSystem() { }
 
         /// <inheritdoc/>
-        public bool TryGetNumeral(int value, [NotNullWhen(true)] out string? result)
+        public bool TryGetNumeral(int value, [MaybeNullWhen(false)] out string result)
         {
             if (value < 4000)
             {

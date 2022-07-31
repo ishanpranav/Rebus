@@ -22,8 +22,8 @@ namespace Rebus.Commands
         public override IEnumerable<HexPoint> Filter(ZoneResult source, IReadOnlyDictionary<HexPoint, ZoneResult> domain)
         {
             return domain.Values
-                .Where(x => x.Biome != Biome.Stellar && x.Value.Location != source.Value.Location)
-                .Select(x => x.Value.Location);
+                .Where(x => x.Biome != Biome.Stellar && x.Location != source.Location)
+                .Select(x => x.Location);
         }
     }
 }

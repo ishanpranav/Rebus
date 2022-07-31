@@ -90,6 +90,12 @@
                             <a href="Rebus.Configuration.html" title="Configuration" class="">Configuration</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.Depths.html" title="Depths" class="">Depths</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Fleet.html" title="Fleet" class="">Fleet</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.HexPoint.html" title="HexPoint" class="">HexPoint</a>
                           </li>
                           <li class="">
@@ -108,13 +114,16 @@
                             <a href="Rebus.JsonIPAddressConverter.html" title="JsonIPAddressConverter" class="">JsonIPAddressConverter</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.Message.html" title="Message" class="">Message</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.MessageFormat.html" title="MessageFormat" class="">MessageFormat</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Player.html" title="Player" class="">Player</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.WealthResult.html" title="WealthResult" class="">WealthResult</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
@@ -190,9 +199,6 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.EventArgs.ConflictEventArgs.html" title="ConflictEventArgs" class="">ConflictEventArgs</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.EventArgs.Fleet.html" title="Fleet" class="">Fleet</a>
                           </li>
                           <li class="active">
                             <a href="Rebus.EventArgs.MessageEventArgs.html" title="MessageEventArgs" class="active">MessageEventArgs</a>
@@ -317,12 +323,12 @@ public class MessageEventArgs : EventArgs</code></pre>
   
   
   <a id="Rebus_EventArgs_MessageEventArgs__ctor_" data-uid="Rebus.EventArgs.MessageEventArgs.#ctor*"></a>
-  <h4 id="Rebus_EventArgs_MessageEventArgs__ctor_System_String_System_String_" data-uid="Rebus.EventArgs.MessageEventArgs.#ctor(System.String,System.String)">MessageEventArgs(String, String)</h4>
+  <h4 id="Rebus_EventArgs_MessageEventArgs__ctor_System_DateTime_System_String_System_Collections_Generic_IReadOnlyCollection_System_String__System_String_Rebus_MessageFormat_" data-uid="Rebus.EventArgs.MessageEventArgs.#ctor(System.DateTime,System.String,System.Collections.Generic.IReadOnlyCollection{System.String},System.String,Rebus.MessageFormat)">MessageEventArgs(DateTime, String, IReadOnlyCollection&lt;String&gt;, String, MessageFormat)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MessageEventArgs(string username, string value)</code></pre>
+    <pre><code class="lang-csharp hljs">public MessageEventArgs(DateTime sent, string senderUsername, IReadOnlyCollection&lt;string&gt; recipientUsernames, string value, MessageFormat format)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -335,13 +341,28 @@ public class MessageEventArgs : EventArgs</code></pre>
     </thead>
     <tbody>
       <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td><span class="parametername">sent</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">username</span></td>
+        <td><span class="parametername">senderUsername</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><span class="parametername">recipientUsernames</span></td>
         <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.MessageFormat.html">MessageFormat</a></td>
+        <td><span class="parametername">format</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -350,14 +371,91 @@ public class MessageEventArgs : EventArgs</code></pre>
   </h3>
   
   
-  <a id="Rebus_EventArgs_MessageEventArgs_Username_" data-uid="Rebus.EventArgs.MessageEventArgs.Username*"></a>
-  <h4 id="Rebus_EventArgs_MessageEventArgs_Username" data-uid="Rebus.EventArgs.MessageEventArgs.Username">Username</h4>
+  <a id="Rebus_EventArgs_MessageEventArgs_Format_" data-uid="Rebus.EventArgs.MessageEventArgs.Format*"></a>
+  <h4 id="Rebus_EventArgs_MessageEventArgs_Format" data-uid="Rebus.EventArgs.MessageEventArgs.Format">Format</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 0)]
-public string Username { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+public MessageFormat Format { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.MessageFormat.html">MessageFormat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_EventArgs_MessageEventArgs_IsBroadcast_" data-uid="Rebus.EventArgs.MessageEventArgs.IsBroadcast*"></a>
+  <h4 id="Rebus_EventArgs_MessageEventArgs_IsBroadcast" data-uid="Rebus.EventArgs.MessageEventArgs.IsBroadcast">IsBroadcast</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBroadcast { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_EventArgs_MessageEventArgs_RecipientUsernames_" data-uid="Rebus.EventArgs.MessageEventArgs.RecipientUsernames*"></a>
+  <h4 id="Rebus_EventArgs_MessageEventArgs_RecipientUsernames" data-uid="Rebus.EventArgs.MessageEventArgs.RecipientUsernames">RecipientUsernames</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
+public IReadOnlyCollection&lt;string&gt; RecipientUsernames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_EventArgs_MessageEventArgs_SenderUsername_" data-uid="Rebus.EventArgs.MessageEventArgs.SenderUsername*"></a>
+  <h4 id="Rebus_EventArgs_MessageEventArgs_SenderUsername" data-uid="Rebus.EventArgs.MessageEventArgs.SenderUsername">SenderUsername</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+public string SenderUsername { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -376,13 +474,39 @@ public string Username { get; }</code></pre>
   </table>
   
   
+  <a id="Rebus_EventArgs_MessageEventArgs_Sent_" data-uid="Rebus.EventArgs.MessageEventArgs.Sent*"></a>
+  <h4 id="Rebus_EventArgs_MessageEventArgs_Sent" data-uid="Rebus.EventArgs.MessageEventArgs.Sent">Sent</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 0)]
+public DateTime Sent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Rebus_EventArgs_MessageEventArgs_Value_" data-uid="Rebus.EventArgs.MessageEventArgs.Value*"></a>
   <h4 id="Rebus_EventArgs_MessageEventArgs_Value" data-uid="Rebus.EventArgs.MessageEventArgs.Value">Value</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
 public string Value { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>

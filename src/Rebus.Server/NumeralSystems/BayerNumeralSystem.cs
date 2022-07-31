@@ -17,7 +17,7 @@ namespace Rebus.Server.NumeralSystems
         public BayerNumeralSystem() { }
 
         /// <inheritdoc/>
-        public bool TryGetNumeral(int value, [NotNullWhen(true)] out string? result)
+        public bool TryGetNumeral(int value, [MaybeNullWhen(false)] out string result)
         {
             const char greekMin = '\u03b1';
             const char greekMax = '\u03c9';

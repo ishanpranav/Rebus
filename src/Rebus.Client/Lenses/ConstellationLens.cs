@@ -10,9 +10,10 @@ namespace Rebus.Client.Lenses
     {
         public SKColor GetColor(ZoneResult zone)
         {
-            byte intensity = (byte)(200 - zone.Constellation);
+            int constellation = Depths.Layer(zone.Layers, Depths.Constellation);  
+            byte intensity = (byte)(200 - constellation);
 
-            switch (zone.Constellation % 6)
+            switch (constellation % 6)
             {
                 case 0:
                     return new SKColor(intensity, green: 0, blue: 0);

@@ -42,23 +42,24 @@ namespace Rebus.Client.Windows.Forms
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.usernameToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.creditsToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.messageToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.unitDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.unitListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.commandGroupBox = new System.Windows.Forms.GroupBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.destinationComboBox = new System.Windows.Forms.ComboBox();
             this.commandComboBox = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lensGroupBox = new System.Windows.Forms.GroupBox();
             this.lensComboBox = new System.Windows.Forms.ComboBox();
             this.myNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.visionPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.commandGroupBox.SuspendLayout();
+            this.lensGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // visionPictureBox
@@ -84,8 +85,7 @@ namespace Rebus.Client.Windows.Forms
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usernameToolStripLabel,
-            this.creditsToolStripLabel,
-            this.messageToolStripButton});
+            this.creditsToolStripLabel});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -94,42 +94,52 @@ namespace Rebus.Client.Windows.Forms
             this.usernameToolStripLabel.Name = "usernameToolStripLabel";
             resources.ApplyResources(this.usernameToolStripLabel, "usernameToolStripLabel");
             // 
-            // wealthToolStripLabel
+            // creditsToolStripLabel
             // 
-            this.creditsToolStripLabel.Name = "wealthToolStripLabel";
-            resources.ApplyResources(this.creditsToolStripLabel, "wealthToolStripLabel");
-            // 
-            // messageToolStripButton
-            // 
-            this.messageToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.messageToolStripButton, "messageToolStripButton");
-            this.messageToolStripButton.Name = "messageToolStripButton";
-            this.messageToolStripButton.Click += new System.EventHandler(this.OnMessageToolStripButtonClick);
-            // 
-            // unitDataGridView
-            // 
-            this.unitDataGridView.AllowUserToAddRows = false;
-            this.unitDataGridView.AllowUserToDeleteRows = false;
-            this.unitDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.unitDataGridView, "unitDataGridView");
-            this.unitDataGridView.Name = "unitDataGridView";
-            this.unitDataGridView.RowTemplate.Height = 25;
+            this.creditsToolStripLabel.Name = "creditsToolStripLabel";
+            resources.ApplyResources(this.creditsToolStripLabel, "creditsToolStripLabel");
             // 
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.unitDataGridView);
+            this.groupBox1.Controls.Add(this.unitListView);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // groupBox2
+            // unitListView
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.submitButton);
-            this.groupBox2.Controls.Add(this.destinationComboBox);
-            this.groupBox2.Controls.Add(this.commandComboBox);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            this.unitListView.AllowColumnReorder = true;
+            this.unitListView.CheckBoxes = true;
+            this.unitListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            resources.ApplyResources(this.unitListView, "unitListView");
+            this.unitListView.Name = "unitListView";
+            this.unitListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.unitListView.UseCompatibleStateImageBehavior = false;
+            this.unitListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
+            // 
+            // columnHeader2
+            // 
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
+            // 
+            // columnHeader3
+            // 
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
+            // 
+            // commandGroupBox
+            // 
+            resources.ApplyResources(this.commandGroupBox, "commandGroupBox");
+            this.commandGroupBox.Controls.Add(this.submitButton);
+            this.commandGroupBox.Controls.Add(this.destinationComboBox);
+            this.commandGroupBox.Controls.Add(this.commandComboBox);
+            this.commandGroupBox.Name = "commandGroupBox";
+            this.commandGroupBox.TabStop = false;
             // 
             // submitButton
             // 
@@ -155,12 +165,12 @@ namespace Rebus.Client.Windows.Forms
             this.commandComboBox.SelectedIndexChanged += new System.EventHandler(this.OnCommandComboBoxSelectedIndexChanged);
             this.commandComboBox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.OnFormat);
             // 
-            // groupBox3
+            // lensGroupBox
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.lensComboBox);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.lensGroupBox, "lensGroupBox");
+            this.lensGroupBox.Controls.Add(this.lensComboBox);
+            this.lensGroupBox.Name = "lensGroupBox";
+            this.lensGroupBox.TabStop = false;
             // 
             // lensComboBox
             // 
@@ -179,8 +189,8 @@ namespace Rebus.Client.Windows.Forms
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.lensGroupBox);
+            this.Controls.Add(this.commandGroupBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
@@ -192,10 +202,9 @@ namespace Rebus.Client.Windows.Forms
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.commandGroupBox.ResumeLayout(false);
+            this.lensGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,15 +218,17 @@ namespace Rebus.Client.Windows.Forms
         private ToolStrip toolStrip1;
         private ToolStripLabel usernameToolStripLabel;
         private ToolStripLabel creditsToolStripLabel;
-        private ToolStripButton messageToolStripButton;
-        private DataGridView unitDataGridView;
         private NotifyIcon myNotifyIcon;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
+        private GroupBox commandGroupBox;
         private Button submitButton;
         private ComboBox destinationComboBox;
         private ComboBox commandComboBox;
-        private GroupBox groupBox3;
+        private GroupBox lensGroupBox;
         private ComboBox lensComboBox;
+        private ListView unitListView;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
     }
 }

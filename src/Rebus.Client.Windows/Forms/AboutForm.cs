@@ -38,7 +38,7 @@ namespace Rebus.Client.Windows.Forms
                 }
             }
 
-            string getPath(string key)
+            static string getPath(string key)
             {
                 return Path.ChangeExtension(Path.Combine(path1: "resources", key), extension: "txt");
             }

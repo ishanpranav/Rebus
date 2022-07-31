@@ -41,14 +41,14 @@ namespace Rebus.Server
         {
             int depth = layers.Count;
 
-            if (depth > Map.ConstellationDepth && depth <= Map.PlanetDepth)
+            if (depth > Depths.Constellation && depth <= Depths.Planet)
             {
-                int constellation = getLayer(Map.ConstellationDepth);
-                int star = getLayer(Map.StarDepth);
+                int constellation = Depths.Layer(layers, Depths.Constellation);
+                int star = Depths.Layer(layers, Depths.Star);
 
-                if (depth > Map.StarDepth)
+                if (depth > Depths.Star)
                 {
-                    int planet = getLayer(Map.PlanetDepth);
+                    int planet = Depths.Layer(layers, Depths.Planet);
 
                     if (_existingPlanets.TryGetValue((constellation, star, planet), out string? planetName))
                     {
@@ -81,7 +81,7 @@ namespace Rebus.Server
                     return starName;
                 }
 
-                bool tryNameStar([NotNullWhen(true)] out string? starName)
+                bool tryNameStar([MaybeNullWhen(false)] out string starName)
                 {
                     if (_existingStars.TryGetValue((constellation, star), out starName))
                     {
@@ -102,7 +102,7 @@ namespace Rebus.Server
 
                     return true;
 
-                    bool tryNameConstellation([NotNullWhen(true)] out string? constellationName)
+                    bool tryNameConstellation([MaybeNullWhen(false)] out string constellationName)
                     {
                         if (_existingConstellations.TryGetValue(constellation, out constellationName)) { }
                         else if (_constellations.TryDequeue(out constellationName))
@@ -116,11 +116,6 @@ namespace Rebus.Server
 
                         return true;
                     }
-                }
-
-                int getLayer(int depth)
-                {
-                    return layers[depth - 1] - 1;
                 }
             }
 

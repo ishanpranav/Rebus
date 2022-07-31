@@ -4,9 +4,7 @@
 # Design
 Ishan Pranav\'s REBUS is a multiplayer space trading game. Each player is either operated by a human or a computer opponent.
 ## Objective
-The objective of the game is to be the largest contributor of credits (the game currency) toward the Universal Project. To achieve their objective, a player can issue orders to units (spacecraft) under their control in real time: Some execute immediately, and others are asynchronous. Players can decide to contribute any amount at any time, but all contributing players are charged simultaneously at regular intervals.[^1]
-## Communication
-Players can communicate within the game client and transfer credits freely. Players can only transfer commodities indirectly (see [commerce](#Commerce)).
+The objective of the game is to be the largest contributor of credits (the game currency) toward a Universal Project. To achieve their objective, a player can issue orders to units (spacecraft) under their control in real time: Some execute immediately, and others are asynchronous. Players can decide to contribute any amount at any time, but all contributing players are charged simultaneously at regular intervals.[^1]
 ## Units
 Each unit can carry one commodity, each of which has a unique mass. The mass of a commodity does not affect a unit\'s ability to carry it. A player can order a unit to jettison (and destroy) its cargo at any time.
 ## Navigation
@@ -59,6 +57,7 @@ At uninhabited planets, players can accept and deposit cargo.[^6]
 ## Future considerations
 Potential planetary facilities under consideration include
 - **terminals** offering passengers as an alternative form of cargo (this facilitates colonization – players may accept passengers from inhabited planets and deposit them onto uninhabited ones to inhabit them or evacuate one planet and migrate its population to another; population size may have an impact on the economy, and passengers cannot be jettisoned; passengers have zero mass),
+- **banks** that allow players to earn interest on deposited credits,
 - **shipyards** that allow players to purchase units,
 - **embassies** that allow players to negotiate government intervention in the planet\'s economic system (via price floors and ceilings), 
 - **insurance agencies** that mitigate the risks of exploration and conflict, and

@@ -17,6 +17,6 @@ namespace Rebus.Server.NumeralSystems
         /// <param name="value">The integral value.</param>
         /// <param name="result">When this method returns, contains the numeral that represents the specified integer, if the number system can represent it; otherwise, <see langword="null"/>. This parameter is passed uninitialized.</param>
         /// <returns><see langword="true"/> if the number system can represent the specified integer; otherwise, <see langword="false"/>.</returns>
-        bool TryGetNumeral(int value, [NotNullWhen(true)] out string? result);
+        bool TryGetNumeral(int value, [MaybeNullWhen(false)] out string result);
     }
 }

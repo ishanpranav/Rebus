@@ -4,7 +4,7 @@
 
 using System.Runtime.Serialization;
 
-namespace Rebus.EventArgs
+namespace Rebus
 {
     [DataContract]
     public class Fleet

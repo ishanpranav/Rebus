@@ -29,7 +29,7 @@ namespace Rebus.Client
         {
             canvas.Clear(new SKColor(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MinValue));
 
-            using (SKFont font = new SKFont(SKTypeface.Default, size: 10))
+            using (SKFont font = new SKFont(SKTypeface.Default, size: 11))
             using (SKPaint paint = new SKPaint(font)
             {
                 StrokeJoin = SKStrokeJoin.Bevel,
@@ -41,30 +41,30 @@ namespace Rebus.Client
                 {
                     bool found;
 
-                    if (_hexagons.TryGetValue(zone.Value.Location, out SKPath? path))
+                    if (_hexagons.TryGetValue(zone.Location, out SKPath? path))
                     {
                         found = true;
                     }
                     else
                     {
                         found = false;
-                        path = _layout.GetHexagon(zone.Value.Location);
+                        path = _layout.GetHexagon(zone.Location);
                     }
 
                     paint.Color = _lens.GetColor(zone);
 
-                    if (zone.Value.Units.Count == 0)
+                    if (zone.Units.Count == 0)
                     {
                         paint.Color = paint.Color.WithAlpha(alpha: 128);
 
                         if (!found && zone.Biome == Biome.Stellar)
                         {
-                            _hexagons.TryAdd(zone.Value.Location, path);
+                            _hexagons.TryAdd(zone.Location, path);
                         }
                     }
                     else if (!found)
                     {
-                        _hexagons.TryAdd(zone.Value.Location, path);
+                        _hexagons.TryAdd(zone.Location, path);
                     }
 
                     canvas.DrawPath(path, paint);
@@ -72,7 +72,7 @@ namespace Rebus.Client
 
                 foreach (ZoneResult zone in _zones)
                 {
-                    if (_hexagons.TryGetValue(zone.Value.Location, out SKPath? hexagon))
+                    if (_hexagons.TryGetValue(zone.Location, out SKPath? hexagon))
                     {
                         paint.StrokeWidth = 4;
                         paint.Style = SKPaintStyle.Stroke;
@@ -81,7 +81,7 @@ namespace Rebus.Client
                         {
                             paint.Color = SKColors.Silver;
                         }
-                        else if (zone.Value.PlayerId == _playerId)
+                        else if (zone.PlayerId == _playerId)
                         {
                             paint.Color = SKColors.DodgerBlue;
                         }
@@ -92,12 +92,12 @@ namespace Rebus.Client
 
                         canvas.DrawPath(hexagon, paint);
 
-                        if (zone.Value.Units.Count > 0)
+                        if (zone.Units.Count > 0)
                         {
                             paint.Style = SKPaintStyle.Fill;
 
-                            string text = zone.Value.Units.Count.ToString();
-                            SKPoint point = _layout.GetCenter(zone.Value.Location);
+                            string text = zone.Units.Count.ToString();
+                            SKPoint point = _layout.GetCenter(zone.Location);
 
                             point.Y += font.Size * 0.5f;
 

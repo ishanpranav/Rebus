@@ -25,7 +25,6 @@ namespace Rebus.Client.Windows.Forms
 
         private readonly IEnumerable<Command> _commands;
         private readonly IEnumerable<ILens> _lenses;
-        private readonly IServiceProvider _serviceProvider;
         private readonly Credentials _credentials;
         private readonly RpcClient _client = new RpcClient();
         private readonly Dictionary<HexPoint, ZoneResult> _zones = new Dictionary<HexPoint, ZoneResult>();
@@ -40,13 +39,12 @@ namespace Rebus.Client.Windows.Forms
         private HexPoint _location;
         private int _credits;
 
-        public GameForm(IEnumerable<Command> commands, IEnumerable<ILens> lenses, IServiceProvider serviceProvider, Credentials credentials)
+        public GameForm(IEnumerable<Command> commands, IEnumerable<ILens> lenses, Credentials credentials)
         {
             InitializeComponent();
 
             _commands = commands;
             _lenses = lenses;
-            _serviceProvider = serviceProvider;
             _credentials = credentials;
         }
 
@@ -178,13 +176,35 @@ namespace Rebus.Client.Windows.Forms
 
         private void DrawUnits()
         {
-            unitDataGridView.DataSource = null;
+            unitListView.Items.Clear();
 
-            if (_zones.TryGetValue(_location, out ZoneResult? zone) && zone.Value.Units.Count > 0 && zone.Value.PlayerId == _credentials.PlayerId)
+            if (_zones.TryGetValue(_location, out ZoneResult? zone) && zone.Units.Count > 0 && zone.PlayerId == _credentials.PlayerId)
             {
-                unitDataGridView.DataSource = zone.Value.Units
-                    .Select(x => new UnitViewModel(x, GetName))
-                    .ToList();
+                foreach (Unit unit in zone.Units)
+                {
+                    string sanctuary;
+
+                    if (unit.Sanctuary == null)
+                    {
+                        sanctuary = Resources.NoneMessage;
+                    }
+                    else
+                    {
+                        sanctuary = GetName(unit.Sanctuary.Location);
+                    }
+
+                    unitListView.Items.Add(new ListViewItem(new string[]
+                    {
+                        unit.Name,
+                        sanctuary,
+                        $"{unit.CargoMass}"
+                    })
+                    {
+                        Checked = true,
+                        Tag = unit.Id,
+                        Text = unit.Name
+                    });
+                }
 
                 commandComboBox.Enabled = true;
                 destinationComboBox.Enabled = true;
@@ -196,7 +216,6 @@ namespace Rebus.Client.Windows.Forms
                 destinationComboBox.Enabled = false;
                 submitButton.Enabled = false;
             }
-
         }
         private async Task RequestAsync()
         {
@@ -204,7 +223,7 @@ namespace Rebus.Client.Windows.Forms
 
             await foreach (ZoneResult zone in _service.GetZonesAsync(_credentials.PlayerId))
             {
-                _zones.Add(zone.Value.Location, zone);
+                _zones.Add(zone.Location, zone);
             }
         }
 
@@ -231,13 +250,6 @@ namespace Rebus.Client.Windows.Forms
             creditsToolStripLabel.Text = string.Format(Resources.CreditFormat, _credits);
         }
 
-        private void OnMessageToolStripButtonClick(object sender, System.EventArgs e)
-        {
-            _serviceProvider
-                .GetRequiredService<MessageForm>()
-                .Show();
-        }
-
         private string GetName(HexPoint location)
         {
             if (_zones.TryGetValue(location, out ZoneResult? zone) && zone.Name != null)
@@ -258,16 +270,13 @@ namespace Rebus.Client.Windows.Forms
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
         private async void OnSubmitButtonClick(object sender, System.EventArgs e)
         {
-            if (unitDataGridView.DataSource is ICollection<UnitViewModel> viewModels && commandComboBox.SelectedItem is Command command)
+            if (commandComboBox.SelectedItem is Command command && unitListView.CheckedItems.Count > 0)
             {
                 Command clone = command.Clone();
 
-                foreach (UnitViewModel viewModel in viewModels)
+                foreach (ListViewItem item in unitListView.CheckedItems)
                 {
-                    if (viewModel.Selected)
-                    {
-                        clone.UnitIds.Add(viewModel.Value.Id);
-                    }
+                    clone.UnitIds.Add((int)item.Tag);
                 }
 
                 clone.PlayerId = _credentials.PlayerId;

@@ -90,6 +90,12 @@
                             <a href="Rebus.Configuration.html" title="Configuration" class="">Configuration</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.Depths.html" title="Depths" class="">Depths</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Fleet.html" title="Fleet" class="">Fleet</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.HexPoint.html" title="HexPoint" class="">HexPoint</a>
                           </li>
                           <li class="">
@@ -102,9 +108,6 @@
                             <a href="Rebus.ILoginService.html" title="ILoginService" class="">ILoginService</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.IMessageService.html" title="IMessageService" class="">IMessageService</a>
-                          </li>
-                          <li class="">
                             <a href="Rebus.JsonIPAddressConverter.html" title="JsonIPAddressConverter" class="">JsonIPAddressConverter</a>
                           </li>
                           <li class="">
@@ -112,9 +115,6 @@
                           </li>
                           <li class="">
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.WealthResult.html" title="WealthResult" class="">WealthResult</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
@@ -190,12 +190,6 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.EventArgs.ConflictEventArgs.html" title="ConflictEventArgs" class="">ConflictEventArgs</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.EventArgs.Fleet.html" title="Fleet" class="">Fleet</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.EventArgs.MessageEventArgs.html" title="MessageEventArgs" class="">MessageEventArgs</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -313,12 +307,12 @@ public class ZoneResult</code></pre>
   
   
   <a id="Rebus_ZoneResult__ctor_" data-uid="Rebus.ZoneResult.#ctor*"></a>
-  <h4 id="Rebus_ZoneResult__ctor_Rebus_Zone_Rebus_Biome_System_String_System_Int32_" data-uid="Rebus.ZoneResult.#ctor(Rebus.Zone,Rebus.Biome,System.String,System.Int32)">ZoneResult(Zone, Biome, String, Int32)</h4>
+  <h4 id="Rebus_ZoneResult__ctor_Rebus_HexPoint_System_Int32_Rebus_Biome_System_String_System_Collections_Generic_IReadOnlyList_System_Int32__System_Collections_Generic_IReadOnlyCollection_Rebus_Unit__" data-uid="Rebus.ZoneResult.#ctor(Rebus.HexPoint,System.Int32,Rebus.Biome,System.String,System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyCollection{Rebus.Unit})">ZoneResult(HexPoint, Int32, Biome, String, IReadOnlyList&lt;Int32&gt;, IReadOnlyCollection&lt;Unit&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ZoneResult(Zone value, Biome biome, string name, int constellation)</code></pre>
+    <pre><code class="lang-csharp hljs">public ZoneResult(HexPoint location, int playerId, Biome biome, string name, IReadOnlyList&lt;int&gt; layers, IReadOnlyCollection&lt;Unit&gt; units)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -331,8 +325,13 @@ public class ZoneResult</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rebus.Zone.html">Zone</a></td>
-        <td><span class="parametername">value</span></td>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">location</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">playerId</span></td>
         <td></td>
       </tr>
       <tr>
@@ -346,8 +345,13 @@ public class ZoneResult</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">constellation</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">layers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Rebus.Unit.html">Unit</a>&gt;</td>
+        <td><span class="parametername">units</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -355,12 +359,12 @@ public class ZoneResult</code></pre>
   
   
   <a id="Rebus_ZoneResult__ctor_" data-uid="Rebus.ZoneResult.#ctor*"></a>
-  <h4 id="Rebus_ZoneResult__ctor_Rebus_Zone_Rebus_Biome_System_String_System_Int32_System_Collections_Generic_IReadOnlyCollection_Rebus_HexPoint__" data-uid="Rebus.ZoneResult.#ctor(Rebus.Zone,Rebus.Biome,System.String,System.Int32,System.Collections.Generic.IReadOnlyCollection{Rebus.HexPoint})">ZoneResult(Zone, Biome, String, Int32, IReadOnlyCollection&lt;HexPoint&gt;)</h4>
+  <h4 id="Rebus_ZoneResult__ctor_Rebus_HexPoint_System_Int32_Rebus_Biome_System_String_System_Collections_Generic_IReadOnlyList_System_Int32__System_Collections_Generic_IReadOnlyCollection_Rebus_Unit__System_Collections_Generic_IReadOnlyCollection_Rebus_HexPoint__" data-uid="Rebus.ZoneResult.#ctor(Rebus.HexPoint,System.Int32,Rebus.Biome,System.String,System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyCollection{Rebus.Unit},System.Collections.Generic.IReadOnlyCollection{Rebus.HexPoint})">ZoneResult(HexPoint, Int32, Biome, String, IReadOnlyList&lt;Int32&gt;, IReadOnlyCollection&lt;Unit&gt;, IReadOnlyCollection&lt;HexPoint&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ZoneResult(Zone value, Biome biome, string name, int constellation, IReadOnlyCollection&lt;HexPoint&gt; neighbors)</code></pre>
+    <pre><code class="lang-csharp hljs">public ZoneResult(HexPoint location, int playerId, Biome biome, string name, IReadOnlyList&lt;int&gt; layers, IReadOnlyCollection&lt;Unit&gt; units, IReadOnlyCollection&lt;HexPoint&gt; neighbors)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -373,8 +377,13 @@ public class ZoneResult</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rebus.Zone.html">Zone</a></td>
-        <td><span class="parametername">value</span></td>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">location</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">playerId</span></td>
         <td></td>
       </tr>
       <tr>
@@ -388,13 +397,55 @@ public class ZoneResult</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">constellation</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">layers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Rebus.Unit.html">Unit</a>&gt;</td>
+        <td><span class="parametername">units</span></td>
         <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</td>
         <td><span class="parametername">neighbors</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_ZoneResult__ctor_" data-uid="Rebus.ZoneResult.#ctor*"></a>
+  <h4 id="Rebus_ZoneResult__ctor_Rebus_HexPoint_System_String_System_Collections_Generic_IReadOnlyList_System_Int32__" data-uid="Rebus.ZoneResult.#ctor(Rebus.HexPoint,System.String,System.Collections.Generic.IReadOnlyList{System.Int32})">ZoneResult(HexPoint, String, IReadOnlyList&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZoneResult(HexPoint location, string name, IReadOnlyList&lt;int&gt; layers)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">location</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">layers</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -409,7 +460,7 @@ public class ZoneResult</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
 public Biome Biome { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -429,14 +480,14 @@ public Biome Biome { get; }</code></pre>
   </table>
   
   
-  <a id="Rebus_ZoneResult_Constellation_" data-uid="Rebus.ZoneResult.Constellation*"></a>
-  <h4 id="Rebus_ZoneResult_Constellation" data-uid="Rebus.ZoneResult.Constellation">Constellation</h4>
+  <a id="Rebus_ZoneResult_Layers_" data-uid="Rebus.ZoneResult.Layers*"></a>
+  <h4 id="Rebus_ZoneResult_Layers" data-uid="Rebus.ZoneResult.Layers">Layers</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
-public int Constellation { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+public IReadOnlyList&lt;int&gt; Layers { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -448,7 +499,33 @@ public int Constellation { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_ZoneResult_Location_" data-uid="Rebus.ZoneResult.Location*"></a>
+  <h4 id="Rebus_ZoneResult_Location" data-uid="Rebus.ZoneResult.Location">Location</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 0)]
+public HexPoint Location { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -461,7 +538,7 @@ public int Constellation { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
 public string Name { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -487,7 +564,7 @@ public string Name { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 6)]
 public IReadOnlyCollection&lt;HexPoint&gt; Neighbors { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -507,14 +584,14 @@ public IReadOnlyCollection&lt;HexPoint&gt; Neighbors { get; }</code></pre>
   </table>
   
   
-  <a id="Rebus_ZoneResult_Value_" data-uid="Rebus.ZoneResult.Value*"></a>
-  <h4 id="Rebus_ZoneResult_Value" data-uid="Rebus.ZoneResult.Value">Value</h4>
+  <a id="Rebus_ZoneResult_PlayerId_" data-uid="Rebus.ZoneResult.PlayerId*"></a>
+  <h4 id="Rebus_ZoneResult_PlayerId" data-uid="Rebus.ZoneResult.PlayerId">PlayerId</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 0)]
-public Zone Value { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+public int PlayerId { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -526,7 +603,33 @@ public Zone Value { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rebus.Zone.html">Zone</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_ZoneResult_Units_" data-uid="Rebus.ZoneResult.Units*"></a>
+  <h4 id="Rebus_ZoneResult_Units" data-uid="Rebus.ZoneResult.Units">Units</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 5)]
+public IReadOnlyCollection&lt;Unit&gt; Units { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Rebus.Unit.html">Unit</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>

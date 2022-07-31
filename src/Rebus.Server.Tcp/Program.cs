@@ -25,13 +25,16 @@ namespace Rebus.Server.Tcp
         private static void Main()
         {
             using (ServiceProvider serviceProvider = new ServiceCollection()
-                .AddDbContextFactory<RebusDbContext>((serviceProvider, optionsBuilder) => optionsBuilder.UseSqlite(serviceProvider
-                    .GetRequiredService<IConfiguration>()
-                    .GetConnectionString(nameof(RebusDbContext))))
+                .AddDbContextFactory<RebusDbContext>((serviceProvider, optionsBuilder) => optionsBuilder
+                    .UseSqlite(serviceProvider
+                        .GetRequiredService<IConfiguration>()
+                        .GetConnectionString(nameof(RebusDbContext)))
+                    .EnableSensitiveDataLogging())
                 .AddLogging(x => x.AddConsole())
                 .AddObject<Map>()
-                .AddObject<Table>()
                 .AddObject<RuleSet>()
+                .AddObject<Table>()
+                .AddSingleton<AStarSearch>()
                 .AddSingleton<FisherYatesShuffle>()
                 .AddSingleton<IConfiguration>(x => new ConfigurationBuilder()
                     .AddJsonFile(Path.ChangeExtension(path: "appSettings", extension: "json"))

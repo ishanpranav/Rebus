@@ -88,6 +88,15 @@ namespace Rebus.Client.Windows {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Everyone).
+        /// </summary>
+        internal static string EveryoneMessage {
+            get {
+                return ResourceManager.GetString("EveryoneMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Icon {

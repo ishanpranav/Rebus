@@ -101,7 +101,7 @@
     <value>2, 1, 2, 1</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>444, 330</value>
+    <value>444, 396</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -121,6 +121,12 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>141, 17</value>
   </metadata>
+  <data name="usernameToolStripLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="creditsToolStripLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 22</value>
+  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -142,62 +148,47 @@
   <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="usernameToolStripLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 22</value>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
   </data>
-  <data name="wealthToolStripLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 22</value>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="messageToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVDhPY/j27dt/SjDYACcnJ7IwigEf3n8kCZNswPNb
-        J/+f6DYF0yA+yQac6Db5f6hWCmwIiE+mC0wIu2DS2Vf/F1x6DefjwlgNyNr34r/0wkdgTMgQDAOQNRNj
-        CIoBOg0rMTTDMLIhIHbriZeYBmDTiIxBGkEYxge5liQDsGGQqykyAISpZwAlmIEywMAAAAc1/Jwvt6sN
-        AAAAAElFTkSuQmCC
-</value>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Sanctuary</value>
   </data>
-  <data name="messageToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="columnHeader3.Text" xml:space="preserve">
+    <value>Cargo</value>
   </data>
-  <data name="messageToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 22</value>
-  </data>
-  <data name="messageToolStripButton.Text" xml:space="preserve">
-    <value>Messages</value>
-  </data>
-  <data name="unitDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="unitListView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="unitDataGridView.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="unitListView.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
   </data>
-  <data name="unitDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 129</value>
+  <data name="unitListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 196</value>
   </data>
-  <data name="unitDataGridView.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;unitDataGridView.Name" xml:space="preserve">
-    <value>unitDataGridView</value>
-  </data>
-  <data name="&gt;&gt;unitDataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;unitDataGridView.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;unitDataGridView.ZOrder" xml:space="preserve">
+  <data name="unitListView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;unitListView.Name" xml:space="preserve">
+    <value>unitListView</value>
+  </data>
+  <data name="&gt;&gt;unitListView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;unitListView.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;unitListView.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>455, 29</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 151</value>
+    <value>293, 218</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -217,56 +208,8 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;destinationComboBox.Name" xml:space="preserve">
-    <value>destinationComboBox</value>
-  </data>
-  <data name="&gt;&gt;destinationComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;destinationComboBox.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;destinationComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;commandComboBox.Name" xml:space="preserve">
-    <value>commandComboBox</value>
-  </data>
-  <data name="&gt;&gt;commandComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;commandComboBox.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;commandComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>455, 186</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 113</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Commands</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="commandGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="submitButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -283,6 +226,18 @@
   <data name="submitButton.Text" xml:space="preserve">
     <value>&amp;Assign</value>
   </data>
+  <data name="&gt;&gt;submitButton.Name" xml:space="preserve">
+    <value>submitButton</value>
+  </data>
+  <data name="&gt;&gt;submitButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;submitButton.Parent" xml:space="preserve">
+    <value>commandGroupBox</value>
+  </data>
+  <data name="&gt;&gt;submitButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="destinationComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -297,6 +252,18 @@
   </data>
   <data name="destinationComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;destinationComboBox.Name" xml:space="preserve">
+    <value>destinationComboBox</value>
+  </data>
+  <data name="&gt;&gt;destinationComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;destinationComboBox.Parent" xml:space="preserve">
+    <value>commandGroupBox</value>
+  </data>
+  <data name="&gt;&gt;destinationComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="commandComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -313,32 +280,44 @@
   <data name="commandComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;commandComboBox.Name" xml:space="preserve">
+    <value>commandComboBox</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>455, 305</value>
+  <data name="&gt;&gt;commandComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 52</value>
+  <data name="&gt;&gt;commandComboBox.Parent" xml:space="preserve">
+    <value>commandGroupBox</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+  <data name="&gt;&gt;commandComboBox.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Lenses</value>
+  <data name="commandGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>455, 253</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="commandGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 113</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="commandGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="commandGroupBox.Text" xml:space="preserve">
+    <value>Commands</value>
+  </data>
+  <data name="&gt;&gt;commandGroupBox.Name" xml:space="preserve">
+    <value>commandGroupBox</value>
+  </data>
+  <data name="&gt;&gt;commandGroupBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;commandGroupBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;commandGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lensGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="lensComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -359,9 +338,33 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lensComboBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>lensGroupBox</value>
   </data>
   <data name="&gt;&gt;lensComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lensGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>455, 372</value>
+  </data>
+  <data name="lensGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 52</value>
+  </data>
+  <data name="lensGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="lensGroupBox.Text" xml:space="preserve">
+    <value>Lenses</value>
+  </data>
+  <data name="&gt;&gt;lensGroupBox.Name" xml:space="preserve">
+    <value>lensGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lensGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lensGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lensGroupBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="myNotifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -370,9 +373,6 @@
   <data name="myNotifyIcon.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>es</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -383,7 +383,30 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>760, 368</value>
+    <value>760, 434</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAAIAAoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
+        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////APb29v/29vb/9vb2//b29v/29vb/9vb2//b2
+        9v////8A////AP///wD///8A9vb2//b29v/29vb/9vb2//b29v/29vb/QkJC/0JCQv9CQkL/QkJC/0JC
+        Qv/29vb/////AP///wD///8A////APb29v9CQkL/QkJC/0JCQv9CQkL/9vb2/0JCQv9CQkL/QkJC/0JC
+        Qv9CQkL/9vb2/////wD///8A////AP///wD29vb/QkJC/0JCQv9CQkL/QkJC//b29v9CQkL/QkJC/0JC
+        Qv9CQkL/QkJC//b29v////8A////AP///wD///8A9vb2/0JCQv9CQkL/QkJC/0JCQv/29vb/9vb2//b2
+        9v/29vb/9vb2//b29v/29vb/9vb2//b29v////8A////APb29v9CQkL/QkJC/0JCQv9CQkL/9vb2/0JC
+        Qv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv/29vb/////AP///wD29vb/QkJC/0JCQv9CQkL/QkJC//b2
+        9v9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/9vb2/////wD///8A9vb2/0JCQv9CQkL/QkJC/0JC
+        Qv/29vb/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC//b29v////8A////APb29v/29vb/9vb2//b2
+        9v/29vb/9vb2/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv/29vb/////AP///wD///8A////AP//
+        /wD///8A////APb29v9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/9vb2/////wD///8A////AP//
+        /wD///8A////AP///wD29vb/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC//b29v////8A////AP//
+        /wD///8A////AP///wD///8A9vb2/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv/29vb/////AP//
+        /wD///8A////AP///wD///8A////APb29v/29vb/9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2////
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A
+</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Ishan Pranav's REBUS</value>
@@ -400,17 +423,29 @@
   <data name="&gt;&gt;usernameToolStripLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;wealthToolStripLabel.Name" xml:space="preserve">
-    <value>wealthToolStripLabel</value>
+  <data name="&gt;&gt;creditsToolStripLabel.Name" xml:space="preserve">
+    <value>creditsToolStripLabel</value>
   </data>
-  <data name="&gt;&gt;wealthToolStripLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;creditsToolStripLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;messageToolStripButton.Name" xml:space="preserve">
-    <value>messageToolStripButton</value>
+  <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">
+    <value>columnHeader1</value>
   </data>
-  <data name="&gt;&gt;messageToolStripButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;columnHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader2.Name" xml:space="preserve">
+    <value>columnHeader2</value>
+  </data>
+  <data name="&gt;&gt;columnHeader2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader3.Name" xml:space="preserve">
+    <value>columnHeader3</value>
+  </data>
+  <data name="&gt;&gt;columnHeader3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;myNotifyIcon.Name" xml:space="preserve">
     <value>myNotifyIcon</value>

@@ -36,14 +36,12 @@ namespace Rebus
             }
         }
 
-        [DataMember(Order = 1)]
         public int PlayerId { get; set; }
 
 #nullable disable
         public Player Player { get; set; }
 #nullable enable
 
-        [DataMember(Order = 2)]
         public ICollection<Unit> Units { get; set; } = new HashSet<Unit>();
 
         public bool Equals(Zone? other)

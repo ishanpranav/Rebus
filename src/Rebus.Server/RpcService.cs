@@ -13,7 +13,7 @@ using Rebus.Server.Functions;
 
 namespace Rebus.Server
 {
-    public class RpcService : IExecutor, IGameService, ILoginService, IMessageService
+    public class RpcService : IExecutor, IGameService, ILoginService
     {
         private readonly AStarSearch _search;
         private readonly IDbContextFactory<RebusDbContext> _contextFactory;
@@ -22,7 +22,6 @@ namespace Rebus.Server
         private readonly RuleSet _rules;
 
         public event EventHandler<ConflictEventArgs>? ConflictResolved;
-        public event EventHandler<MessageEventArgs>? MessageReceived;
 
         public RpcService(AStarSearch search, IDbContextFactory<RebusDbContext> contextFactory, Map map, Namer namer, RuleSet rules)
         {
@@ -182,41 +181,41 @@ namespace Rebus.Server
                             else
                             {
                                 bool invasionSucceeded = invaders.Count > defenders.Count;
-                                List<Unit> majorFleet;
-                                List<Unit> minorFleet;
-                                Zone majorZone;
+                                List<Unit> largerFleet;
+                                List<Unit> smallerFleet;
+                                Zone largerZone;
 
                                 if (invasionSucceeded)
                                 {
                                     invade();
 
-                                    majorFleet = invaders;
-                                    majorZone = current;
-                                    minorFleet = defenders;
+                                    largerFleet = invaders;
+                                    largerZone = current;
+                                    smallerFleet = defenders;
                                 }
                                 else
                                 {
-                                    majorFleet = defenders;
-                                    majorZone = defenders[0].Zone;
-                                    minorFleet = invaders;
+                                    largerFleet = defenders;
+                                    largerZone = defenders[0].Zone;
+                                    smallerFleet = invaders;
                                 }
 
-                                int unitsCaptured = Math.Max(_rules.MinUnitsCaptured, minorFleet.Count / 4);
-                                int unitsDestroyed = minorFleet.Count - unitsCaptured;
+                                int unitsCaptured = Math.Max(_rules.MinUnitsCaptured, smallerFleet.Count / 4);
+                                int unitsDestroyed = smallerFleet.Count - unitsCaptured;
 
                                 for (int i = 0; i < unitsCaptured; i++)
                                 {
-                                    minorFleet[i].Zone = majorZone;
+                                    smallerFleet[i].Zone = largerZone;
                                 }
 
-                                for (int i = unitsCaptured; i < minorFleet.Count; i++)
+                                for (int i = unitsCaptured; i < smallerFleet.Count; i++)
                                 {
-                                    context.Units.Remove(minorFleet[i]);
+                                    context.Units.Remove(smallerFleet[i]);
                                 }
 
                                 for (int i = 0; i < unitsDestroyed; i++)
                                 {
-                                    context.Units.Remove(majorFleet[i]);
+                                    context.Units.Remove(largerFleet[i]);
                                 }
 
                                 OnConflictResolved(new ConflictEventArgs(current.Location, invasionSucceeded, invader, occupant, occupants.Count - defenders.Count, unitsDestroyed, unitsCaptured));
@@ -254,37 +253,35 @@ namespace Rebus.Server
                     .Where(x => x.PlayerId == playerId)
                     .Include(x => x.Units))
                 {
-                    List<HexPoint> neighbors = new List<HexPoint>();
-
                     if (locations.Add(zone.Location))
                     {
-                        _map.GetDetails(zone.Location, _namer, out Biome biome, out string? name, out int constellation);
+                        List<HexPoint> neighbors = new List<HexPoint>();
 
-                        foreach (HexPoint neighbor in zone.Location.Neighbors())
+                        string? name;
+                        Biome biome;
+
+                        if (_map.TryGetLayers(zone.Location, out IReadOnlyList<int>? layers))
                         {
-                            if (_map.Contains(neighbor))
-                            {
-                                _map.GetDetails(neighbor, _namer, out Biome neighborBiome, out string? starName, out int starConstellation);
+                            name = _namer.Name(_map.Stars, _map.Planets, layers);
+                            biome = _map.GetBiome(zone.Location, layers);
 
-                                if (neighborBiome == Biome.Stellar)
+                            foreach (HexPoint neighbor in zone.Location.Neighbors())
+                            {
+                                if (_map.Contains(neighbor))
                                 {
-                                    if (locations.Add(neighbor))
+                                    if (_map.TryGetLayers(neighbor, out IReadOnlyList<int>? neighborLayers) && _map.GetBiome(neighbor, neighborLayers) == Biome.Stellar && locations.Add(neighbor))
                                     {
-                                        yield return new ZoneResult(new Zone()
-                                        {
-                                            Q = neighbor.Q,
-                                            R = neighbor.R
-                                        }, neighborBiome, starName, starConstellation);
+                                        yield return new ZoneResult(neighbor, _namer.Name(_map.Stars, _map.Planets, neighborLayers), neighborLayers);
+                                    }
+                                    else
+                                    {
+                                        neighbors.Add(neighbor);
                                     }
                                 }
-                                else
-                                {
-                                    neighbors.Add(neighbor);
-                                }
                             }
-                        }
 
-                        yield return new ZoneResult(zone, biome, name, constellation, neighbors);
+                            yield return new ZoneResult(zone.Location, zone.PlayerId, biome, name, layers, new List<Unit>(zone.Units), neighbors);
+                        }
                     }
                 }
             }
@@ -300,30 +297,6 @@ namespace Rebus.Server
                     .SingleAsync();
             }
         }
-
-        //public async Task<WealthResult> IncrementWealthAsync(int playerId, int income)
-        //{
-        //    await using (RebusDbContext context = await _contextFactory.CreateDbContextAsync())
-        //    {
-        //        Player player = await context.Players.SingleAsync(x => x.Id == playerId);
-        //        int interestPenalty;
-
-        //        if (player.Wealth < 0 && income > 0)
-        //        {
-        //            interestPenalty = (int)Math.Round(income * _configuration.InterestRate);
-
-        //            player.Wealth -= interestPenalty;
-        //        }
-        //        else
-        //        {
-        //            interestPenalty = 0;
-        //        }
-
-        //        player.Wealth += income;
-
-        //        return new WealthResult(player.Wealth, interestPenalty);
-        //    }
-        //}
 
         public Task<bool> ExecuteAsync(Command command)
         {
@@ -372,21 +345,9 @@ namespace Rebus.Server
             return await LoginAsync(username, password);
         }
 
-        public Task SendMessageAsync(string username, string value)
-        {
-            OnMessageReceived(new MessageEventArgs(username, value));
-
-            return Task.CompletedTask;
-        }
-
         protected virtual void OnConflictResolved(ConflictEventArgs e)
         {
             ConflictResolved?.Invoke(sender: this, e);
-        }
-
-        protected virtual void OnMessageReceived(MessageEventArgs e)
-        {
-            MessageReceived?.Invoke(sender: this, e);
         }
 
         protected virtual void Dispose(bool disposing) { }

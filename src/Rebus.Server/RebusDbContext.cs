@@ -3,6 +3,7 @@
 // Licensed under the MIT License.
 
 using Microsoft.EntityFrameworkCore;
+using Rebus.EventArgs;
 
 namespace Rebus.Server
 {
@@ -22,6 +23,16 @@ namespace Rebus.Server
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Unit>(x =>
+            {
+                x.HasOne(x => x.Sanctuary)
+                 .WithMany();
+
+                x.HasOne(x => x.Zone)
+                 .WithMany(x => x.Units)
+                 .HasForeignKey(x => x.ZoneId);
+            });
+
             if (Database.IsSqlite())
             {
                 modelBuilder
@@ -29,15 +40,10 @@ namespace Rebus.Server
                     .Property(x => x.Username)
                     .UseCollation(IgnoreCaseCollation);
 
-                modelBuilder.Entity<Unit>(x =>
-                {
-                    x.HasOne(x => x.Zone)
-                     .WithMany(x => x.Units)
-                     .HasForeignKey(x => x.ZoneId);
-
-                    x.HasOne(x => x.Sanctuary)
-                     .WithMany();
-                });
+                modelBuilder
+                    .Entity<Unit>()
+                    .Property(x => x.Name)
+                    .UseCollation(IgnoreCaseCollation);
             }
         }
     }

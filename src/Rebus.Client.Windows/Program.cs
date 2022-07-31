@@ -24,7 +24,6 @@ namespace Rebus.Client.Windows
                 .AddTransient<AboutForm>()
                 .AddTransient<GameForm>()
                 .AddTransient<LoginForm>()
-                .AddTransient<MessageForm>()
                 .AddSingleton<Command, AutopilotCommand>()
                 .AddSingleton<Command, DefendCommand>()
                 .AddSingleton<Command, ExploreCommand>()

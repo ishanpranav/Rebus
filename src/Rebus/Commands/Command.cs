@@ -21,7 +21,7 @@ namespace Rebus.Commands
         protected abstract int Priority { get; }
 
         [Key(0)]
-        public ICollection<int> UnitIds { get; private set; } = new HashSet<int>();
+        public ICollection<int> UnitIds { get; set; } = new HashSet<int>();
 
         [Key(1)]
         public int PlayerId { get; set; }
@@ -33,7 +33,7 @@ namespace Rebus.Commands
 
         public virtual IEnumerable<HexPoint> Filter(ZoneResult source, IReadOnlyDictionary<HexPoint, ZoneResult> domain)
         {
-            yield return source.Value.Location;
+            yield return source.Location;
         }
 
         public virtual Command Clone()
