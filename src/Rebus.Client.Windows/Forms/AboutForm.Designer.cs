@@ -124,7 +124,6 @@ namespace Rebus.Client.Windows.Forms
             this.Controls.Add(this.myPictureBox);
             this.MinimizeBox = false;
             this.Name = "AboutForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.OnAboutFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.myPictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -87,19 +87,34 @@
                             <a href="Rebus.Biome.html" title="Biome" class="">Biome</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.CantorPairing.html" title="CantorPairing" class="">CantorPairing</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.CommandRequest.html" title="CommandRequest" class="">CommandRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.CommandResponse.html" title="CommandResponse" class="">CommandResponse</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.CommandType.html" title="CommandType" class="">CommandType</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Commodity.html" title="Commodity" class="">Commodity</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Configuration.html" title="Configuration" class="">Configuration</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Depths.html" title="Depths" class="">Depths</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.Economy.html" title="Economy" class="">Economy</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Fleet.html" title="Fleet" class="">Fleet</a>
                           </li>
                           <li class="">
                             <a href="Rebus.HexPoint.html" title="HexPoint" class="">HexPoint</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.IExecutor.html" title="IExecutor" class="">IExecutor</a>
                           </li>
                           <li class="">
                             <a href="Rebus.IGameService.html" title="IGameService" class="">IGameService</a>
@@ -120,7 +135,7 @@
                             <a href="Rebus.Zone.html" title="Zone" class="active">Zone</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.ZoneResult.html" title="ZoneResult" class="">ZoneResult</a>
+                            <a href="Rebus.ZoneInfo.html" title="ZoneInfo" class="">ZoneInfo</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -155,32 +170,8 @@
                           <li class="">
                             <a href="Rebus.Client.Lenses.ILens.html" title="ILens" class="">ILens</a>
                           </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="Rebus.Commands.html" title="Rebus.Commands" class="">Rebus.Commands</a>
-                        
-                        <ul class="nav level2">
                           <li class="">
-                            <a href="Rebus.Commands.AutopilotCommand.html" title="AutopilotCommand" class="">AutopilotCommand</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Commands.Command.html" title="Command" class="">Command</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Commands.DefendCommand.html" title="DefendCommand" class="">DefendCommand</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Commands.ExploreCommand.html" title="ExploreCommand" class="">ExploreCommand</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Commands.JettisonCommand.html" title="JettisonCommand" class="">JettisonCommand</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Commands.MoveCommand.html" title="MoveCommand" class="">MoveCommand</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Commands.RetreatCommand.html" title="RetreatCommand" class="">RetreatCommand</a>
+                            <a href="Rebus.Client.Lenses.StarLens.html" title="StarLens" class="">StarLens</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -206,24 +197,6 @@
                           <li class="">
                             <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
                           </li>
-                          <li class="">
-                            <a href="Rebus.Server.Map.html" title="Map" class="">Map</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.Namer.html" title="Namer" class="">Namer</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.RebusDbContext.html" title="RebusDbContext" class="">RebusDbContext</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.RpcListener.html" title="RpcListener" class="">RpcListener</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.RpcService.html" title="RpcService" class="">RpcService</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.RuleSet.html" title="RuleSet" class="">RuleSet</a>
-                          </li>
                         </ul>  </li>
                     <li class="">
                       <span class="expand-stub"></span>
@@ -232,9 +205,6 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.Functions.ZoneFunctions.html" title="ZoneFunctions" class="">ZoneFunctions</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -297,8 +267,8 @@
   <h6><strong>Assembly</strong>: Rebus.dll</h6>
   <h5 id="Rebus_Zone_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataContract]
-[Index(new string[]{&quot;Q&quot;, &quot;R&quot;, &quot;PlayerId&quot;}, IsUnique = true)]
+    <pre><code class="lang-csharp hljs">[Index(new string[]{&quot;Q&quot;, &quot;R&quot;, &quot;PlayerId&quot;}, IsUnique = true)]
+[MessagePackObject(false)]
 [Table(&quot;Zone&quot;)]
 public class Zone : IEquatable&lt;Zone&gt;</code></pre>
   </div>
@@ -312,7 +282,8 @@ public class Zone : IEquatable&lt;Zone&gt;</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -337,7 +308,7 @@ public class Zone : IEquatable&lt;Zone&gt;</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 0)]
+    <pre><code class="lang-csharp hljs">[Key(0)]
 [NotMapped]
 public HexPoint Location { get; set; }</code></pre>
   </div>
@@ -414,7 +385,8 @@ public HexPoint Location { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Q { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int Q { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -439,7 +411,8 @@ public HexPoint Location { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int R { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int R { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

@@ -3,5 +3,7 @@
 
 {
   "fuelCost": 1,
-  "minUnitsCaptured": 1
+  "minUnitsCaptured": 1,
+  "standardCommodities": 3,
+  "unitCaptureRate": 0.25
 }

@@ -8,37 +8,39 @@ namespace Rebus.Client.Lenses
 {
     public class BiomeLens : ILens
     {
-        public SKColor GetColor(ZoneResult zone)
+        public SKColor GetColor(ZoneInfo zone)
         {
-            switch (zone.Biome)
-            {
-                case Biome.Stellar:
-                    return SKColors.White;
+            return new SKColor(zone.Biome.Red, zone.Biome.Green, zone.Biome.Blue);
 
-                case Biome.Desert:
-                    return SKColors.Sienna;
+            //switch (zone.Biome)
+            //{
+            //case Depths.Star:
+            //    return SKColors.White;
 
-                case Biome.Urban:
-                    return SKColors.DarkMagenta;
+            //case Depths.Planet + 0:
+            //    return SKColors.DarkMagenta;
 
-                case Biome.Marine:
-                    return SKColors.Blue;
+            //case Depths.Planet + 1:
+            //    return SKColors.Blue;
 
-                case Biome.Forested:
-                    return SKColors.ForestGreen;
+            //case Depths.Planet + 2:
+            //    return SKColors.ForestGreen;
 
-                case Biome.Tundra:
-                    return SKColors.Turquoise;
+            //case Depths.Planet + 3:
+            //    return SKColors.Brown;
 
-                case Biome.Gaseous:
-                    return SKColors.OrangeRed;
+            //case Depths.Planet + 4:
+            //    return SKColors.OrangeRed;
 
-                case Biome.Montane:
-                    return SKColors.Brown;
+            //case Depths.Planet + 5: 
+            //    return SKColors.Tan;
 
-                default:
-                    return SKColors.Black;
-            }
+            //case Depths.Planet + 6:
+            //    return SKColors.Turquoise;
+
+            //default:
+            //    return SKColors.Black;
+            //}
         }
     }
 }

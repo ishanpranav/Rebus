@@ -9,7 +9,7 @@ namespace Rebus.Client.Windows.Attributes
 {
     internal sealed class LocalizedDescriptionAttribute : DescriptionAttribute
     {
-        private static readonly ResourceManager s_resourceManager = new ResourceManager(typeof(LocalizedDescriptionAttribute));
+        private static readonly ResourceManager s_resourceManager = new(typeof(LocalizedDescriptionAttribute));
 
         public LocalizedDescriptionAttribute(string description) : base(description)
         {

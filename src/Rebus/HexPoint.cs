@@ -4,7 +4,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
+using MessagePack;
 
 namespace Rebus
 {
@@ -16,7 +16,7 @@ namespace Rebus
     /// </remarks>
     /// <seealso href="https://www.redblobgames.com/grids/hexagons/">Red Blob Games - Hexagonal Grids</seealso>
     /// <seealso href="http://www-cs-students.stanford.edu/~amitp/">Amit Patel's Home Page</seealso>
-    [DataContract]
+    [MessagePackObject]
     public readonly struct HexPoint : IComparable, IComparable<HexPoint>, IEquatable<HexPoint>
     {
         private static readonly HexPoint[] s_directions = new HexPoint[]
@@ -39,20 +39,21 @@ namespace Rebus
         /// Gets the <em>Q</em> coordinate.
         /// </summary>
         /// <value>The <em>Q</em> coordinate. The default is 0.</value>
-        [DataMember(Order = 0)]
+        [Key(0)]
         public int Q { get; }
 
         /// <summary>
         /// Gets the <em>R</em> coordinate.
         /// </summary>
         /// <value>The <em>R</em> coordinate. The default is 0.</value>
-        [DataMember(Order = 1)]
+        [Key(1)]
         public int R { get; }
 
         /// <summary>
         /// Gets the <em>S</em> coordinate.
         /// </summary>
         /// <value>The <em>S</em> coordinate. The default is 0.</value>
+        [IgnoreMember]
         public int S
         {
             get

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreditFormat" xml:space="preserve">
-    <value>Credits: {0::c0}</value>
+    <value>Credits: {0:c0}</value>
   </data>
   <data name="DefeatMessage" xml:space="preserve">
     <value>Defeat</value>

@@ -13,17 +13,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebus.Client.Windows", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebus.Server", "src\Rebus.Server\Rebus.Server.csproj", "{95109894-3F8E-4F86-9B74-1B724855A0AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebus.Server.Tcp", "src\Rebus.Server.Tcp\Rebus.Server.Tcp.csproj", "{5E77A962-97B1-4F88-BC8F-82EFB9A3B1C8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{900974D0-F573-4415-B4C5-78D136364423}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		Design.md = Design.md
+		Equations.md = Equations.md
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 		THIRD-PARTY-NOTICES.txt = THIRD-PARTY-NOTICES.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{39EB0D40-D93E-4EC4-8AAF-E4CC956C3154}"
+	ProjectSection(SolutionItems) = preProject
+		data\Constellations.txt = data\Constellations.txt
+		data\grammar.json = data\grammar.json
+		data\map.json = data\map.json
+		data\Planets.txt = data\Planets.txt
+		data\ruleSet.json = data\ruleSet.json
+		data\Stars.txt = data\Stars.txt
+		data\table.json = data\table.json
 	EndProjectSection
 EndProject
 Global
@@ -52,13 +62,12 @@ Global
 		{95109894-3F8E-4F86-9B74-1B724855A0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95109894-3F8E-4F86-9B74-1B724855A0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95109894-3F8E-4F86-9B74-1B724855A0AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E77A962-97B1-4F88-BC8F-82EFB9A3B1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E77A962-97B1-4F88-BC8F-82EFB9A3B1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E77A962-97B1-4F88-BC8F-82EFB9A3B1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E77A962-97B1-4F88-BC8F-82EFB9A3B1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39EB0D40-D93E-4EC4-8AAF-E4CC956C3154} = {900974D0-F573-4415-B4C5-78D136364423}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9E1DBB5-DE96-4DBF-B540-3EDADB504EDD}

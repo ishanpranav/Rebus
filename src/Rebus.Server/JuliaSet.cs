@@ -43,16 +43,21 @@ namespace Rebus.Server
         /// </summary>
         /// <param name="c">The complex parameer <em>c</em>.</param>
         /// <param name="r">The escape radius <em>R</em>. The value of <em>R</em> must be greater than zero, while <em>R</em>-squared minus <em>R</em> must be greater than or equal to the magnitude of the complex parameter <em>c</em>.</param>
+        /// <exception cref="ArgumentException">
+        /// <para><paramref name="r"/> is less than or equal to zero.</para>
+        /// <para>-or-</para>
+        /// <para><paramref name="r"/>-squared minus <paramref name="r"/> is less than the magnitude of <paramref name="c"/>.</para>
+        /// </exception>
         public JuliaSet(Complex c, double r)
         {
             C = c;
             R = r;
 
-            if (r < 0)
+            if (r <= 0)
             {
                 throw new ArgumentException("The escape radius (R) must be greater than zero.", nameof(r));
             }
-            else if (r * r - r < C.Magnitude)
+            else if ((r * r) - r < C.Magnitude)
             {
                 throw new ArgumentException("The escape radius squared (R-squared) must be greater than or equal to the magnitude of the complex parameter (c).", nameof(c));
             }
@@ -83,7 +88,7 @@ namespace Rebus.Server
             double halfWidth = width * 0.5;
             double halfHeight = height * 0.5;
 
-            Complex z = new Complex(1.5 * (x - halfWidth) / (halfWidth * zoom), (y - halfHeight) / (halfHeight * zoom));
+            Complex z = new(1.5 * (x - halfWidth) / (halfWidth * zoom), (y - halfHeight) / (halfHeight * zoom));
 
             // iteration = 0
 
@@ -97,19 +102,12 @@ namespace Rebus.Server
 
             while (z.Magnitude < R && i < MaxIterations)
             {
-                z = z * z + C;
+                z = (z * z) + C;
 
                 i++;
             }
 
-            if (i == MaxIterations)
-            {
-                return 0;
-            }
-            else
-            {
-                return (double)i / MaxIterations;
-            }
+            return i == MaxIterations ? 0 : (double)i / MaxIterations;
         }
     }
 }

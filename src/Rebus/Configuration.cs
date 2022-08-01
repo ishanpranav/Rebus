@@ -2,14 +2,14 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Runtime.Serialization;
+using MessagePack;
 
 namespace Rebus
 {
-    [DataContract]
+    [MessagePackObject]
     public class Configuration
     {
-        [DataMember(Order = 0)]
+        [Key(0)]
         public int Radius { get; }
 
         public Configuration(int radius)

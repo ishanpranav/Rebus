@@ -2,17 +2,17 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Runtime.Serialization;
+using MessagePack;
 
 namespace Rebus
 {
-    [DataContract]
+    [MessagePackObject]
     public class Fleet
     {
-        [DataMember(Order = 0)]
+        [Key(0)]
         public string Username { get; }
 
-        [DataMember(Order = 1)]
+        [Key(1)]
         public int Size { get; }
 
         public Fleet(string username, int size)

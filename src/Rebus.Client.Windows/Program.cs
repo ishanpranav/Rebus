@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Rebus.Client.Lenses;
 using Rebus.Client.Windows.Forms;
-using Rebus.Commands;
 
 namespace Rebus.Client.Windows
 {
@@ -24,11 +23,7 @@ namespace Rebus.Client.Windows
                 .AddTransient<AboutForm>()
                 .AddTransient<GameForm>()
                 .AddTransient<LoginForm>()
-                .AddSingleton<Command, AutopilotCommand>()
-                .AddSingleton<Command, DefendCommand>()
-                .AddSingleton<Command, ExploreCommand>()
-                .AddSingleton<Command, JettisonCommand>()
-                .AddSingleton<Command, RetreatCommand>()
+                .AddSingleton<CantorPairing>()
                 .AddSingleton(x =>
                 {
                     Credentials result = x
@@ -41,6 +36,7 @@ namespace Rebus.Client.Windows
                 })
                 .AddSingleton<ILens, BiomeLens>()
                 .AddSingleton<ILens, ConstellationLens>()
+                .AddSingleton<ILens, StarLens>()
                 .AddSingleton<JsonConverter, JsonCultureInfoConverter>()
                 .AddSingleton<JsonConverter, JsonIPAddressConverter>()
                 .AddSingleton(x =>
@@ -59,7 +55,6 @@ namespace Rebus.Client.Windows
 
                     return result;
                 })
-                .AddSingleton<NoticeParser>()
                 .AddSingleton<ObjectSaver>()
                 .BuildServiceProvider();
 

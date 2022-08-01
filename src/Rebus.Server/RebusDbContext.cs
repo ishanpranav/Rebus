@@ -3,15 +3,15 @@
 // Licensed under the MIT License.
 
 using Microsoft.EntityFrameworkCore;
-using Rebus.EventArgs;
 
 namespace Rebus.Server
 {
-    public class RebusDbContext : DbContext
+    internal sealed class RebusDbContext : DbContext
     {
         private const string IgnoreCaseCollation = "NOCASE";
 
 #nullable disable
+        public DbSet<Commodity> Commodities { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Unit> Units { get; set; }
         public DbSet<Zone> Zones { get; set; }

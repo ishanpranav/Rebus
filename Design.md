@@ -24,27 +24,9 @@ The defending fleet contains all units in defensive mode, while the invading fle
 
 If the invading and defending fleets contain the same number of units, a _standoff_ occurs: The invading fleet holds its position and does not enter the occupied zone.
 
-Otherwise, each fleet loses a number of units $d$ based on the smaller fleet\'s initial size $i_0$. Units are destroyed in descending order based on the masses of their cargo.[^4]
+Otherwise, each fleet loses the same number of units (as a function of the smaller fleet\'s initial size). Units are destroyed in descending order based on the masses of their cargo.[^4]
 
-The larger fleet captures $c$ remaining units in the smaller fleet, and they join the larger fleet whose initial size is $j_0$.
-
-The final size of the larger fleet $j$ is given by the following process:
-
-$$j=j_0+c-d.$$
-
-$$c=\max\left(1,\frac{i_0}{4}\right).$$
-
-$$d=i_0-c.$$
-
-$$j=j_0-\left(i_0-c\right)+c.$$
-
-$$j=j_0-i_0+\left(2\times\max\left(1,\frac{i_0}{4}\right)\right).$$
-
-Therefore, the smaller fleet of size $i$ is always eliminated after a conflict:
-
-$$i=i_0-c-d.$$
-
-$$i=0.$$
+The larger fleet captures the remaining units in the smaller fleet and occupies the zone.
 
 ## Commerce
 Units can trade with planets within their zones.[^5]

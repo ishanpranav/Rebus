@@ -1,4 +1,4 @@
-﻿// Ishan Pranav's REBUS: 
+﻿// Ishan Pranav's REBUS: ILens.cs
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
@@ -8,6 +8,6 @@ namespace Rebus.Client.Lenses
 {
     public interface ILens
     {
-        SKColor GetColor(ZoneResult zone);
+        SKColor GetColor(ZoneInfo zone);
     }
 }

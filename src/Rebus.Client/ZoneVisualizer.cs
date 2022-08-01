@@ -3,7 +3,6 @@
 // Licensed under the MIT License.
 
 using System.Collections.Generic;
-using System.Linq;
 using Rebus.Client.Lenses;
 using SkiaSharp;
 
@@ -11,13 +10,12 @@ namespace Rebus.Client
 {
     public class ZoneVisualizer : SKDrawable
     {
-        private readonly IEnumerable<ZoneResult> _zones;
+        private readonly IEnumerable<ZoneInfo> _zones;
         private readonly ILens _lens;
         private readonly int _playerId;
         private readonly Layout _layout;
-        private readonly Dictionary<HexPoint, SKPath> _hexagons = new Dictionary<HexPoint, SKPath>();
 
-        public ZoneVisualizer(IEnumerable<ZoneResult> zones, ILens lens, int playerId, Layout layout)
+        public ZoneVisualizer(IEnumerable<ZoneInfo> zones, ILens lens, int playerId, Layout layout)
         {
             _zones = zones;
             _lens = lens;
@@ -27,81 +25,70 @@ namespace Rebus.Client
 
         protected override void OnDraw(SKCanvas canvas)
         {
-            canvas.Clear(new SKColor(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MinValue));
+            canvas.Clear(SKColors.Black);
 
             using (SKFont font = new SKFont(SKTypeface.Default, size: 11))
             using (SKPaint paint = new SKPaint(font)
             {
                 StrokeJoin = SKStrokeJoin.Bevel,
-                Style = SKPaintStyle.Fill,
                 TextAlign = SKTextAlign.Center
             })
             {
-                foreach (ZoneResult zone in _zones)
+                foreach (ZoneInfo zone in _zones)
                 {
-                    bool found;
+                    paint.Color = SKColors.Black;
+                    paint.Style = SKPaintStyle.Fill;
 
-                    if (_hexagons.TryGetValue(zone.Location, out SKPath? path))
+                    using (SKPath hexagon = _layout.GetHexagon(zone.Location, scale: 0.7f))
                     {
-                        found = true;
-                    }
-                    else
-                    {
-                        found = false;
-                        path = _layout.GetHexagon(zone.Location);
-                    }
-
-                    paint.Color = _lens.GetColor(zone);
-
-                    if (zone.Units.Count == 0)
-                    {
-                        paint.Color = paint.Color.WithAlpha(alpha: 128);
-
-                        if (!found && zone.Biome == Biome.Stellar)
+                        if (zone.Units.Count == 0)
                         {
-                            _hexagons.TryAdd(zone.Location, path);
-                        }
-                    }
-                    else if (!found)
-                    {
-                        _hexagons.TryAdd(zone.Location, path);
-                    }
+                            paint.Color = SKColors.White;
 
-                    canvas.DrawPath(path, paint);
-                }
+                            canvas.DrawPath(hexagon, paint);
 
-                foreach (ZoneResult zone in _zones)
-                {
-                    if (_hexagons.TryGetValue(zone.Location, out SKPath? hexagon))
-                    {
-                        paint.StrokeWidth = 4;
-                        paint.Style = SKPaintStyle.Stroke;
+                            paint.Color = _lens.GetColor(zone);
 
-                        if (zone.Biome == Biome.Stellar)
-                        {
-                            paint.Color = SKColors.Silver;
-                        }
-                        else if (zone.PlayerId == _playerId)
-                        {
-                            paint.Color = SKColors.DodgerBlue;
+                            if (paint.Color != SKColors.Black)
+                            {
+                                paint.Color = paint.Color.WithAlpha(alpha: 128);
+                            }
                         }
                         else
                         {
-                            paint.Color = SKColors.Red;
+                            paint.Color = _lens.GetColor(zone);
                         }
 
                         canvas.DrawPath(hexagon, paint);
 
-                        if (zone.Units.Count > 0)
+                        paint.StrokeWidth = 3;
+                        paint.Style = SKPaintStyle.Stroke;
+
+                        if (zone.Layers.Count == Depths.Star)
                         {
+                            if (_lens.GetColor(zone) == SKColors.White)
+                            {
+                                paint.Color = SKColors.Silver;
+                            }
+                            else
+                            {
+                                paint.Color = SKColors.White;
+                            }
+
+                            canvas.DrawPath(hexagon, paint);
+                        }
+                        else if (zone.Units.Count > 0)
+                        {
+                            paint.Color = SKColors.White;
+
+                            canvas.DrawPath(hexagon, paint);
+
                             paint.Style = SKPaintStyle.Fill;
 
                             string text = zone.Units.Count.ToString();
                             SKPoint point = _layout.GetCenter(zone.Location);
 
                             point.Y += font.Size * 0.5f;
-
-                            canvas.DrawText(text, point, paint);
 
                             paint.Color = SKColors.White;
                             paint.StrokeWidth = 0;
@@ -112,19 +99,6 @@ namespace Rebus.Client
                     }
                 }
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                foreach (SKPath hexagon in _hexagons.Values)
-                {
-                    hexagon.Dispose();
-                }
-            }
-
-            base.Dispose(disposing);
         }
     }
 }

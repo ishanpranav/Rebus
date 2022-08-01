@@ -2,7 +2,7 @@
 <!-- Licensed under the MIT License. -->
 
 # Ishan Pranav\'s REBUS
-A student-developed multiplayer space trading game. Please see the details of the design [here](Design.md).
+A student-developed multiplayer space trading game. This project is a work in progress. Please see the details of the design [here](Design.md).
 ## Documentation
 The public API is documented [here](https://ishanpranav.github.io/rebus/pages/Rebus.html).
 ## License
@@ -16,3 +16,5 @@ distributed under licenses different than the software. Please see the third-par
 - The [Roman numeral converter](src/Rebus.Server/NumeralSystems/RomanNumeralSystem.cs) is an improvement of [this](https://github.com/Humanizr/Humanizer/blob/main/src/Humanizer/RomanNumeralExtensions.cs) function attributed to [Jesse Slicer](https://github.com/jslicer).
 - The implementation of [Durstenfeld\'s algorithm for the Fisher-Yates shuffle](src/Rebus.Server/FisherYatesShuffle.cs) is based on [this](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) Wikipedia article.
 - The implementation of the [Julia set function](src/Rebus.Server/JuliaSet.cs) is based on [this](https://en.wikipedia.org/wiki/Julia_set) Wikipedia article.
+
+For my own reference, I have collected the equations used in this project [here](Equations.md).

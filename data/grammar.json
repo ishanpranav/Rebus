@@ -1,0 +1,14 @@
+// Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
+// Licensed under the MIT License.
+
+{
+  "none": [ "This is an empty zone." ],
+  "stellar": [ "The star system #name#." ],
+  "urban": [ "The urban planet #name#." ],
+  "marine": [ "The marine planet #name#." ],
+  "forested": [ "The forested planet #name#." ],
+  "montane": [ "The montane planet #name#." ],
+  "gaseous": [ "The gas giant #name#." ],
+  "glacial": [ "The ice giant #name#." ],
+  "deserted": [ "The desert planet #name#." ]
+}

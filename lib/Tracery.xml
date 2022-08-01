@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tracery</name>
+    </assembly>
+    <members>
+        <member name="T:Tracery.ContentSelectors.IContentSelector">
+            <summary>
+            Defines a method for selecting symbols.
+            </summary>
+        </member>
+        <member name="M:Tracery.ContentSelectors.IContentSelector.Select(System.Collections.Generic.IReadOnlyList{System.String})">
+            <summary>
+            Selects a symbol from a list of candidates.
+            </summary>
+            <param name="candidates">The list of candidate symbols.</param>
+            <returns>The chosen symbol.</returns>
+        </member>
+        <member name="T:Tracery.ContentSelectors.RandomContentSelector">
+            <summary>
+            An <see cref="T:Tracery.ContentSelectors.IContentSelector"/> that uses the <see cref="T:System.Random"/> class to generate select uniformly-distributed symbols.
+            </summary>
+        </member>
+        <member name="M:Tracery.ContentSelectors.RandomContentSelector.#ctor(System.Random)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tracery.ContentSelectors.RandomContentSelector"/> class.
+            </summary>
+            <param name="random">The pseudo-random number generator.</param>
+        </member>
+        <member name="M:Tracery.ContentSelectors.RandomContentSelector.Select(System.Collections.Generic.IReadOnlyList{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Tracery.Grammar">
+            <summary>
+            Represents a Tracery grammar used to generate randomized strings.
+            </summary>
+        </member>
+        <member name="P:Tracery.Grammar.Variables">
+            <summary>
+            Gets the variables defiend by the context.
+            </summary>
+            <value>The variables defined by the context.</value>
+        </member>
+        <member name="P:Tracery.Grammar.Modifiers">
+            <summary>
+            Gets the modifiers included in the grammar.
+            </summary>
+            <value>The modifiers included in the grammar.</value>
+        </member>
+        <member name="P:Tracery.Grammar.Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:Tracery.Grammar.Values">
+            <inheritdoc/>
+        </member>
+        <member name="P:Tracery.Grammar.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Tracery.Grammar.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:Tracery.Grammar.Item(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tracery.Grammar"/> class using a case-insensitive string comparer.
+            </summary>
+        </member>
+        <member name="M:Tracery.Grammar.#ctor(System.Collections.Generic.IEqualityComparer{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tracery.Grammar"/> class using the specified string comparer.
+            </summary>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when comparing keys.</param>
+        </member>
+        <member name="M:Tracery.Grammar.Flatten(System.String,Tracery.ContentSelectors.IContentSelector)">
+            <summary>
+            Recursively resolves a rule using a content selector.
+            </summary>
+            <param name="key">The starting rule.</param>
+            <param name="selector">The content selector.</param>
+            <returns>The flattened string.</returns>
+        </member>
+        <member name="M:Tracery.Grammar.ContainsKey(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.TryGetValue(System.String,System.Collections.Generic.IReadOnlyList{System.String}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.Add(System.String,System.Collections.Generic.IReadOnlyList{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.Remove(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.Add(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IReadOnlyList{System.String}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IReadOnlyList{System.String}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IReadOnlyList{System.String}}[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IReadOnlyList{System.String}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Tracery.Grammar.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

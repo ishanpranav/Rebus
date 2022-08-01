@@ -23,7 +23,7 @@ namespace Rebus.Server
         public AStarSearch() { }
 
         /// <summary>
-        /// Performs the A* searcha algorithm.
+        /// Finds the shortest path between two nodes.
         /// </summary>
         /// <param name="source">The source node.</param>
         /// <param name="destination">The destination node.</param>
@@ -38,7 +38,7 @@ namespace Rebus.Server
             // fScore := map with default value of Infinity
             // ...
 
-            PriorityQueue<T, int> openSet = new PriorityQueue<T, int>();
+            PriorityQueue<T, int> openSet = new();
 
             // ...
             // fScore[start] := h(start)
@@ -48,12 +48,12 @@ namespace Rebus.Server
 
             // cameFrom := an empty map
 
-            Dictionary<T, T> previousNodes = new Dictionary<T, T>();
+            Dictionary<T, T> previousNodes = new();
 
             // gScore := map with default value of Infinity
             // gScore[start] := 0
 
-            Dictionary<T, int> cumulativeCosts = new Dictionary<T, int>()
+            Dictionary<T, int> cumulativeCosts = new()
             {
                 { source, 0 }
             };
@@ -75,7 +75,7 @@ namespace Rebus.Server
                     // function reconstruct_path(cameFrom, current)
                     //   total_path := {current}
 
-                    Stack<T> results = new Stack<T>(previousNodes.Count);
+                    Stack<T> results = new(previousNodes.Count);
 
                     results.Push(current);
 

@@ -8,7 +8,7 @@ using Rebus.Server.NumeralSystems;
 
 namespace Rebus.Server
 {
-    public class Namer
+    internal sealed class Namer
     {
         private static readonly RomanNumeralSystem s_romanNumeralSystem = new RomanNumeralSystem();
         private static readonly BayerNumeralSystem s_bayerNumeralSystem = new BayerNumeralSystem();
@@ -22,6 +22,9 @@ namespace Rebus.Server
         private readonly Dictionary<(int, int), string> _existingStars = new Dictionary<(int, int), string>();
         private readonly Dictionary<(int, int, int), string> _existingPlanets = new Dictionary<(int, int, int), string>();
         private readonly FisherYatesShuffle _shuffle;
+
+        private int _starIndex;
+        private int _planetIndex;
 
         public Namer(FisherYatesShuffle shuffle, IList<string> constellations, IList<string> stars, IList<string> planets)
         {
@@ -37,7 +40,7 @@ namespace Rebus.Server
             _planetCount = _planets.Count;
         }
 
-        public string? Name(int stars, int planets, IReadOnlyList<int> layers)
+        public string? Name(IReadOnlyList<int> layers)
         {
             int depth = layers.Count;
 
@@ -54,31 +57,67 @@ namespace Rebus.Server
                     {
                         return planetName;
                     }
-                    else if (_shuffle.Random.NextDouble() < ((double)_planetCount / planets) && _planets.TryDequeue(out planetName)) { }
-                    else if (tryNameStar(out string? starName))
-                    {
-                        int ordinal = planet + 1;
-
-                        if (!s_romanNumeralSystem.TryGetNumeral(ordinal, out string? numeral))
-                        {
-                            numeral = ordinal.ToString();
-                        }
-
-                        planetName = $"{starName} {numeral}";
-                    }
-                    else if (_planets.TryDequeue(out planetName)) { }
                     else
                     {
-                        return null;
+                        if (_shuffle.Random.NextDouble() < ((double)_planets.Count / _planetCount) && _planets.TryDequeue(out planetName)) { }
+                        else if (tryNameStar(out string? starName))
+                        {
+                            int ordinal = planet + 1;
+
+                            if (!s_romanNumeralSystem.TryGetNumeral(ordinal, out string? numeral))
+                            {
+                                numeral = ordinal.ToString();
+                            }
+
+                            planetName = $"{starName} {numeral}";
+                        }
+                        else if (_planets.TryDequeue(out planetName)) { }
+                        else
+                        {
+                            if (s_romanNumeralSystem.TryGetNumeral(planet + 1, out string? numeral))
+                            {
+                                planetName = $"{nameStar()} {numeral}";
+                            }
+                            else
+                            {
+                                _planetIndex++;
+
+                                planetName = $"P-{_planetIndex}";
+                            }
+                        }
+
+                        _existingPlanets.Add((constellation, star, planet), planetName);
+
+                        return planetName;
                     }
-
-                    _existingPlanets.Add((constellation, star, planet), planetName);
-
-                    return planetName;
                 }
                 else if (tryNameStar(out string? starName))
                 {
                     return starName;
+                }
+                else
+                {
+                    return nameStar();
+                }
+
+                string nameStar()
+                {
+                    string result;
+
+                    if (tryNameConstellation(out string? constellationName))
+                    {
+                        result = $"{star} {constellationName}";
+                    }
+                    else
+                    {
+                        _starIndex++;
+
+                        result = $"S-{_starIndex}";
+                    }
+
+                    _existingStars.Add((constellation, star), result);
+
+                    return result;
                 }
 
                 bool tryNameStar([MaybeNullWhen(false)] out string starName)
@@ -87,7 +126,7 @@ namespace Rebus.Server
                     {
                         return true;
                     }
-                    else if (_shuffle.Random.NextDouble() < ((double)_starCount / stars) && _stars.TryDequeue(out starName)) { }
+                    else if (_shuffle.Random.NextDouble() < ((double)_stars.Count / _starCount) && _stars.TryDequeue(out starName)) { }
                     else if (tryNameConstellation(out string? constellationName) && s_bayerNumeralSystem.TryGetNumeral(star, out string? starNumber))
                     {
                         starName = $"{starNumber} {constellationName}";
@@ -101,25 +140,27 @@ namespace Rebus.Server
                     _existingStars.Add((constellation, star), starName);
 
                     return true;
+                }
 
-                    bool tryNameConstellation([MaybeNullWhen(false)] out string constellationName)
+                bool tryNameConstellation([MaybeNullWhen(false)] out string constellationName)
+                {
+                    if (_existingConstellations.TryGetValue(constellation, out constellationName)) { }
+                    else if (_constellations.TryDequeue(out constellationName))
                     {
-                        if (_existingConstellations.TryGetValue(constellation, out constellationName)) { }
-                        else if (_constellations.TryDequeue(out constellationName))
-                        {
-                            _existingConstellations.Add(constellation, constellationName);
-                        }
-                        else
-                        {
-                            return false;
-                        }
-
-                        return true;
+                        _existingConstellations.Add(constellation, constellationName);
                     }
+                    else
+                    {
+                        return false;
+                    }
+
+                    return true;
                 }
             }
-
-            return null;
+            else
+            {
+                return null;
+            }
         }
     }
 }

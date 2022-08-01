@@ -11,13 +11,13 @@ using StreamJsonRpc;
 
 namespace Rebus.Server
 {
-    public class RpcListener
+    internal sealed class RpcListener
     {
         private readonly ILogger<RpcListener> _logger;
-        private readonly RpcService _service;
+        private readonly Controller _service;
         private readonly TcpListener _tcpListener;
 
-        public RpcListener(IPAddress ipAddress, int port, ILogger<RpcListener> logger, RpcService service)
+        public RpcListener(IPAddress ipAddress, int port, ILogger<RpcListener> logger, Controller service)
         {
             _logger = logger;
             _service = service;

@@ -8,30 +8,15 @@ namespace Rebus.Client.Lenses
 {
     public class ConstellationLens : ILens
     {
-        public SKColor GetColor(ZoneResult zone)
+        public SKColor GetColor(ZoneInfo zone)
         {
-            int constellation = Depths.Layer(zone.Layers, Depths.Constellation);  
-            byte intensity = (byte)(200 - constellation);
-
-            switch (constellation % 6)
+            if (zone.Layers.Count >= Depths.Constellation)
             {
-                case 0:
-                    return new SKColor(intensity, green: 0, blue: 0);
-
-                case 1:
-                    return new SKColor(intensity, intensity, blue: 0);
-
-                case 2:
-                    return new SKColor(red: 0, intensity, blue: 0);
-
-                case 3:
-                    return new SKColor(red: 0, intensity, intensity);
-
-                case 4:
-                    return new SKColor(red: 0, green: 0, blue: intensity);
-
-                default:
-                    return new SKColor(intensity, green: 0, blue: intensity);
+                return Colors.Get(zone.Layers[Depths.Constellation - 1]);
+            }
+            else
+            {
+                return SKColors.Black;
             }
         }
     }

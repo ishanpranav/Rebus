@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Rebus.Commands;
 using Rebus.EventArgs;
 
 namespace Rebus
@@ -14,12 +13,12 @@ namespace Rebus
     {
         event EventHandler<ConflictEventArgs> ConflictResolved;
 
-        Task<Configuration> ConfigureAsync();
+        Task<Configuration> GetConfigurationAsync();
+        Task<Player> GetPlayerAsync(int playerId);
+        Task<Economy?> GetEconomyAsync(int playerId, HexPoint location);
+        IAsyncEnumerable<ZoneInfo> GetZonesAsync(int playerId);
+        IAsyncEnumerable<HexPoint> GetDestinationsAsync(int playerId, CommandType type, ZoneInfo source);
 
-        IAsyncEnumerable<ZoneResult> GetZonesAsync(int playerId);
-
-        Task<int> GetCreditsAsync(int playerId);
-
-        Task<bool> ExecuteAsync(Command command);
+        Task<CommandResponse> ExecuteAsync(CommandRequest request);
     }
 }

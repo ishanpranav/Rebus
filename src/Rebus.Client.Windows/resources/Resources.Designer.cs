@@ -61,7 +61,7 @@ namespace Rebus.Client.Windows {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Credits: {0::c0}.
+        ///   Looks up a localized string similar to Credits: {0:c0}.
         /// </summary>
         internal static string CreditFormat {
             get {

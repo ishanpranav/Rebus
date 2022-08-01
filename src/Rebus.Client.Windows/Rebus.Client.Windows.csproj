@@ -11,7 +11,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <StartupObject>Rebus.Client.Windows.Program</StartupObject>
-    <ApplicationIcon>Icons\Rebus.ico</ApplicationIcon>
+    <ApplicationIcon>icons\Rebus.ico</ApplicationIcon>
     <AppDesignerFolder>resources</AppDesignerFolder>
     <Authors>Ishan Pranav</Authors>
   </PropertyGroup>

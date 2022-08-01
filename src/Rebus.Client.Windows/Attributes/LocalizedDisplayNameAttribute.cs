@@ -9,7 +9,7 @@ namespace Rebus.Client.Windows.Attributes
 {
     internal sealed class LocalizedDisplayNameAttribute : DisplayNameAttribute
     {
-        private static readonly ResourceManager s_resourceManager = new ResourceManager(typeof(LocalizedDisplayNameAttribute));
+        private static readonly ResourceManager s_resourceManager = new(typeof(LocalizedDisplayNameAttribute));
 
         public LocalizedDisplayNameAttribute(string displayName) : base(displayName)
         {

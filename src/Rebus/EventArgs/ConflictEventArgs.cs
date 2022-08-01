@@ -2,32 +2,32 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Runtime.Serialization;
+using MessagePack;
 
 namespace Rebus.EventArgs
 {
-    [DataContract]
+    [MessagePackObject]
     public class ConflictEventArgs : System.EventArgs
     {
-        [DataMember(Order = 0)]
+        [Key(0)]
         public HexPoint Location { get; }
 
-        [DataMember(Order = 1)]
+        [Key(1)]
         public bool InvasionSucceeded { get; }
 
-        [DataMember(Order = 2)]
+        [Key(2)]
         public Fleet Invader { get; }
 
-        [DataMember(Order = 3)]
+        [Key(3)]
         public Fleet Occupant { get; }
 
-        [DataMember(Order = 4)]
+        [Key(4)]
         public int UnitsRetreated { get; }
 
-        [DataMember(Order = 5)]
+        [Key(5)]
         public int UnitsDestroyed { get; }
 
-        [DataMember(Order = 6)]
+        [Key(6)]
         public int UnitsCaptured { get; }
 
         public ConflictEventArgs(HexPoint location, bool invasionSucceeded, Fleet invader, Fleet occupant, int unitsRetreated)

@@ -2,18 +2,36 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Text.Json.Serialization;
+using MessagePack;
+
 namespace Rebus
 {
-    public enum Biome
+    [MessagePackObject]
+    public class Biome
     {
-        None = 0,
-        Stellar = 1,
-        Desert = 7,
-        Forested = 4,
-        Gaseous = 6,
-        Marine = 3,
-        Montane = 5,
-        Tundra = 8,
-        Urban = 2
+        [IgnoreMember]
+        public string Key { get; }
+
+        [Key(0)]
+        public byte Red { get; }
+
+        [Key(1)]
+        public byte Green { get; }
+
+        [Key(2)]
+        public byte Blue { get; }
+
+        [JsonConstructor]
+        public Biome(string key, byte red, byte green, byte blue)
+        {
+            Key = key;
+            Red = red;
+            Green = green;
+            Blue = blue;
+        }
+
+        [SerializationConstructor]
+        public Biome(byte red, byte green, byte blue) : this(string.Empty, red, green, blue) { }
     }
 }

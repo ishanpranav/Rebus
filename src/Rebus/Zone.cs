@@ -5,23 +5,26 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
+using MessagePack;
 using Microsoft.EntityFrameworkCore;
 
 namespace Rebus
 {
-    [DataContract]
     [Index(nameof(Q), nameof(R), nameof(PlayerId), IsUnique = true)]
+    [MessagePackObject]
     [Table(nameof(Zone))]
     public class Zone : IEquatable<Zone>
     {
+        [IgnoreMember]
         public int Id { get; set; }
 
+        [IgnoreMember]
         public int Q { get; set; }
 
+        [IgnoreMember]
         public int R { get; set; }
 
-        [DataMember(Order = 0)]
+        [Key(0)]
         [NotMapped]
         public HexPoint Location
         {

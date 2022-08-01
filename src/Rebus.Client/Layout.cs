@@ -72,8 +72,9 @@ namespace Rebus.Client
         /// Gets the path representing the hexagon at the given coordinate.
         /// </summary>
         /// <param name="value">The coordinate.</param>
+        /// <param name="scale">The scale factor of the hexagon.</param>
         /// <returns>The hexagon.</returns>
-        public SKPath GetHexagon(HexPoint value)
+        public SKPath GetHexagon(HexPoint value, float scale)
         {
             SKPath result = new SKPath();
             SKPoint center = GetCenter(value);
@@ -94,7 +95,7 @@ namespace Rebus.Client
             {
                 (float sin, float cos) = MathF.SinCos(n * ThetaI + Theta0);
 
-                return new SKPoint(center.X + HexagonWidth * cos, center.Y + HexagonHeight * sin);
+                return new SKPoint(center.X + HexagonWidth * scale * cos, center.Y + HexagonHeight * scale * sin);
             }
         }
 

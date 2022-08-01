@@ -15,14 +15,7 @@ namespace Rebus.Client.Windows
         {
             string? text = reader.GetString();
 
-            if (text == null)
-            {
-                return null;
-            }
-            else
-            {
-                return new CultureInfo(text);
-            }
+            return text == null ? null : new CultureInfo(text);
         }
 
         public override void Write(Utf8JsonWriter writer, CultureInfo value, JsonSerializerOptions options)

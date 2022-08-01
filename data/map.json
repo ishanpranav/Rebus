@@ -2,6 +2,62 @@
 // Licensed under the MIT License.
 
 {
+  "biomes": [
+    {
+      "blue": 0,
+      "green": 0,
+      "key": "#none#",
+      "red": 0
+    },
+    {
+      "blue": 255,
+      "green": 255,
+      "key": "#stellar#",
+      "red": 255
+    },
+    {
+      "blue": 34,
+      "green": 139,
+      "key": "#forested#",
+      "red": 34
+    },
+    {
+      "blue": 19,
+      "green": 69,
+      "key": "#montane#",
+      "red": 139
+    },
+    {
+      "blue": 139,
+      "green": 209,
+      "key": "#deserted#",
+      "red": 209
+    },
+    {
+      "blue": 139,
+      "green": 0,
+      "key": "#marine#",
+      "red": 0
+    },
+    {
+      "blue": 255,
+      "green": 255,
+      "key": "#glacial#",
+      "red": 69
+    },
+    {
+      "blue": 0,
+      "green": 69,
+      "key": "#gaseous#",
+      "red": 255
+    },
+    {
+      "blue": 139,
+      "green": 0,
+      "key": "#urban#",
+      "red": 139
+    }
+  ],
   "depth": 3,
   "juliaSet": {
     "c": "-0.7269 + 0.1889i",

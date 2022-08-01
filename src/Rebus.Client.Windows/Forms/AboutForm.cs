@@ -11,14 +11,11 @@ namespace Rebus.Client.Windows.Forms
 {
     internal sealed partial class AboutForm : FormBase
     {
-        private readonly NoticeParser _parser;
-
-        public AboutForm(NoticeParser parser)
+        public AboutForm()
         {
             InitializeComponent();
 
             environmentVersionLabel.Text = string.Format(environmentVersionLabel.Text, Environment.Version, Environment.OSVersion);
-            _parser = parser;
         }
 
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
@@ -32,7 +29,7 @@ namespace Rebus.Client.Windows.Forms
 
             using (TextReader reader = File.OpenText(getPath(key: "THIRD-PARTY-NOTICES")))
             {
-                await foreach (Notice notice in _parser.ParseAsync(reader))
+                await foreach (Notice notice in Notice.ParseAsync(reader))
                 {
                     myListBox.Items.Add(notice);
                 }

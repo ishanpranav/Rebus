@@ -8,29 +8,27 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Rebus.Server
 {
-    public class Map
+    internal sealed class Map
     {
         private readonly int _size;
         private readonly Dictionary<HexPoint, int[]> _zones = new Dictionary<HexPoint, int[]>();
 
         public JuliaSet JuliaSet { get; }
+        public HexPoint Origin { get; }
         public int Radius { get; }
         public int Depth { get; }
         public double Zoom { get; }
+        public IReadOnlyList<Biome> Biomes { get; }
 
-        public HexPoint Origin { get; }
-
-        public int Stars { get; }
-        public int Planets { get; }
-
-        public Map(JuliaSet juliaSet, HexPoint origin, int radius, int depth, double zoom)
+        public Map(JuliaSet juliaSet, HexPoint origin, int radius, int depth, double zoom, IReadOnlyList<Biome> biomes)
         {
             JuliaSet = juliaSet;
             Origin = origin;
-            _size = radius * 2 + 1;
+            _size = (radius * 2) + 1;
             Radius = radius;
             Depth = depth;
             Zoom = zoom;
+            Biomes = biomes;
 
             int[] buffer = new int[depth];
 
@@ -40,20 +38,7 @@ namespace Rebus.Server
 
                 if (index > 0)
                 {
-                    int layers = depth - index + 1;
-
-                    _zones.Add(location, new int[layers]);
-
-                    switch (layers)
-                    {
-                        case Depths.Star:
-                            Stars++;
-                            break;
-
-                        case Depths.Planet:
-                            Planets++;
-                            break;
-                    }
+                    _zones.Add(location, new int[depth - index + 1]);
                 }
             }
 
@@ -109,16 +94,17 @@ namespace Rebus.Server
             return JuliaSet.Julia(location.Q, location.R, _size, _size, Zoom) * Depth;
         }
 
-        public bool IsStar(HexPoint location)
-        {
-            return _zones.TryGetValue(location, out int[]? layers) && layers.Length == Depths.Star;
-        }
-
         public bool TryGetLayers(HexPoint location, [MaybeNullWhen(false)] out IReadOnlyList<int> layers)
         {
             if (_zones.TryGetValue(location, out int[]? results))
             {
                 layers = results;
+
+                return true;
+            }
+            else if (Contains(location))
+            {
+                layers = Array.Empty<int>();
 
                 return true;
             }
@@ -132,18 +118,21 @@ namespace Rebus.Server
 
         public Biome GetBiome(HexPoint location, IReadOnlyList<int> layers)
         {
-            switch (layers.Count)
+            return Biomes[getIndex()];
+
+            int getIndex()
             {
-                case Depths.Star:
-                    return Biome.Stellar;
+                switch (layers.Count)
+                {
+                    case Depths.Star:
+                        return 1;
 
-                case Depths.Planet:
-                    const Biome min = Biome.Urban;
+                    case Depths.Planet:
+                        return (int)((2 - JuliaDepth(location)) * (Biomes.Count - 3)) + 2;
 
-                    return (int)((Depths.Star - JuliaDepth(location)) * (Biome.Tundra - min)) + min;
-
-                default:
-                    return Biome.None;
+                    default:
+                        return 0;
+                }
             }
         }
     }
