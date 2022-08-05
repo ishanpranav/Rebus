@@ -11,6 +11,14 @@ $$\pi\left(k_1,k_2\right)=\frac{\left(k_1+k_2\right)\left(k_1+k_2+1\right)}{2}+k
 $$\pi\left(k_1,k_2\right)=\frac{k_{1}^{2}+k_1+2k_1k_2+3k_2+k_{2}^{2}}{2}.$$
 
 This function comes from [Wikipedia](https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function).
+## Cubic coordinate system
+Let each hex-point be a vector with three components, $Q$, $R$, and $S$, such that
+
+$$ Q + R + S = 0, $$
+
+$$ S = -Q - R. $$
+
+This function comes from [Amit Patel\'s Red Blob Games](https://www.redblobgames.com/grids/hexagons/#coordinates).
 ## Julia set function
 Define a complex polynomial with a complex argument $c$:
 
