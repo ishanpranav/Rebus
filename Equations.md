@@ -27,7 +27,7 @@ The [Julia set](https://en.wikipedia.org/wiki/Julia_set) $J\left(f_c\right)$ of 
 ## Rebus conflict resolution system
 When a player attempts to invade a zone, the invading fleet and the defending fleet (all occupying units that did not retreat) are compared. This system is used when the two fleets do not contain the same number of units.
 
-Let $i_0$ be the initial size of the smaller (minor) fleet. The number of units captured by the larger fleet ($c$) is
+Let $i_0$ be the initial size of the smaller (minor) fleet. The number of units $c$ captured by the larger fleet is
 
 $$c=\max\left(1,\frac{i_0}{4}\right).$$
 
