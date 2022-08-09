@@ -8,11 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Rebus.EventArgs;
+using Rebus.Server.ExecutionContexts;
 using Rebus.Server.Functions;
 
 namespace Rebus.Server.Commands
 {
-    internal abstract class NavigationCommand : ICommand
+    internal abstract class NavigationCommand : ICommand, IDestinationProvider
     {
         private readonly Map _map;
         private readonly RuleSet _rules;
@@ -28,8 +29,8 @@ namespace Rebus.Server.Commands
         protected async Task<bool> ContinueAsync(ExecutionContext context, IList<Unit> invaders, Zone source, Zone destination, ZoneFunctions functions)
         {
             List<Unit> occupants = await context.Database.Units
-                .Where(x => x.Zone.Q == destination.Q && x.Zone.R == destination.R && x.Zone.Player != context.User.Player)
-                .OrderByDescending(x => x.CargoMass)
+                .Where(x => x.Zone.Q == destination.Q && x.Zone.R == destination.R && x.Zone.Player != context.Player)
+                .OrderByDescending(x => x.Commodity)
                 .Include(x => x.Zone)
                 .ThenInclude(x => x.Player)
                 .Include(x => x.Sanctuary)
@@ -38,7 +39,7 @@ namespace Rebus.Server.Commands
 
             int deltaCredits = -invaders.Count * functions.Cost(source, destination);
 
-            context.User.Player.Credits += deltaCredits;
+            context.Player.Credits += deltaCredits;
 
             if (occupants.Count == 0)
             {
@@ -52,7 +53,7 @@ namespace Rebus.Server.Commands
 
                 foreach (Unit unit in occupants)
                 {
-                    if (unit.Sanctuary == null || await context.Database.Units.AnyAsync(x => x.Zone.Q == unit.Sanctuary.Q && x.Zone.R == unit.Sanctuary.R && x.Zone.PlayerId != context.User.Player.Id))
+                    if (unit.Sanctuary == null || await context.Database.Units.AnyAsync(x => x.Zone.Q == unit.Sanctuary.Q && x.Zone.R == unit.Sanctuary.R && x.Zone.PlayerId != context.Player.Id))
                     {
                         defenders.Add(unit);
                     }
@@ -65,7 +66,7 @@ namespace Rebus.Server.Commands
                     unit.Sanctuary = null;
                 }
 
-                Fleet invader = new Fleet(context.User.Player.Name, invaders.Count);
+                Fleet invader = new Fleet(context.Player.Name, invaders.Count);
                 Fleet occupant = new Fleet(adversary.Name, occupants.Count);
 
                 if (defenders.Count == 0)
@@ -127,7 +128,7 @@ namespace Rebus.Server.Commands
 
             void invade()
             {
-                context.User.Location = destination.Location;
+                context.SetLocation(destination.Location);
 
                 foreach (Unit invader in invaders)
                 {
@@ -143,15 +144,15 @@ namespace Rebus.Server.Commands
         {
             List<Unit> invaders = await context.Database.Units
                 .Where(x => context.UnitIds.Contains(x.Id))
-                .OrderByDescending(x => x.CargoMass)
+                .OrderByDescending(x => x.Commodity)
                 .Include(x => x.Sanctuary)
                 .Include(x => x.Zone)
                 .ToListAsync();
-            ZoneFunctions functions = new ZoneFunctions(context.User.PlayerId, context.Database.Zones, _map, _rules);
+            ZoneFunctions functions = new ZoneFunctions(context.Player.Id, context.Database.Zones, _map, _rules);
 
             if (invaders.Count > 0)
             {
-                await ExecuteAsync(context, invaders, invaders[0].Zone, await context.Database.Zones.SingleOrDefaultAsync(x => x.Q == context.Destination.Q && x.R == context.Destination.R && x.PlayerId == context.User.PlayerId), functions);
+                await ExecuteAsync(context, invaders, invaders[0].Zone, await context.Database.Zones.SingleOrDefaultAsync(x => x.Q == context.Destination.Q && x.R == context.Destination.R && x.PlayerId == context.Player.Id), functions);
             }
         }
 

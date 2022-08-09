@@ -5,14 +5,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Rebus.Server.ExecutionContexts;
 using Rebus.Server.Functions;
 
 namespace Rebus.Server.Commands
 {
     internal sealed class AutopilotCommand : NavigationCommand
     {
-        private readonly AStarSearch _search;
-
         public override CommandType Type
         {
             get
@@ -21,16 +20,13 @@ namespace Rebus.Server.Commands
             }
         }
 
-        public AutopilotCommand(AStarSearch search, Map map, RuleSet rules) : base(map, rules)
-        {
-            _search = search;
-        }
+        public AutopilotCommand(Map map, RuleSet rules) : base(map, rules) { }
 
         protected override async Task ExecuteAsync(ExecutionContext context, IList<Unit> invaders, Zone source, Zone? destination, ZoneFunctions functions)
         {
             if (destination != null)
             {
-                Stack<Zone> steps = _search.Search(source, destination, functions);
+                Stack<Zone> steps = AStarSearch.Search(source, destination, functions);
 
                 if (steps.Count > 0)
                 {
@@ -48,7 +44,7 @@ namespace Rebus.Server.Commands
                         }
                     }
 
-                    context.User.Location = context.Destination;
+                    context.SetLocation(context.Destination);
                 }
             }
         }

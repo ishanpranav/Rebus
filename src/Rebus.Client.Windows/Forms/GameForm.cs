@@ -116,8 +116,6 @@ namespace Rebus.Client.Windows.Forms
 
             lensComboBox.SelectedIndex = 0;
 
-            commandComboBox.DataSource = Enum.GetValues<CommandType>();
-
             DrawZones();
 
             await RequestUnitsAsync();
@@ -139,15 +137,21 @@ namespace Rebus.Client.Windows.Forms
         {
             _user.Location = _layout.GetHexPoint(e.Location.X, e.Location.Y);
 
-            await RequestUnitsAsync();
-
             myToolTip.ToolTipTitle = GetLocationName(_user.Location);
 
             myToolTip.Show(_user.Location.ToString(), visionPictureBox, e.Location);
+
+            await RequestUnitsAsync();
         }
 
         private async Task DrawAsync()
         {
+            myToolTip.ToolTipTitle = GetLocationName(_user.Location);
+
+            SKPoint point = _layout.GetCenter(_user.Location);
+
+            myToolTip.Show(_user.Location.ToString(), visionPictureBox, (int)point.X, (int)point.Y);
+
             await RequestZonesAsync();
 
             DrawZones();
@@ -160,8 +164,15 @@ namespace Rebus.Client.Windows.Forms
             unitListView.Items.Clear();
             descriptionTextBox.Clear();
 
+            commandComboBox.DataSource = null;
+
             if (_zones.TryGetValue(_user.Location, out ZoneInfo? zone) && zone.Units.Count > 0 && zone.PlayerId == _user.Player.Id)
             {
+                commandComboBox.DataSource = zone.Arguments
+                    .Select(x => x.Type)
+                    .Distinct()
+                    .ToList();
+
                 foreach (Unit unit in zone.Units)
                 {
                     string sanctuary;
@@ -179,7 +190,7 @@ namespace Rebus.Client.Windows.Forms
                     {
                         unit.Name,
                         sanctuary,
-                        GetCommodityName(unit.CargoMass)
+                        GetCommodityName(unit.Commodity)
                     })
                     {
                         Checked = true,
@@ -187,14 +198,10 @@ namespace Rebus.Client.Windows.Forms
                         Text = unit.Name
                     });
                 }
-            }
-            else
-            {
-                commandComboBox.SelectedItem = CommandType.Autopilot;
 
-                if (destinationComboBox.Items.Contains(_user.Location))
+                if (commandComboBox.Items.Count > 0)
                 {
-                    destinationComboBox.SelectedItem = _user.Location;
+                    commandComboBox.SelectedIndex = 0;
                 }
             }
 
@@ -235,8 +242,6 @@ namespace Rebus.Client.Windows.Forms
 
                 descriptionTextBox.Text = economy.Description;
             }
-
-            await RequestDestinationsAsync();
         }
 
         private async Task RequestZonesAsync()
@@ -303,22 +308,17 @@ namespace Rebus.Client.Windows.Forms
         {
             if (unitListView.CheckedItems.Count > 0 && commandComboBox.SelectedItem is CommandType type && destinationComboBox.SelectedItem is HexPoint destination)
             {
-                HashSet<int> unitIds = unitListView.CheckedItems
+                Arguments parameters = new Arguments(type, unitListView.CheckedItems
                     .Cast<ListViewItem>()
                     .Select(x => (int)x.Tag)
-                    .ToHashSet();
-                CommandRequest request;
+                    .ToHashSet(), destination);
 
                 if (economyListView.CheckedItems.Count == 1)
                 {
-                    request = new CommandRequest(type, _credentials.UserId, unitIds, destination, (int)economyListView.CheckedItems[0].Tag);
-                }
-                else
-                {
-                    request = new CommandRequest(type, _credentials.UserId, unitIds, destination);
+                    parameters.Commodity = (int)economyListView.CheckedItems[0].Tag;
                 }
 
-                CommandResponse response = await _service.ExecuteAsync(request);
+                CommandResponse response = await _service.ExecuteAsync(new CommandRequest(_credentials.UserId, parameters));
 
                 if (response.Modified)
                 {
@@ -329,18 +329,19 @@ namespace Rebus.Client.Windows.Forms
             }
         }
 
-        private async Task RequestDestinationsAsync()
+        private void RequestArguments()
         {
             int selectedIndex = destinationComboBox.SelectedIndex;
 
-            destinationComboBox.Items.Clear();
+            destinationComboBox.DataSource = null;
 
             if (_zones.TryGetValue(_user.Location, out ZoneInfo? source) && commandComboBox.SelectedItem is CommandType type)
             {
-                await foreach (HexPoint destination in _service.GetDestinationsAsync(_user.Player.Id, type, source))
-                {
-                    destinationComboBox.Items.Add(destination);
-                }
+                destinationComboBox.DataSource = source.Arguments
+                    .Where(x => x.Type == type)
+                    .Select(x => x.Destination)
+                    .Distinct()
+                    .ToList();
 
                 if (selectedIndex != -1 && destinationComboBox.Items.Count > selectedIndex)
                 {
@@ -353,10 +354,9 @@ namespace Rebus.Client.Windows.Forms
             }
         }
 
-        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
-        private async void OnCommandComboBoxSelectedIndexChanged(object sender, System.EventArgs e)
+        private void OnCommandComboBoxSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            await RequestDestinationsAsync();
+            RequestArguments();
         }
 
         private void OnDestinationComboBoxFormat(object sender, ListControlConvertEventArgs e)

@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
@@ -38,8 +39,8 @@ namespace Rebus.Server
                 .AddObject<Map>()
                 .AddObject<RuleSet>()
                 .AddObject<Table>()
-                .AddSingleton<AStarSearch>()
-                .AddSingleton<CantorPairing>()
+                .AddSingleton<Controller>()
+                .AddSingleton<FisherYatesShuffle>()
                 .AddSingleton<ICommand, AutopilotCommand>()
                 .AddSingleton<ICommand, DefendCommand>()
                 .AddSingleton<ICommand, ExploreCommand>()
@@ -48,12 +49,13 @@ namespace Rebus.Server
                 .AddSingleton<ICommand, PurchaseCommand>()
                 .AddSingleton<ICommand, RetreatCommand>()
                 .AddSingleton<ICommand, SellCommand>()
-                .AddSingleton<Controller>()
-                .AddSingleton<FisherYatesShuffle>()
                 .AddSingleton<IConfiguration>(x => new ConfigurationBuilder()
                     .AddJsonFile(Path.ChangeExtension(path: "appSettings", extension: "json"))
                     .AddUserSecrets(typeof(Program).Assembly)
                     .Build())
+                .AddSingleton<IReadOnlyDictionary<CommandType, ICommand>>(x => x
+                    .GetServices<ICommand>()
+                    .ToDictionary(x => x.Type))
                 .AddSingleton<JsonConverter, JsonComplexConverter>()
                 .AddSingleton<JsonConverter, JsonIPAddressConverter>()
                 .AddSingleton(x =>

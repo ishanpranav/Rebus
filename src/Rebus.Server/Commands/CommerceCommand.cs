@@ -2,9 +2,9 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Rebus.Server.ExecutionContexts;
 
 namespace Rebus.Server.Commands
 {
@@ -16,13 +16,13 @@ namespace Rebus.Server.Commands
 
         public async Task ExecuteAsync(ExecutionContext context)
         {
-            if (context.CommodityMass > 0)
+            if (context.Commodity > 0)
             {
                 Zone destination = await context.GetDestinationAsync();
 
                 await foreach (Unit unit in context.GetUnitsAsync())
                 {
-                    Commodity commodity = await context.Database.Commodities.SingleAsync(x => x.Q == destination.Q && x.R == destination.R && x.Mass == context.CommodityMass);
+                    Commodity commodity = await context.Database.Commodities.SingleAsync(x => x.Q == destination.Q && x.R == destination.R && x.Mass == context.Commodity);
 
                     if (commodity.Quantity == 0)
                     {
@@ -36,11 +36,6 @@ namespace Rebus.Server.Commands
                     }
                 }
             }
-        }
-
-        public IEnumerable<HexPoint> GetDestinations(ZoneInfo source, IReadOnlyDictionary<HexPoint, ZoneInfo> zones)
-        {
-            yield return source.Location;
         }
     }
 }

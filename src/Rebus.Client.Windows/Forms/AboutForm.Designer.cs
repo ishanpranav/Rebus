@@ -86,6 +86,7 @@ namespace Rebus.Client.Windows.Forms
             // headerLabel
             // 
             resources.ApplyResources(this.headerLabel, "headerLabel");
+            this.headerLabel.AutoEllipsis = true;
             this.headerLabel.Name = "headerLabel";
             // 
             // myTextBox

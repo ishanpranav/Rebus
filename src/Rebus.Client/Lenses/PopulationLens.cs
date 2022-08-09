@@ -18,6 +18,8 @@ namespace Rebus.Client.Lenses
             _maxPopulation = zones
                 .Where(x => x.Biome.Population < int.MaxValue && x.Biome.Population >= 0)
                 .Max(x => x.Biome.Population);
+
+            base.SetZones(zones);
         }
 
         public override SKColor GetColor(ZoneInfo zone)

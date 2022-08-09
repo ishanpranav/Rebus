@@ -9,19 +9,14 @@ using Rebus.Server.Functions;
 namespace Rebus.Server
 {
     /// <summary>
-    /// Provides an implementation of the A* search algorithm.
+    /// Provides an implementation of the A* search algorithm. This class cannot be inherited.
     /// </summary>
     /// <remarks>
     /// The implementation of this class was inspired by and based on <see href="https://en.wikipedia.org/wiki/A*_search_algorithm">this</see> Wikipedia article.
     /// </remarks>
     /// <seealso href="https://en.wikipedia.org/wiki/A*_search_algorithm">A* search algorithm - Wikipedia</seealso>
-    public class AStarSearch
+    public static class AStarSearch
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AStarSearch"/> class.
-        /// </summary>
-        public AStarSearch() { }
-
         /// <summary>
         /// Finds the shortest path between two nodes.
         /// </summary>
@@ -29,7 +24,7 @@ namespace Rebus.Server
         /// <param name="destination">The destination node.</param>
         /// <param name="functions">The set of graph-node functions.</param>
         /// <returns>A stack containing the ordered set of nodes leading from the <paramref name="source"/> node to the <paramref name="destination"/> node, or an empty stack if no such path exists.</returns>
-        public Stack<T> Search<T>(T source, T destination, IFunctions<T> functions) where T : IEquatable<T>
+        public static Stack<T> Search<T>(T source, T destination, IFunctions<T> functions) where T : IEquatable<T>
         {
             // function A_Star(start, goal, h)
 

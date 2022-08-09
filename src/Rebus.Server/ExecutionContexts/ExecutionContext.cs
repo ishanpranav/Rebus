@@ -4,13 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Rebus.EventArgs;
 
-namespace Rebus.Server
+namespace Rebus.Server.ExecutionContexts
 {
-    internal sealed class ExecutionContext : IAsyncDisposable, IDisposable
+    internal abstract class ExecutionContext : IAsyncDisposable, IDisposable
     {
         private readonly Controller _controller;
 
@@ -24,19 +25,21 @@ namespace Rebus.Server
             }
         }
 
-        public User User { get; }
+        public abstract Player Player { get; }
+
         public IReadOnlyCollection<int> UnitIds { get; }
         public HexPoint Destination { get; set; }
-        public int CommodityMass { get; }
+        public int Commodity { get; }
 
-        public ExecutionContext(Controller controller, RebusDbContext dbContext, User user, IReadOnlyCollection<int> unitIds, int commodityMass)
+        public ExecutionContext(Controller controller, RebusDbContext dbContext, IReadOnlyCollection<int> unitIds, int commodity)
         {
             _controller = controller;
             _dbContext = dbContext;
-            User = user;
             UnitIds = unitIds;
-            CommodityMass = commodityMass;
+            Commodity = commodity;
         }
+
+        public virtual void SetLocation(HexPoint value) { }
 
         public async IAsyncEnumerable<Unit> GetUnitsAsync()
         {
@@ -48,7 +51,7 @@ namespace Rebus.Server
 
         public Task<Zone> GetDestinationAsync()
         {
-            return Database.Zones.SingleAsync(x => x.Q == Destination.Q && x.R == Destination.R && x.PlayerId == User.PlayerId);
+            return Database.Zones.SingleAsync(x => x.Q == Destination.Q && x.R == Destination.R && x.PlayerId == Player.Id);
         }
 
         public void OnConflictResolved(ConflictEventArgs e)
@@ -58,13 +61,30 @@ namespace Rebus.Server
 
         public void Dispose()
         {
-            _dbContext?.Dispose();
-            _dbContext = null;
-
-            GC.SuppressFinalize(obj: this);
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
 
         public async ValueTask DisposeAsync()
+        {
+            await DisposeAsyncCore().ConfigureAwait(false);
+
+            Dispose(disposing: false);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _dbContext?.Dispose();
+                _dbContext = null;
+            }
+        }
+
+        [SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods", Justification = "DisposeAsyncCore")]
+        protected virtual async ValueTask DisposeAsyncCore()
         {
             if (_dbContext != null)
             {
@@ -74,8 +94,6 @@ namespace Rebus.Server
 
                 _dbContext = null;
             }
-
-            GC.SuppressFinalize(obj: this);
         }
     }
 }

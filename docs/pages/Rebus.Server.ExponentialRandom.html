@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RomanNumeralSystem
+    <title>Class ExponentialRandom
    | Ishan Pranav's REBUS </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RomanNumeralSystem
+    <meta name="title" content="Class ExponentialRandom
    | Ishan Pranav's REBUS ">
     <meta name="generator" content="docfx 2.59.3.0">
     
@@ -84,6 +84,9 @@
                         
                         <ul class="nav level2">
                           <li class="">
+                            <a href="Rebus.Arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Biome.html" title="Biome" class="">Biome</a>
                           </li>
                           <li class="">
@@ -132,6 +135,9 @@
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.User.html" title="User" class="">User</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
                           </li>
                           <li class="">
@@ -168,7 +174,7 @@
                             <a href="Rebus.Client.Lenses.ConstellationLens.html" title="ConstellationLens" class="">ConstellationLens</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.Client.Lenses.ILens.html" title="ILens" class="">ILens</a>
+                            <a href="Rebus.Client.Lenses.Lens.html" title="Lens" class="">Lens</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Client.Lenses.PopulationLens.html" title="PopulationLens" class="">PopulationLens</a>
@@ -194,11 +200,17 @@
                           <li class="">
                             <a href="Rebus.Server.AStarSearch.html" title="AStarSearch" class="">AStarSearch</a>
                           </li>
+                          <li class="active">
+                            <a href="Rebus.Server.ExponentialRandom.html" title="ExponentialRandom" class="active">ExponentialRandom</a>
+                          </li>
                           <li class="">
                             <a href="Rebus.Server.FisherYatesShuffle.html" title="FisherYatesShuffle" class="">FisherYatesShuffle</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.PowerSet.html" title="PowerSet" class="">PowerSet</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -210,21 +222,6 @@
                             <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
                           </li>
                         </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="Rebus.Server.NumeralSystems.html" title="Rebus.Server.NumeralSystems" class="">Rebus.Server.NumeralSystems</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.BayerNumeralSystem.html" title="BayerNumeralSystem" class="">BayerNumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.INumeralSystem.html" title="INumeralSystem" class="">INumeralSystem</a>
-                          </li>
-                          <li class="active">
-                            <a href="Rebus.Server.NumeralSystems.RomanNumeralSystem.html" title="RomanNumeralSystem" class="active">RomanNumeralSystem</a>
-                          </li>
-                        </ul>  </li>
                   </ul>        </div>
               </div>
             </div>
@@ -232,25 +229,49 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Rebus.Server.NumeralSystems.RomanNumeralSystem">
+            <article class="content wrap" id="_content" data-uid="Rebus.Server.ExponentialRandom">
   
   
-  <h1 id="Rebus_Server_NumeralSystems_RomanNumeralSystem" data-uid="Rebus.Server.NumeralSystems.RomanNumeralSystem" class="text-break">Class RomanNumeralSystem
+  <h1 id="Rebus_Server_ExponentialRandom" data-uid="Rebus.Server.ExponentialRandom" class="text-break">Class ExponentialRandom
   </h1>
-  <div class="markdown level0 summary"><p>Represents the Roman numeral system.</p>
+  <div class="markdown level0 summary"><p>Represents a pseudo-random number generator whose output values, when aggregated, approximate an exponential distribution.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">RomanNumeralSystem</span></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Rebus.Server.NumeralSystems.INumeralSystem.html">INumeralSystem</a></div>
+    <div class="level1"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random">Random</a></div>
+    <div class="level2"><span class="xref">ExponentialRandom</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next">Random.Next()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next(system-int32)">Random.Next(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64">Random.NextInt64()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64(system-int64)">Random.NextInt64(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64(system-int64-system-int64)">Random.NextInt64(Int64, Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-byte())">Random.NextBytes(Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-span((system-byte)))">Random.NextBytes(Span&lt;Byte&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextsingle#system-random-nextsingle">Random.NextSingle()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.shared#system-random-shared">Random.Shared</a>
+    </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
@@ -273,40 +294,52 @@
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.Server.NumeralSystems.html">Rebus.Server.NumeralSystems</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.Server.html">Rebus.Server</a></h6>
   <h6><strong>Assembly</strong>: Rebus.Server.dll</h6>
-  <h5 id="Rebus_Server_NumeralSystems_RomanNumeralSystem_syntax">Syntax</h5>
+  <h5 id="Rebus_Server_ExponentialRandom_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RomanNumeralSystem : INumeralSystem</code></pre>
+    <pre><code class="lang-csharp hljs">public class ExponentialRandom : Random</code></pre>
   </div>
-  <h5 id="Rebus_Server_NumeralSystems_RomanNumeralSystem_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>The implementation of this class is an improvement of <a href="https://github.com/Humanizr/Humanizer/blob/main/src/Humanizer/RomanNumeralExtensions.cs">this</a> function attributed to <a href="https://github.com/jslicer">Jesse Slicer</a>. Humanizer is licensed under the MIT License.</p>
-</div>
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="Rebus_Server_NumeralSystems_RomanNumeralSystem__ctor_" data-uid="Rebus.Server.NumeralSystems.RomanNumeralSystem.#ctor*"></a>
-  <h4 id="Rebus_Server_NumeralSystems_RomanNumeralSystem__ctor" data-uid="Rebus.Server.NumeralSystems.RomanNumeralSystem.#ctor">RomanNumeralSystem()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Rebus.Server.NumeralSystems.RomanNumeralSystem.html">RomanNumeralSystem</a> class.</p>
+  <a id="Rebus_Server_ExponentialRandom__ctor_" data-uid="Rebus.Server.ExponentialRandom.#ctor*"></a>
+  <h4 id="Rebus_Server_ExponentialRandom__ctor_System_Double_" data-uid="Rebus.Server.ExponentialRandom.#ctor(System.Double)">ExponentialRandom(Double)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Rebus.Server.ExponentialRandom.html">ExponentialRandom</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RomanNumeralSystem()</code></pre>
+    <pre><code class="lang-csharp hljs">public ExponentialRandom(double lambda)</code></pre>
   </div>
-  <h3 id="methods">Methods
-  </h3>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">lambda</span></td>
+        <td><p>The rate parameter <em>λ</em>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   
   
-  <a id="Rebus_Server_NumeralSystems_RomanNumeralSystem_TryGetNumeral_" data-uid="Rebus.Server.NumeralSystems.RomanNumeralSystem.TryGetNumeral*"></a>
-  <h4 id="Rebus_Server_NumeralSystems_RomanNumeralSystem_TryGetNumeral_System_Int32_System_String__" data-uid="Rebus.Server.NumeralSystems.RomanNumeralSystem.TryGetNumeral(System.Int32,System.String@)">TryGetNumeral(Int32, out String)</h4>
-  <div class="markdown level1 summary"><p>Gets the numeral that represents the specified integer.</p>
-</div>
+  <a id="Rebus_Server_ExponentialRandom__ctor_" data-uid="Rebus.Server.ExponentialRandom.#ctor*"></a>
+  <h4 id="Rebus_Server_ExponentialRandom__ctor_System_Int32_System_Double_" data-uid="Rebus.Server.ExponentialRandom.#ctor(System.Int32,System.Double)">ExponentialRandom(Int32, Double)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryGetNumeral(int value, out string result)</code></pre>
+    <pre><code class="lang-csharp hljs">public ExponentialRandom(int seed, double lambda)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -320,15 +353,48 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The integral value.</p>
+        <td><span class="parametername">seed</span></td>
+        <td><p>A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">result</span></td>
-        <td><p>When this method returns, contains the numeral that represents the specified integer, if the number system can represent it; otherwise, <span class="xref">null</span>. This parameter is passed uninitialized.</p>
-</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">lambda</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Rebus_Server_ExponentialRandom_Next_" data-uid="Rebus.Server.ExponentialRandom.Next*"></a>
+  <h4 id="Rebus_Server_ExponentialRandom_Next_System_Int32_System_Int32_" data-uid="Rebus.Server.ExponentialRandom.Next(System.Int32,System.Int32)">Next(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Next(int minValue, int maxValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">minValue</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxValue</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -342,21 +408,67 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><p><span class="xref">true</span> if the number system can represent the specified integer; otherwise, <span class="xref">false</span>.</p>
-</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Rebus.Server.NumeralSystems.INumeralSystem.html">INumeralSystem</a>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next(system-int32-system-int32)">Random.Next(Int32, Int32)</a></div>
+  
+  
+  <a id="Rebus_Server_ExponentialRandom_NextDouble_" data-uid="Rebus.Server.ExponentialRandom.NextDouble*"></a>
+  <h4 id="Rebus_Server_ExponentialRandom_NextDouble" data-uid="Rebus.Server.ExponentialRandom.NextDouble">NextDouble()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override double NextDouble()</code></pre>
   </div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><span><a href="https://github.com/Humanizr/Humanizer">Humanizer</a></span></div>
-      <div><span><a href="https://github.com/Humanizr/Humanizer/blob/main/src/Humanizer/RomanNumeralExtensions.cs">Humanizer/RomanNumeralExtensions.cs</a></span></div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextdouble#system-random-nextdouble">Random.NextDouble()</a></div>
+  
+  
+  <a id="Rebus_Server_ExponentialRandom_Sample_" data-uid="Rebus.Server.ExponentialRandom.Sample*"></a>
+  <h4 id="Rebus_Server_ExponentialRandom_Sample" data-uid="Rebus.Server.ExponentialRandom.Sample">Sample()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override double Sample()</code></pre>
   </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.sample#system-random-sample">Random.Sample()</a></div>
 </article>
           </div>
           

@@ -34,9 +34,8 @@ namespace Rebus.Server
         /// <summary>
         /// Shuffles a collection using Durstenfeld's algorithm.
         /// </summary>
-        /// <typeparam name="T">The type of elements in the collection.</typeparam>
         /// <param name="values">The collection.</param>
-        public void Shuffle<T>(IList<T> values)
+        public void Shuffle(IList<string> values)
         {
             // for i from n−1 downto 1 do
 

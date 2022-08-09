@@ -5,10 +5,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Rebus.Server.ExecutionContexts;
 
 namespace Rebus.Server.Commands
 {
-    internal sealed class RetreatCommand : ICommand
+    internal sealed class RetreatCommand : ICommand, IDestinationProvider
     {
         public CommandType Type
         {

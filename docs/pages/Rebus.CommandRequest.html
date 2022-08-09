@@ -84,6 +84,9 @@
                         
                         <ul class="nav level2">
                           <li class="">
+                            <a href="Rebus.Arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Biome.html" title="Biome" class="">Biome</a>
                           </li>
                           <li class="">
@@ -203,6 +206,12 @@
                           <li class="">
                             <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
                           </li>
+                          <li class="">
+                            <a href="Rebus.Server.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="">NegativeExponentialRandom</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.PowerSet.html" title="PowerSet" class="">PowerSet</a>
+                          </li>
                         </ul>  </li>
                     <li class="">
                       <span class="expand-stub"></span>
@@ -268,12 +277,12 @@ public class CommandRequest</code></pre>
   
   
   <a id="Rebus_CommandRequest__ctor_" data-uid="Rebus.CommandRequest.#ctor*"></a>
-  <h4 id="Rebus_CommandRequest__ctor_Rebus_CommandType_System_Int32_System_Collections_Generic_IReadOnlyCollection_System_Int32__Rebus_HexPoint_" data-uid="Rebus.CommandRequest.#ctor(Rebus.CommandType,System.Int32,System.Collections.Generic.IReadOnlyCollection{System.Int32},Rebus.HexPoint)">CommandRequest(CommandType, Int32, IReadOnlyCollection&lt;Int32&gt;, HexPoint)</h4>
+  <h4 id="Rebus_CommandRequest__ctor_System_Int32_Rebus_Arguments_" data-uid="Rebus.CommandRequest.#ctor(System.Int32,Rebus.Arguments)">CommandRequest(Int32, Arguments)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandRequest(CommandType type, int userId, IReadOnlyCollection&lt;int&gt; unitIds, HexPoint destination)</code></pre>
+    <pre><code class="lang-csharp hljs">public CommandRequest(int userId, Arguments arguments)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -286,70 +295,13 @@ public class CommandRequest</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rebus.CommandType.html">CommandType</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">userId</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
-        <td><span class="parametername">unitIds</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
-        <td><span class="parametername">destination</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_CommandRequest__ctor_" data-uid="Rebus.CommandRequest.#ctor*"></a>
-  <h4 id="Rebus_CommandRequest__ctor_Rebus_CommandType_System_Int32_System_Collections_Generic_IReadOnlyCollection_System_Int32__Rebus_HexPoint_System_Int32_" data-uid="Rebus.CommandRequest.#ctor(Rebus.CommandType,System.Int32,System.Collections.Generic.IReadOnlyCollection{System.Int32},Rebus.HexPoint,System.Int32)">CommandRequest(CommandType, Int32, IReadOnlyCollection&lt;Int32&gt;, HexPoint, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandRequest(CommandType type, int userId, IReadOnlyCollection&lt;int&gt; unitIds, HexPoint destination, int commodityMass)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rebus.CommandType.html">CommandType</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
-        <td><span class="parametername">unitIds</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
-        <td><span class="parametername">destination</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">commodityMass</span></td>
+        <td><a class="xref" href="Rebus.Arguments.html">Arguments</a></td>
+        <td><span class="parametername">arguments</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -358,14 +310,14 @@ public class CommandRequest</code></pre>
   </h3>
   
   
-  <a id="Rebus_CommandRequest_CommodityMass_" data-uid="Rebus.CommandRequest.CommodityMass*"></a>
-  <h4 id="Rebus_CommandRequest_CommodityMass" data-uid="Rebus.CommandRequest.CommodityMass">CommodityMass</h4>
+  <a id="Rebus_CommandRequest_Arguments_" data-uid="Rebus.CommandRequest.Arguments*"></a>
+  <h4 id="Rebus_CommandRequest_Arguments" data-uid="Rebus.CommandRequest.Arguments">Arguments</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(4)]
-public int CommodityMass { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Key(1)]
+public Arguments Arguments { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -377,85 +329,7 @@ public int CommodityMass { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_CommandRequest_Destination_" data-uid="Rebus.CommandRequest.Destination*"></a>
-  <h4 id="Rebus_CommandRequest_Destination" data-uid="Rebus.CommandRequest.Destination">Destination</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(3)]
-public HexPoint Destination { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_CommandRequest_Type_" data-uid="Rebus.CommandRequest.Type*"></a>
-  <h4 id="Rebus_CommandRequest_Type" data-uid="Rebus.CommandRequest.Type">Type</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(0)]
-public CommandType Type { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rebus.CommandType.html">CommandType</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_CommandRequest_UnitIds_" data-uid="Rebus.CommandRequest.UnitIds*"></a>
-  <h4 id="Rebus_CommandRequest_UnitIds" data-uid="Rebus.CommandRequest.UnitIds">UnitIds</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(2)]
-public IReadOnlyCollection&lt;int&gt; UnitIds { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><a class="xref" href="Rebus.Arguments.html">Arguments</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -468,7 +342,7 @@ public IReadOnlyCollection&lt;int&gt; UnitIds { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(1)]
+    <pre><code class="lang-csharp hljs">[Key(0)]
 public int UserId { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>

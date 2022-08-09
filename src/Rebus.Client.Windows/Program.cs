@@ -23,7 +23,6 @@ namespace Rebus.Client.Windows
                 .AddTransient<AboutForm>()
                 .AddTransient<GameForm>()
                 .AddTransient<LoginForm>()
-                .AddSingleton<CantorPairing>()
                 .AddSingleton(x =>
                 {
                     Credentials result = x

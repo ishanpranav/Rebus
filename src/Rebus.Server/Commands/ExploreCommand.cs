@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Rebus.Server.ExecutionContexts;
 using Rebus.Server.Functions;
 
 namespace Rebus.Server.Commands
@@ -29,7 +30,7 @@ namespace Rebus.Server.Commands
                 {
                     destination = new Zone()
                     {
-                        Player = context.User.Player,
+                        Player = context.Player,
                         Location = context.Destination
                     };
                 }

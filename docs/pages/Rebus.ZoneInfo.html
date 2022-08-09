@@ -84,6 +84,9 @@
                         
                         <ul class="nav level2">
                           <li class="">
+                            <a href="Rebus.Arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Biome.html" title="Biome" class="">Biome</a>
                           </li>
                           <li class="">
@@ -202,6 +205,12 @@
                           </li>
                           <li class="">
                             <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="">NegativeExponentialRandom</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.PowerSet.html" title="PowerSet" class="">PowerSet</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -322,8 +331,96 @@ public class ZoneInfo</code></pre>
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="Rebus_ZoneInfo__ctor_" data-uid="Rebus.ZoneInfo.#ctor*"></a>
+  <h4 id="Rebus_ZoneInfo__ctor_Rebus_HexPoint_System_Int32_System_String_Rebus_Biome_System_Collections_Generic_IReadOnlyList_System_Int32__System_Collections_Generic_IReadOnlyCollection_Rebus_Unit__System_Collections_Generic_IReadOnlyCollection_Rebus_HexPoint__System_Collections_Generic_ICollection_Rebus_Arguments__" data-uid="Rebus.ZoneInfo.#ctor(Rebus.HexPoint,System.Int32,System.String,Rebus.Biome,System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyCollection{Rebus.Unit},System.Collections.Generic.IReadOnlyCollection{Rebus.HexPoint},System.Collections.Generic.ICollection{Rebus.Arguments})">ZoneInfo(HexPoint, Int32, String, Biome, IReadOnlyList&lt;Int32&gt;, IReadOnlyCollection&lt;Unit&gt;, IReadOnlyCollection&lt;HexPoint&gt;, ICollection&lt;Arguments&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZoneInfo(HexPoint location, int playerId, string name, Biome biome, IReadOnlyList&lt;int&gt; layers, IReadOnlyCollection&lt;Unit&gt; units, IReadOnlyCollection&lt;HexPoint&gt; neighbors, ICollection&lt;Arguments&gt; arguments)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td><span class="parametername">location</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">playerId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rebus.Biome.html">Biome</a></td>
+        <td><span class="parametername">biome</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">layers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Rebus.Unit.html">Unit</a>&gt;</td>
+        <td><span class="parametername">units</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Rebus.HexPoint.html">HexPoint</a>&gt;</td>
+        <td><span class="parametername">neighbors</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Rebus.Arguments.html">Arguments</a>&gt;</td>
+        <td><span class="parametername">arguments</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
+  
+  
+  <a id="Rebus_ZoneInfo_Arguments_" data-uid="Rebus.ZoneInfo.Arguments*"></a>
+  <h4 id="Rebus_ZoneInfo_Arguments" data-uid="Rebus.ZoneInfo.Arguments">Arguments</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Key(7)]
+public ICollection&lt;Arguments&gt; Arguments { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Rebus.Arguments.html">Arguments</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="Rebus_ZoneInfo_Biome_" data-uid="Rebus.ZoneInfo.Biome*"></a>

@@ -8,18 +8,11 @@ namespace Rebus.Client.Lenses
 {
     public class StarLens : Lens
     {
-        private readonly CantorPairing _pairing;
-
-        public StarLens(CantorPairing pairing)
-        {
-            _pairing = pairing;
-        }
-
         public override SKColor GetColor(ZoneInfo zone)
         {
             if (zone.Layers.Count >= Depths.Star)
             {
-                return ColorTable.Get(_pairing.Pair(zone.Layers[Depths.Constellation - 1], Depths.Layer(zone.Layers, Depths.Star)));
+                return ColorTable.Get(CantorPairing.Pair(zone.Layers[Depths.Constellation - 1], Depths.Layer(zone.Layers, Depths.Star)));
             }
             else
             {

@@ -8,7 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Rebus.EventArgs;
+using Rebus.Server.CommandProviders;
 using Rebus.Server.Commands;
+using Rebus.Server.ExecutionContexts;
 using Tracery;
 using Tracery.ContentSelectors;
 
@@ -17,22 +19,20 @@ namespace Rebus.Server
     internal sealed class Controller : IGameService, ILoginService
     {
         private readonly IDbContextFactory<RebusDbContext> _contextFactory;
-        private readonly CantorPairing _pairing;
         private readonly Grammar _grammar;
-        private readonly Dictionary<CommandType, ICommand> _commands;
+        private readonly IReadOnlyDictionary<CommandType, ICommand> _commands;
         private readonly Map _map;
         private readonly Namer _namer;
 
         public event EventHandler<ConflictEventArgs>? ConflictResolved;
 
-        public Controller(IDbContextFactory<RebusDbContext> contextFactory, IEnumerable<ICommand> commands, CantorPairing pairing, Grammar grammar, Map map, Namer namer)
+        public Controller(IDbContextFactory<RebusDbContext> contextFactory, IReadOnlyDictionary<CommandType, ICommand> commands, Grammar grammar, Map map, Namer namer)
         {
             grammar.AddTracery();
 
             _contextFactory = contextFactory;
-            _pairing = pairing;
             _grammar = grammar;
-            _commands = commands.ToDictionary(x => x.Type);
+            _commands = commands;
             _map = map;
             _namer = namer;
         }
@@ -73,12 +73,15 @@ namespace Rebus.Server
                     }
 
                     Biome biome = _map.GetBiome(location, layers);
-                    Random random = new Random(_pairing.Pair(location.Q, location.R));
-                    ExponentialDistribution exponentialDistribution = new ExponentialDistribution(random, lambda: 2.5);
+
+                    int seed = CantorPairing.Pair(location.Q, location.R);
+
+                    Random random = new Random(seed);
+                    NegativeExponentialRandom exponentialDistribution = new NegativeExponentialRandom(seed, lambda: 2.5);
                     RandomContentSelector selector = new RandomContentSelector(random);
                     string description = _grammar.Flatten(biome.Key, selector);
 
-                    if (await context.Zones.AnyAsync(x => x.Q == location.Q && x.R == location.R && x.PlayerId == playerId) && layers.Count == Depths.Planet)
+                    if (layers.Count == Depths.Planet)
                     {
                         SortedDictionary<int, Commodity> commodities = new SortedDictionary<int, Commodity>();
 
@@ -139,115 +142,65 @@ namespace Rebus.Server
 
         public async IAsyncEnumerable<ZoneInfo> GetZonesAsync(int playerId)
         {
-            await using (RebusDbContext context = await _contextFactory.CreateDbContextAsync())
+            ZoneCache cache = await ZoneCache.CreateAsync(playerId, _contextFactory, _map, _namer);
+            CommandProvider commandProvider = new CommandProvider(_commands);
+
+            foreach (ZoneInfo source in cache.Zones.Values)
             {
-                HashSet<HexPoint> locations = new HashSet<HexPoint>();
-
-                foreach (Zone zone in getZones())
+                foreach (Arguments command in commandProvider.GetCommands(source, cache.Zones))
                 {
-                    if (locations.Add(zone.Location))
-                    {
-                        HashSet<HexPoint> neighbors = new HashSet<HexPoint>();
-
-                        string? name;
-                        Biome biome;
-
-                        if (_map.TryGetLayers(zone.Location, out IReadOnlyList<int>? layers))
-                        {
-                            name = _namer.Name(layers);
-                            biome = _map.GetBiome(zone.Location, layers);
-
-                            foreach (HexPoint neighbor in zone.Location.Neighbors())
-                            {
-                                if (_map.TryGetLayers(neighbor, out IReadOnlyList<int>? neighborLayers) && neighborLayers.Count == Depths.Star && locations.Add(neighbor))
-                                {
-                                    yield return new ZoneInfo(neighbor, playerId: 0, _namer.Name(neighborLayers), _map.GetBiome(neighbor, neighborLayers), neighborLayers, Array.Empty<Unit>(), Array.Empty<HexPoint>());
-                                }
-                                else if (_map.Contains(neighbor))
-                                {
-                                    neighbors.Add(neighbor);
-                                }
-                            }
-
-                            yield return new ZoneInfo(zone.Location, zone.PlayerId, name, biome, layers, new List<Unit>(zone.Units), neighbors);
-                        }
-                    }
+                    source.Arguments.Add(command);
                 }
 
-                IEnumerable<Zone> getZones()
-                {
-                    if (playerId == -1)
-                    {
-                        return _map.Origin
-                            .Range(_map.Radius)
-                            .Select(x => new Zone()
-                            {
-                                Q = x.Q,
-                                R = x.R,
-                                PlayerId = playerId
-                            });
-                    }
-                    else
-                    {
-                        return context.Zones
-                            .Where(x => x.PlayerId == playerId)
-                            .Include(x => x.Units)
-                            .ThenInclude(x => x.Sanctuary);
-                    }
-                }
-            }
-        }
-
-        public async IAsyncEnumerable<HexPoint> GetDestinationsAsync(int playerId, CommandType type, ZoneInfo source)
-        {
-            ICommand command = _commands[type];
-
-            await using (RebusDbContext context = await _contextFactory.CreateDbContextAsync())
-            {
-                Dictionary<HexPoint, ZoneInfo> dictionary = new Dictionary<HexPoint, ZoneInfo>();
-
-                await foreach (ZoneInfo zone in GetZonesAsync(playerId))
-                {
-                    dictionary.Add(zone.Location, zone);
-                }
-
-                foreach (HexPoint result in command
-                    .GetDestinations(source, dictionary)
-                    .OrderByDescending(x =>
-                    {
-                        if (dictionary.TryGetValue(x, out ZoneInfo? zone))
-                        {
-                            return zone.Layers.Count;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }))
-                {
-                    yield return result;
-                }
+                yield return source;
             }
         }
 
         public async Task<CommandResponse> ExecuteAsync(CommandRequest request)
         {
+            User user;
+            bool modified;
+
             await using (RebusDbContext dbContext = await _contextFactory.CreateDbContextAsync())
             {
-                User user = await dbContext.Users
-                    .Include(x => x.Player)
-                    .SingleAsync(x => x.Id == request.UserId);
+                user = await dbContext.Users
+                   .Include(x => x.Player)
+                   .Include(x => x.Twin)
+                   .SingleAsync(x => x.Id == request.UserId);
 
-                await using (ExecutionContext context = new ExecutionContext(controller: this, dbContext, user, request.UnitIds, request.CommodityMass)
+                await using (UserExecutionContext context = new UserExecutionContext(user, controller: this, dbContext, request.Arguments.UnitIds, request.Arguments.Commodity)
                 {
-                    Destination = request.Destination
+                    Destination = request.Arguments.Destination
                 })
                 {
-                    await _commands[request.Type].ExecuteAsync(context);
+                    await _commands[request.Arguments.Type].ExecuteAsync(context);
 
-                    return new CommandResponse(await context.Database.SaveChangesAsync() > 0, user);
+                    modified = await dbContext.SaveChangesAsync() > 0;
                 }
             }
+
+            if (modified)
+            {
+                await using (RebusDbContext dbContext = await _contextFactory.CreateDbContextAsync())
+                {
+                    Arguments? decision = null;
+
+                    if (decision != null)
+                    {
+                        await using (AIExecutionContext context = new AIExecutionContext(user, controller: this, dbContext, decision.UnitIds, decision.Commodity)
+                        {
+                            Destination = decision.Destination
+                        })
+                        {
+                            await _commands[decision.Type].ExecuteAsync(context);
+
+                            await dbContext.SaveChangesAsync();
+                        }
+                    }
+                }
+            }
+
+            return new CommandResponse(modified, user);
         }
 
         public async Task<int> LoginAsync(string name, string password)
@@ -325,32 +278,34 @@ namespace Rebus.Server
 
                     async Task<HexPoint> getLocationAsync()
                     {
-                        PriorityQueue<HexPoint, int> locations = new PriorityQueue<HexPoint, int>();
-
-                        foreach (HexPoint location in range)
+                        if (range.Count == 0)
                         {
-                            if (_map.TryGetLayers(location, out IReadOnlyList<int>? layers) && layers.Count != Depths.Star)
-                            {
-                                int priority = await zones.CountAsync(x => x.Q == location.Q && x.R == location.R);
-
-                                if (priority == 0)
-                                {
-                                    return location;
-                                }
-                                else
-                                {
-                                    locations.Enqueue(location, priority);
-                                }
-                            }
-                        }
-
-                        if (locations.Count > 0)
-                        {
-                            return locations.Dequeue();
+                            throw new InvalidOperationException();
                         }
                         else
                         {
-                            throw new InvalidOperationException();
+                            HexPoint minLocation = HexPoint.Empty;
+                            int minPriority = int.MaxValue;
+
+                            foreach (HexPoint location in range)
+                            {
+                                if (_map.TryGetLayers(location, out IReadOnlyList<int>? layers) && layers.Count != Depths.Star)
+                                {
+                                    int priority = await zones.CountAsync(x => x.Q == location.Q && x.R == location.R);
+
+                                    if (priority == 0)
+                                    {
+                                        return location;
+                                    }
+                                    else if (priority < minPriority)
+                                    {
+                                        minLocation = location;
+                                        minPriority = priority;
+                                    }
+                                }
+                            }
+
+                            return minLocation;
                         }
                     }
                 }

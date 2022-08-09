@@ -31,7 +31,12 @@ namespace Rebus
         [Key(6)]
         public IReadOnlyCollection<HexPoint> Neighbors { get; }
 
-        public ZoneInfo(HexPoint location, int playerId, string? name, Biome biome, IReadOnlyList<int> layers, IReadOnlyCollection<Unit> units, IReadOnlyCollection<HexPoint> neighbors)
+        [Key(7)]
+        public ICollection<Arguments> Arguments { get; }
+
+        public ZoneInfo(HexPoint location, int playerId, string? name, Biome biome, IReadOnlyList<int> layers, IReadOnlyCollection<Unit> units, IReadOnlyCollection<HexPoint> neighbors) : this(location, playerId, name, biome, layers, units, neighbors, new HashSet<Arguments>()) { }
+
+        public ZoneInfo(HexPoint location, int playerId, string? name, Biome biome, IReadOnlyList<int> layers, IReadOnlyCollection<Unit> units, IReadOnlyCollection<HexPoint> neighbors, ICollection<Arguments> arguments)
         {
             Location = location;
             Name = name;
@@ -40,6 +45,7 @@ namespace Rebus
             PlayerId = playerId;
             Units = units;
             Neighbors = neighbors;
+            Arguments = arguments;
         }
     }
 }

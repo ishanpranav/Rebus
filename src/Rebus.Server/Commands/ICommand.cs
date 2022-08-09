@@ -2,8 +2,8 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using Rebus.Server.ExecutionContexts;
 
 namespace Rebus.Server.Commands
 {
@@ -12,7 +12,5 @@ namespace Rebus.Server.Commands
         CommandType Type { get; }
 
         Task ExecuteAsync(ExecutionContext context);
-
-        IEnumerable<HexPoint> GetDestinations(ZoneInfo source, IReadOnlyDictionary<HexPoint, ZoneInfo> zones);
     }
 }

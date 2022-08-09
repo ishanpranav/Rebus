@@ -41,7 +41,7 @@ namespace Rebus
         }
 
         [Key(3)]
-        public int CargoMass { get; set; }
+        public int Commodity { get; set; }
 
         public bool Equals(Unit? other)
         {

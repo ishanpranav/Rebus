@@ -17,7 +17,6 @@ namespace Rebus
         Task<User> GetUserAsync(int userId);
         Task<Economy?> GetEconomyAsync(int playerId, HexPoint location);
         IAsyncEnumerable<ZoneInfo> GetZonesAsync(int playerId);
-        IAsyncEnumerable<HexPoint> GetDestinationsAsync(int playerId, CommandType type, ZoneInfo source);
 
         Task<CommandResponse> ExecuteAsync(CommandRequest request);
     }

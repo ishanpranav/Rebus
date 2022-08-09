@@ -2,8 +2,8 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using Rebus.Server.ExecutionContexts;
 
 namespace Rebus.Server.Commands
 {
@@ -21,13 +21,8 @@ namespace Rebus.Server.Commands
         {
             await foreach (Unit unit in context.GetUnitsAsync())
             {
-                unit.CargoMass = 0;
+                unit.Commodity = 0;
             }
-        }
-
-        public IEnumerable<HexPoint> GetDestinations(ZoneInfo source, IReadOnlyDictionary<HexPoint, ZoneInfo> zones)
-        {
-            yield return source.Location;
         }
     }
 }
