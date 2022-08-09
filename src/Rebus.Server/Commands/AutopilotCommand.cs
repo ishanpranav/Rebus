@@ -48,7 +48,7 @@ namespace Rebus.Server.Commands
                         }
                     }
 
-                    context.Player.Location = context.Destination;
+                    context.User.Location = context.Destination;
                 }
             }
         }

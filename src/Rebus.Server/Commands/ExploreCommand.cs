@@ -29,7 +29,7 @@ namespace Rebus.Server.Commands
                 {
                     destination = new Zone()
                     {
-                        Player = context.Player,
+                        Player = context.User.Player,
                         Location = context.Destination
                     };
                 }

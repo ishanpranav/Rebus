@@ -45,13 +45,17 @@ namespace Rebus.Client.Windows
         public CultureInfo? Culture { get; set; }
 
         [Browsable(false)]
-        public int PlayerId { get; set; }
+        public int UserId { get; set; }
 
         public void ApplyCulture()
         {
             if (Culture != null)
             {
-                CultureInfo.CurrentCulture = Culture;
+                if (!Culture.IsNeutralCulture)
+                {
+                    CultureInfo.CurrentCulture = Culture;
+                }
+
                 CultureInfo.CurrentUICulture = Culture;
             }
         }

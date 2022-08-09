@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CreditFormat" xml:space="preserve">
+    <value>Creditos: {0:c0}</value>
+  </data>
   <data name="DefeatMessage" xml:space="preserve">
     <value>Rendición</value>
   </data>
+  <data name="LicenseFormat" xml:space="preserve">
+    <value>Aviso de licencia para {0}</value>
+  </data>
   <data name="LoginErrorMessage" xml:space="preserve">
     <value>Tu nombre de usuario o contraseña son incorrectos.</value>
+  </data>
+  <data name="NoneMessage" xml:space="preserve">
+    <value>(Nada)</value>
+  </data>
+  <data name="PriceFormat" xml:space="preserve">
+    <value>{0:c0}/unidad</value>
+  </data>
+  <data name="QuantityFormat" xml:space="preserve">
+    <value>{0:n0} unidades</value>
   </data>
   <data name="RegisterErrorMessage" xml:space="preserve">
     <value>Ese nombre de usuario ya está en uso.</value>
@@ -131,9 +146,6 @@
   </data>
   <data name="WarningMessage" xml:space="preserve">
     <value>Problema</value>
-  </data>
-  <data name="WealthFormat" xml:space="preserve">
-    <value>Dinero: {0:c0}</value>
   </data>
   <data name="ZoneFormat" xml:space="preserve">
     <value>Zona {0}</value>

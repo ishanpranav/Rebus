@@ -6,7 +6,7 @@ using SkiaSharp;
 
 namespace Rebus.Client.Lenses
 {
-    public class StarLens : ILens
+    public class StarLens : Lens
     {
         private readonly CantorPairing _pairing;
 
@@ -15,11 +15,11 @@ namespace Rebus.Client.Lenses
             _pairing = pairing;
         }
 
-        public SKColor GetColor(ZoneInfo zone)
+        public override SKColor GetColor(ZoneInfo zone)
         {
             if (zone.Layers.Count >= Depths.Star)
             {
-                return Colors.Get(_pairing.Pair(zone.Layers[Depths.Constellation - 1], Depths.Layer(zone.Layers, Depths.Star)));
+                return ColorTable.Get(_pairing.Pair(zone.Layers[Depths.Constellation - 1], Depths.Layer(zone.Layers, Depths.Star)));
             }
             else
             {

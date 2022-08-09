@@ -2,7 +2,9 @@
 <!-- Licensed under the MIT License. -->
 
 # Design
-Ishan Pranav\'s REBUS is a multiplayer space trading game. Each player is either operated by a human or a computer opponent.
+Ishan Pranav\'s REBUS is a multiplayer space trading game.
+## Players
+Players are either human- or computer-operated. To balance the game, every time a human player joins, a corresponding "twin" computer opponent also joins the game. The game is not turn-based, but every every action that a human player performs prompts their twin to perform an action. Thus, the number of artificial (AI) players is equal to the number of human players and, collectively, AI-operated players progress in proportion to their human-operated counterparts.
 ## Objective
 The objective of the game is to be the largest contributor of credits (the game currency) toward a Universal Project. To achieve their objective, a player can issue orders to units (spacecraft) under their control in real time: Some execute immediately, and others are asynchronous. Players can decide to contribute any amount at any time, but all contributing players are charged simultaneously at regular intervals.[^1]
 ## Units
@@ -12,7 +14,7 @@ The game universe is a grid of hexagonal zones. In addition to an unlimited numb
 ### Exploration
 A player can order a unit to blindly explore one of up to six neighboring zones. Any information about the destination and its contents can be incomplete, unreliable, or outdated until a unit visits it.[^3] Units cannot visit stars, but can observe them from any of their neighbors.
 ### Autopilot
-If a player has previously explored a zone, they may enable the autopilot to automate a journey to it. The autopilot always travels the shortest route through non-stellar zones already visited by the player. If multiple "shortest" routes exist, then one is selected arbitrarily but deterministically. Even while autopilot is enabled, each unit visits every zone on the route before reaching its intended destination.
+If a player has previously visited a planet, they may enable the autopilot to automate a journey to it. The autopilot always travels the shortest route through non-stellar zones already visited by the player. If multiple "shortest" routes exist, then one is selected arbitrarily but deterministically. Even while autopilot is enabled, each unit visits every zone on the route before reaching its intended destination.
 ## Conflict
 A player can order a unit to retreat from future battles or to defend its zone. The player issues these orders before (but not during) a conflict. A retreat order assigns a unit a sanctuary zone - a non-stellar neighbor which the player has previously explored.
 

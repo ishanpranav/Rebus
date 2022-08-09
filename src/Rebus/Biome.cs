@@ -14,24 +14,28 @@ namespace Rebus
         public string Key { get; }
 
         [Key(0)]
-        public byte Red { get; }
+        public int Population { get; }
 
         [Key(1)]
-        public byte Green { get; }
+        public byte Red { get; }
 
         [Key(2)]
+        public byte Green { get; }
+
+        [Key(3)]
         public byte Blue { get; }
 
         [JsonConstructor]
-        public Biome(string key, byte red, byte green, byte blue)
+        public Biome(string key, int population, byte red, byte green, byte blue)
         {
             Key = key;
+            Population = population;
             Red = red;
             Green = green;
             Blue = blue;
         }
 
         [SerializationConstructor]
-        public Biome(byte red, byte green, byte blue) : this(string.Empty, red, green, blue) { }
+        public Biome(int population, byte red, byte green, byte blue) : this(string.Empty, population, red, green, blue) { }
     }
 }

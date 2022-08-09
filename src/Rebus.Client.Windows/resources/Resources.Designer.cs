@@ -88,15 +88,6 @@ namespace Rebus.Client.Windows {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (Everyone).
-        /// </summary>
-        internal static string EveryoneMessage {
-            get {
-                return ResourceManager.GetString("EveryoneMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Icon {
@@ -166,6 +157,24 @@ namespace Rebus.Client.Windows {
         internal static string OccupantVictoryFormat {
             get {
                 return ResourceManager.GetString("OccupantVictoryFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:c0}/unit.
+        /// </summary>
+        internal static string PriceFormat {
+            get {
+                return ResourceManager.GetString("PriceFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:n0} units.
+        /// </summary>
+        internal static string QuantityFormat {
+            get {
+                return ResourceManager.GetString("QuantityFormat", resourceCulture);
             }
         }
         

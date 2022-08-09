@@ -24,16 +24,16 @@ namespace Rebus.Server
             }
         }
 
-        public Player Player { get; }
+        public User User { get; }
         public IReadOnlyCollection<int> UnitIds { get; }
         public HexPoint Destination { get; set; }
         public int CommodityMass { get; }
 
-        public ExecutionContext(Controller controller, RebusDbContext dbContext, Player player, IReadOnlyCollection<int> unitIds, int commodityMass)
+        public ExecutionContext(Controller controller, RebusDbContext dbContext, User user, IReadOnlyCollection<int> unitIds, int commodityMass)
         {
             _controller = controller;
             _dbContext = dbContext;
-            Player = player;
+            User = user;
             UnitIds = unitIds;
             CommodityMass = commodityMass;
         }
@@ -48,7 +48,7 @@ namespace Rebus.Server
 
         public Task<Zone> GetDestinationAsync()
         {
-            return Database.Zones.SingleAsync(x => x.Q == Destination.Q && x.R == Destination.R && x.PlayerId == Player.Id);
+            return Database.Zones.SingleAsync(x => x.Q == Destination.Q && x.R == Destination.R && x.PlayerId == User.PlayerId);
         }
 
         public void OnConflictResolved(ConflictEventArgs e)

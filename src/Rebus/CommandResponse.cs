@@ -13,12 +13,12 @@ namespace Rebus
         public bool Modified { get; }
 
         [Key(1)]
-        public Player Player { get; }
+        public User User { get; }
 
-        public CommandResponse(bool modified, Player player)
+        public CommandResponse(bool modified, User user)
         {
             Modified = modified;
-            Player = player;
+            User = user;
         }
     }
 }

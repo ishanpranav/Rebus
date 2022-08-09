@@ -132,6 +132,9 @@
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.User.html" title="User" class="">User</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
                           </li>
                           <li class="">
@@ -168,7 +171,10 @@
                             <a href="Rebus.Client.Lenses.ConstellationLens.html" title="ConstellationLens" class="">ConstellationLens</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.Client.Lenses.ILens.html" title="ILens" class="">ILens</a>
+                            <a href="Rebus.Client.Lenses.Lens.html" title="Lens" class="">Lens</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.Lenses.PopulationLens.html" title="PopulationLens" class="">PopulationLens</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Client.Lenses.StarLens.html" title="StarLens" class="">StarLens</a>
@@ -205,21 +211,6 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="Rebus.Server.NumeralSystems.html" title="Rebus.Server.NumeralSystems" class="">Rebus.Server.NumeralSystems</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.BayerNumeralSystem.html" title="BayerNumeralSystem" class="">BayerNumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.INumeralSystem.html" title="INumeralSystem" class="">INumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.RomanNumeralSystem.html" title="RomanNumeralSystem" class="">RomanNumeralSystem</a>
                           </li>
                         </ul>  </li>
                   </ul>        </div>
@@ -277,12 +268,12 @@ public class CommandResponse</code></pre>
   
   
   <a id="Rebus_CommandResponse__ctor_" data-uid="Rebus.CommandResponse.#ctor*"></a>
-  <h4 id="Rebus_CommandResponse__ctor_System_Boolean_Rebus_Player_" data-uid="Rebus.CommandResponse.#ctor(System.Boolean,Rebus.Player)">CommandResponse(Boolean, Player)</h4>
+  <h4 id="Rebus_CommandResponse__ctor_System_Boolean_Rebus_User_" data-uid="Rebus.CommandResponse.#ctor(System.Boolean,Rebus.User)">CommandResponse(Boolean, User)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandResponse(bool modified, Player player)</code></pre>
+    <pre><code class="lang-csharp hljs">public CommandResponse(bool modified, User user)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -300,8 +291,8 @@ public class CommandResponse</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="Rebus.Player.html">Player</a></td>
-        <td><span class="parametername">player</span></td>
+        <td><a class="xref" href="Rebus.User.html">User</a></td>
+        <td><span class="parametername">user</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -336,14 +327,14 @@ public bool Modified { get; }</code></pre>
   </table>
   
   
-  <a id="Rebus_CommandResponse_Player_" data-uid="Rebus.CommandResponse.Player*"></a>
-  <h4 id="Rebus_CommandResponse_Player" data-uid="Rebus.CommandResponse.Player">Player</h4>
+  <a id="Rebus_CommandResponse_User_" data-uid="Rebus.CommandResponse.User*"></a>
+  <h4 id="Rebus_CommandResponse_User" data-uid="Rebus.CommandResponse.User">User</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Key(1)]
-public Player Player { get; }</code></pre>
+public User User { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -355,7 +346,7 @@ public Player Player { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rebus.Player.html">Player</a></td>
+        <td><a class="xref" href="Rebus.User.html">User</a></td>
         <td></td>
       </tr>
     </tbody>

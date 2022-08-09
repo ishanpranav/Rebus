@@ -53,15 +53,14 @@ namespace Rebus.Client.Windows.Forms
             this.commandComboBox = new System.Windows.Forms.ComboBox();
             this.lensGroupBox = new System.Windows.Forms.GroupBox();
             this.lensComboBox = new System.Windows.Forms.ComboBox();
-            this.myNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.economyListView = new System.Windows.Forms.ListView();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.myNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.visionPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -203,10 +202,6 @@ namespace Rebus.Client.Windows.Forms
             this.lensComboBox.SelectedIndexChanged += new System.EventHandler(this.OnLensComboBoxSelectedIndexChanged);
             this.lensComboBox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.OnLensComboBoxFormat);
             // 
-            // myNotifyIcon
-            // 
-            resources.ApplyResources(this.myNotifyIcon, "myNotifyIcon");
-            // 
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
@@ -222,7 +217,6 @@ namespace Rebus.Client.Windows.Forms
             this.economyListView.CheckBoxes = true;
             this.economyListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
-            this.columnHeader7,
             this.columnHeader5,
             this.columnHeader6});
             this.economyListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
@@ -238,10 +232,6 @@ namespace Rebus.Client.Windows.Forms
             // columnHeader4
             // 
             resources.ApplyResources(this.columnHeader4, "columnHeader4");
-            // 
-            // columnHeader7
-            // 
-            resources.ApplyResources(this.columnHeader7, "columnHeader7");
             // 
             // columnHeader5
             // 
@@ -265,6 +255,10 @@ namespace Rebus.Client.Windows.Forms
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ReadOnly = true;
             this.myToolTip.SetToolTip(this.descriptionTextBox, resources.GetString("descriptionTextBox.ToolTip"));
+            // 
+            // myNotifyIcon
+            // 
+            resources.ApplyResources(this.myNotifyIcon, "myNotifyIcon");
             // 
             // GameForm
             // 
@@ -323,7 +317,6 @@ namespace Rebus.Client.Windows.Forms
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private GroupBox groupBox3;
-        private ColumnHeader columnHeader7;
         private TextBox descriptionTextBox;
     }
 }

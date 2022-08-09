@@ -35,12 +35,6 @@
             Represents a Tracery grammar used to generate randomized strings.
             </summary>
         </member>
-        <member name="P:Tracery.Grammar.Variables">
-            <summary>
-            Gets the variables defiend by the context.
-            </summary>
-            <value>The variables defined by the context.</value>
-        </member>
         <member name="P:Tracery.Grammar.Modifiers">
             <summary>
             Gets the modifiers included in the grammar.

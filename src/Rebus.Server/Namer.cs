@@ -4,15 +4,12 @@
 
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Rebus.Server.NumeralSystems;
+using Humanizer;
 
 namespace Rebus.Server
 {
     internal sealed class Namer
     {
-        private static readonly RomanNumeralSystem s_romanNumeralSystem = new RomanNumeralSystem();
-        private static readonly BayerNumeralSystem s_bayerNumeralSystem = new BayerNumeralSystem();
-
         private readonly int _starCount;
         private readonly int _planetCount;
         private readonly Queue<string> _constellations;
@@ -59,12 +56,19 @@ namespace Rebus.Server
                     }
                     else
                     {
+                        const int maxRoman = 4000;
+
                         if (_shuffle.Random.NextDouble() < ((double)_planets.Count / _planetCount) && _planets.TryDequeue(out planetName)) { }
                         else if (tryNameStar(out string? starName))
                         {
                             int ordinal = planet + 1;
+                            string numeral;
 
-                            if (!s_romanNumeralSystem.TryGetNumeral(ordinal, out string? numeral))
+                            if (ordinal < maxRoman)
+                            {
+                                numeral = ordinal.ToRoman();
+                            }
+                            else
                             {
                                 numeral = ordinal.ToString();
                             }
@@ -74,9 +78,11 @@ namespace Rebus.Server
                         else if (_planets.TryDequeue(out planetName)) { }
                         else
                         {
-                            if (s_romanNumeralSystem.TryGetNumeral(planet + 1, out string? numeral))
+                            int ordinal = planet + 1;
+
+                            if (ordinal < maxRoman)
                             {
-                                planetName = $"{nameStar()} {numeral}";
+                                planetName = $"{nameStar()} {ordinal.ToRoman()}";
                             }
                             else
                             {
@@ -127,7 +133,7 @@ namespace Rebus.Server
                         return true;
                     }
                     else if (_shuffle.Random.NextDouble() < ((double)_stars.Count / _starCount) && _stars.TryDequeue(out starName)) { }
-                    else if (tryNameConstellation(out string? constellationName) && s_bayerNumeralSystem.TryGetNumeral(star, out string? starNumber))
+                    else if (tryNameConstellation(out string? constellationName) && tryNumberStar(star, out string? starNumber))
                     {
                         starName = $"{starNumber} {constellationName}";
                     }
@@ -140,6 +146,37 @@ namespace Rebus.Server
                     _existingStars.Add((constellation, star), starName);
 
                     return true;
+
+                    bool tryNumberStar(int value, [MaybeNullWhen(false)] out string result)
+                    {
+                        const char greekMin = '\u03b1';
+                        const char greekMax = '\u03c9';
+                        const int greekCount = greekMax - greekMin + 1;
+
+                        if (value < greekCount)
+                        {
+                            result = ((char)(greekMin + value)).ToString();
+                        }
+                        else
+                        {
+                            value -= greekCount;
+
+                            const char latinMin = 'A';
+
+                            if (value <= 'Z' - latinMin)
+                            {
+                                result = ((char)(latinMin + value)).ToString();
+                            }
+                            else
+                            {
+                                result = null;
+
+                                return false;
+                            }
+                        }
+
+                        return true;
+                    }
                 }
 
                 bool tryNameConstellation([MaybeNullWhen(false)] out string constellationName)

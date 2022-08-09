@@ -14,7 +14,7 @@ namespace Rebus
         public CommandType Type { get; }
 
         [Key(1)]
-        public int PlayerId { get; }
+        public int UserId { get; }
 
         [Key(2)]
         public IReadOnlyCollection<int> UnitIds { get; }
@@ -25,15 +25,15 @@ namespace Rebus
         [Key(4)]
         public int CommodityMass { get; }
 
-        public CommandRequest(CommandType type, int playerId, IReadOnlyCollection<int> unitIds, HexPoint destination)
+        public CommandRequest(CommandType type, int userId, IReadOnlyCollection<int> unitIds, HexPoint destination)
         {
             Type = type;
-            PlayerId = playerId;
+            UserId = userId;
             UnitIds = unitIds;
             Destination = destination;
         }
 
-        public CommandRequest(CommandType type, int playerId, IReadOnlyCollection<int> unitIds, HexPoint destination, int commodityMass) : this(type, playerId, unitIds, destination)
+        public CommandRequest(CommandType type, int userId, IReadOnlyCollection<int> unitIds, HexPoint destination, int commodityMass) : this(type, userId, unitIds, destination)
         {
             CommodityMass = commodityMass;
         }

@@ -20,6 +20,7 @@
     <None Remove="Attributes\LocalizedDescriptionAttribute.es.restext" />
     <None Remove="images\Rebus.png" />
     <None Remove="objects\credentials.json" />
+    <None Remove="resources\Strings.es.restext" />
     <None Remove="resources\Strings.restext" />
   </ItemGroup>
 
@@ -45,6 +46,7 @@
     <EmbeddedResource Include="Attributes\LocalizedDescriptionAttribute.restext" />
     <EmbeddedResource Include="Attributes\LocalizedDisplayNameAttribute.es.restext" />
     <EmbeddedResource Include="Attributes\LocalizedDisplayNameAttribute.restext" />
+    <EmbeddedResource Include="resources\Strings.es.restext" />
     <EmbeddedResource Include="resources\Strings.restext" />
   </ItemGroup>
 

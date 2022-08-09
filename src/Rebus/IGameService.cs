@@ -14,7 +14,7 @@ namespace Rebus
         event EventHandler<ConflictEventArgs> ConflictResolved;
 
         Task<Configuration> GetConfigurationAsync();
-        Task<Player> GetPlayerAsync(int playerId);
+        Task<User> GetUserAsync(int userId);
         Task<Economy?> GetEconomyAsync(int playerId, HexPoint location);
         IAsyncEnumerable<ZoneInfo> GetZonesAsync(int playerId);
         IAsyncEnumerable<HexPoint> GetDestinationsAsync(int playerId, CommandType type, ZoneInfo source);

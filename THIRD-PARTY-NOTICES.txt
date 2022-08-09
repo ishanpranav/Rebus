@@ -1325,6 +1325,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ----------------------------------------------------
 License notice for Tracery      - Apache license 2.0
 License notice for Tracery.Net  - Apache license 2.0
+License notice for Tracery.Core - Apache license 2.0
 License notice for SQLitePCLRaw - Apache license 2.0
 ----------------------------------------------------
 

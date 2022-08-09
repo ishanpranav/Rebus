@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tracery.Humanizer</name>
+    </assembly>
+    <members>
+        <member name="T:Tracery.GrammarExtensions">
+            <summary>
+            Extension methods for setting up Humanizer-based modifiers in a <see cref="T:Tracery.Grammar"/>.
+            </summary>
+        </member>
+        <member name="M:Tracery.GrammarExtensions.AddTracery(Tracery.Grammar)">
+            <summary>
+            Adds the built-in Tracery modifiers to the specified <see cref="T:Tracery.Grammar"/>.
+            </summary>
+            <param name="source">The <see cref="T:Tracery.Grammar"/> to which modifiers are added.</param>
+            <returns>The <see cref="T:Tracery.Grammar"/> so that additional calls can be chained.</returns>
+        </member>
+        <member name="M:Tracery.GrammarExtensions.AddHumanizer(Tracery.Grammar)">
+            <summary>
+            Adds the built-in Tracery modifiers to the specified <see cref="T:Tracery.Grammar"/>.
+            </summary>
+            <param name="source">The <see cref="T:Tracery.Grammar"/> to which modifiers are added.</param>
+            <returns>The <see cref="T:Tracery.Grammar"/> so that additional calls can be chained.</returns>
+        </member>
+        <member name="M:Tracery.GrammarExtensions.AddPlural(Tracery.Grammar)">
+            <summary>
+            Adds the plural modifier (<c>*.s</c> or <c>*.plural</c>) to the specified <see cref="T:Tracery.Grammar"/>.
+            </summary>
+            <param name="source">The <see cref="T:Tracery.Grammar"/> to which modifiers are added.</param>
+            <returns>The <see cref="T:Tracery.Grammar"/> so that additional calls can be chained.</returns>
+        </member>
+        <member name="M:Tracery.GrammarExtensions.AddSentenceCase(Tracery.Grammar)">
+            <summary>
+            Adds the sentence case modifier (<c>*.capitalize</c> or <c>*.sentence</c>) to the specified <see cref="T:Tracery.Grammar"/>.
+            </summary>
+            <param name="source">The <see cref="T:Tracery.Grammar"/> to which modifiers are added.</param>
+            <returns>The <see cref="T:Tracery.Grammar"/> so that additional calls can be chained.</returns>
+        </member>
+        <member name="M:Tracery.GrammarExtensions.AddTitleCase(Tracery.Grammar)">
+            <summary>
+            Adds the title case modifier (<c>*.capitalizeAll</c> or <c>*.title</c>) to the specified <see cref="T:Tracery.Grammar"/>.
+            </summary>
+            <param name="source">The <see cref="T:Tracery.Grammar"/> to which modifiers are added.</param>
+            <returns>The <see cref="T:Tracery.Grammar"/> so that additional calls can be chained.</returns>
+        </member>
+    </members>
+</doc>

@@ -34,9 +34,10 @@ namespace Rebus.Client.Windows
 
                     return result;
                 })
-                .AddSingleton<ILens, BiomeLens>()
-                .AddSingleton<ILens, ConstellationLens>()
-                .AddSingleton<ILens, StarLens>()
+                .AddSingleton<Lens, BiomeLens>()
+                .AddSingleton<Lens, ConstellationLens>()
+                .AddSingleton<Lens, PopulationLens>()
+                .AddSingleton<Lens, StarLens>()
                 .AddSingleton<JsonConverter, JsonCultureInfoConverter>()
                 .AddSingleton<JsonConverter, JsonIPAddressConverter>()
                 .AddSingleton(x =>

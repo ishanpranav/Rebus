@@ -11,11 +11,11 @@ namespace Rebus.Client
     public class ZoneVisualizer : SKDrawable
     {
         private readonly IEnumerable<ZoneInfo> _zones;
-        private readonly ILens _lens;
+        private readonly Lens _lens;
         private readonly int _playerId;
         private readonly Layout _layout;
 
-        public ZoneVisualizer(IEnumerable<ZoneInfo> zones, ILens lens, int playerId, Layout layout)
+        public ZoneVisualizer(IEnumerable<ZoneInfo> zones, Lens lens, int playerId, Layout layout)
         {
             _zones = zones;
             _lens = lens;
@@ -34,6 +34,8 @@ namespace Rebus.Client
                 TextAlign = SKTextAlign.Center
             })
             {
+                _lens.SetZones(_zones);
+
                 foreach (ZoneInfo zone in _zones)
                 {
                     paint.Color = SKColors.Black;

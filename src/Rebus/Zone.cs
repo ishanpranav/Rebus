@@ -49,7 +49,7 @@ namespace Rebus
 
         public bool Equals(Zone? other)
         {
-            return other != null && Location == other.Location;
+            return other != null && Location == other.Location && PlayerId == other.PlayerId;
         }
 
         public override bool Equals(object? obj)
@@ -59,7 +59,12 @@ namespace Rebus
 
         public override int GetHashCode()
         {
-            return Location.GetHashCode();
+            HashCode result = new HashCode();
+
+            result.Add(Location);
+            result.Add(PlayerId);
+
+            return result.ToHashCode();
         }
     }
 }

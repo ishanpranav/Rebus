@@ -4,57 +4,63 @@
 {
   "biomes": [
     {
-      "blue": 0,
-      "green": 0,
-      "key": "#none#",
-      "red": 0
+      "key": "#biome-none#",
+      "population": -1
     },
     {
       "blue": 255,
       "green": 255,
-      "key": "#stellar#",
+      "key": "#biome-stellar#",
+      "population": 2147483647,
       "red": 255
     },
     {
       "blue": 34,
       "green": 139,
-      "key": "#forested#",
+      "key": "#biome-forested#",
+      "population": 5,
       "red": 34
     },
     {
       "blue": 19,
       "green": 69,
-      "key": "#montane#",
+      "key": "#biome-montane#",
+      "population": 5,
       "red": 139
     },
     {
       "blue": 139,
       "green": 209,
-      "key": "#deserted#",
+      "key": "#biome-deserted#",
+      "population": 2,
       "red": 209
     },
     {
       "blue": 139,
       "green": 0,
-      "key": "#marine#",
+      "key": "#biome-marine#",
+      "population": 10,
       "red": 0
     },
     {
       "blue": 255,
       "green": 255,
-      "key": "#glacial#",
+      "key": "#biome-glacial#",
+      "population": 0,
       "red": 69
     },
     {
       "blue": 0,
       "green": 69,
-      "key": "#gaseous#",
+      "key": "#biome-gaseous#",
+      "population": 1,
       "red": 255
     },
     {
       "blue": 139,
       "green": 0,
-      "key": "#urban#",
+      "key": "#biome-urban#",
+      "population": 20,
       "red": 139
     }
   ],

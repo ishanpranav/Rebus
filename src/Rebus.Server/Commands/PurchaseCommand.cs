@@ -18,7 +18,7 @@ namespace Rebus.Server.Commands
         {
             if (commodity.Quantity > 0 && unit.CargoMass == 0)
             {
-                context.Player.Credits -= commodity.Price;
+                context.User.Player.Credits -= commodity.Price;
 
                 commodity.Quantity--;
                 commodity.Price++;

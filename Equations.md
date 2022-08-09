@@ -23,7 +23,6 @@ Let $f_{c}^{n}\left(z\right)$ represent the $n$-th iterate of $f_c\left(z\right)
 $$K\left(f_c\right)=\left\\{z\in\mathbb{C}:\forall n\in\mathbb{N},|f_{c}^{n}\left(z\right)|\leq R\right\\}.$$
 
 The [Julia set](https://en.wikipedia.org/wiki/Julia_set) $J\left(f_c\right)$ of the function is the boundary of $K\left(f_c\right)$. This function comes from [Wikipedia](https://en.wikipedia.org/wiki/Julia_set#Quadratic_polynomials).
-
 ## Rebus conflict resolution system
 When a player attempts to invade a zone, the invading fleet and the defending fleet (all occupying units that did not retreat) are compared. This system is used when the two fleets do not contain the same number of units.
 

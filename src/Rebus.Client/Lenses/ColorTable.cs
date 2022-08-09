@@ -6,7 +6,7 @@ using SkiaSharp;
 
 namespace Rebus.Client.Lenses
 {
-    internal static class Colors
+    internal static class ColorTable
     {
         private static readonly double[,] s_colors = new double[,]
         {

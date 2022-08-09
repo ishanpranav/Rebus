@@ -12,28 +12,18 @@ namespace Rebus
     [Index(nameof(Q), nameof(R), nameof(Mass), IsUnique = true)]
     [MessagePackObject]
     [Table(nameof(Commodity))]
-    public class Commodity
+    public class Commodity : IComparable, IComparable<Commodity>
     {
         [IgnoreMember]
         public int Id { get; set; }
 
         [Key(0)]
-        [NotMapped]
-        public string Name
-        {
-            get
-            {
-                return Mass.ToString();
-            }
-        }
-
-        [Key(1)]
         public int Mass { get; set; }
 
-        [Key(2)]
+        [Key(1)]
         public int Price { get; set; }
 
-        [Key(3)]
+        [Key(2)]
         public int Quantity { get; set; }
 
         [IgnoreMember]
@@ -54,6 +44,30 @@ namespace Rebus
             {
                 Q = value.Q;
                 R = value.R;
+            }
+        }
+
+        public int CompareTo(object? obj)
+        {
+            if (obj is HexPoint other)
+            {
+                return CompareTo(other);
+            }
+            else
+            {
+                throw new ArgumentException("Argument is not a Commodity instance.", nameof(obj));
+            }
+        }
+
+        public int CompareTo(Commodity? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return Mass.CompareTo(other.Mass);
             }
         }
     }

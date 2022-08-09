@@ -132,6 +132,9 @@
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.User.html" title="User" class="">User</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
                           </li>
                           <li class="">
@@ -168,7 +171,10 @@
                             <a href="Rebus.Client.Lenses.ConstellationLens.html" title="ConstellationLens" class="">ConstellationLens</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.Client.Lenses.ILens.html" title="ILens" class="">ILens</a>
+                            <a href="Rebus.Client.Lenses.Lens.html" title="Lens" class="">Lens</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.Lenses.PopulationLens.html" title="PopulationLens" class="">PopulationLens</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Client.Lenses.StarLens.html" title="StarLens" class="">StarLens</a>
@@ -205,21 +211,6 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="Rebus.Server.NumeralSystems.html" title="Rebus.Server.NumeralSystems" class="">Rebus.Server.NumeralSystems</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.BayerNumeralSystem.html" title="BayerNumeralSystem" class="">BayerNumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.INumeralSystem.html" title="INumeralSystem" class="">INumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.RomanNumeralSystem.html" title="RomanNumeralSystem" class="">RomanNumeralSystem</a>
                           </li>
                         </ul>  </li>
                   </ul>        </div>
@@ -282,7 +273,7 @@ public class CommandRequest</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandRequest(CommandType type, int playerId, IReadOnlyCollection&lt;int&gt; unitIds, HexPoint destination)</code></pre>
+    <pre><code class="lang-csharp hljs">public CommandRequest(CommandType type, int userId, IReadOnlyCollection&lt;int&gt; unitIds, HexPoint destination)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -301,7 +292,7 @@ public class CommandRequest</code></pre>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">playerId</span></td>
+        <td><span class="parametername">userId</span></td>
         <td></td>
       </tr>
       <tr>
@@ -324,7 +315,7 @@ public class CommandRequest</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandRequest(CommandType type, int playerId, IReadOnlyCollection&lt;int&gt; unitIds, HexPoint destination, int commodityMass)</code></pre>
+    <pre><code class="lang-csharp hljs">public CommandRequest(CommandType type, int userId, IReadOnlyCollection&lt;int&gt; unitIds, HexPoint destination, int commodityMass)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -343,7 +334,7 @@ public class CommandRequest</code></pre>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">playerId</span></td>
+        <td><span class="parametername">userId</span></td>
         <td></td>
       </tr>
       <tr>
@@ -419,32 +410,6 @@ public HexPoint Destination { get; }</code></pre>
   </table>
   
   
-  <a id="Rebus_CommandRequest_PlayerId_" data-uid="Rebus.CommandRequest.PlayerId*"></a>
-  <h4 id="Rebus_CommandRequest_PlayerId" data-uid="Rebus.CommandRequest.PlayerId">PlayerId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(1)]
-public int PlayerId { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="Rebus_CommandRequest_Type_" data-uid="Rebus.CommandRequest.Type*"></a>
   <h4 id="Rebus_CommandRequest_Type" data-uid="Rebus.CommandRequest.Type">Type</h4>
   <div class="markdown level1 summary"></div>
@@ -491,6 +456,32 @@ public IReadOnlyCollection&lt;int&gt; UnitIds { get; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_CommandRequest_UserId_" data-uid="Rebus.CommandRequest.UserId*"></a>
+  <h4 id="Rebus_CommandRequest_UserId" data-uid="Rebus.CommandRequest.UserId">UserId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Key(1)]
+public int UserId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>

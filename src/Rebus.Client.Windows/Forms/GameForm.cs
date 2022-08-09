@@ -21,7 +21,7 @@ namespace Rebus.Client.Windows.Forms
     {
         private static readonly ResourceManager s_resourceManager = new(baseName: "Rebus.Client.Windows.resources.Strings", typeof(GameForm).Assembly);
 
-        private readonly IEnumerable<ILens> _lenses;
+        private readonly IEnumerable<Lens> _lenses;
         private readonly Credentials _credentials;
         private readonly RpcClient _client = new RpcClient();
         private readonly Dictionary<HexPoint, ZoneInfo> _zones = new Dictionary<HexPoint, ZoneInfo>();
@@ -31,10 +31,10 @@ namespace Rebus.Client.Windows.Forms
         private GraphicsEngine _graphicsEngine;
         private IGameService _service;
         private Layout _layout;
-        private Player _player;
+        private User _user;
 #nullable enable
 
-        public GameForm(IEnumerable<ILens> lenses, Credentials credentials)
+        public GameForm(IEnumerable<Lens> lenses, Credentials credentials)
         {
             InitializeComponent();
 
@@ -47,19 +47,17 @@ namespace Rebus.Client.Windows.Forms
         {
             myNotifyIcon.Icon = Resources.Icon;
 
-            usernameToolStripLabel.Text = _credentials.Username;
-
             _service = await _client.CreateAsync<IGameService>(_credentials.IPAddress, _credentials.Port);
 
             _service.ConflictResolved += onConflictResolved;
 
             async void onConflictResolved(object? sender, ConflictEventArgs e)
             {
-                if (e.Occupant.Username.Equals(_credentials.Username, StringComparison.OrdinalIgnoreCase))
+                if (e.Occupant.Username.Equals(_user.Player.Name, StringComparison.OrdinalIgnoreCase))
                 {
                     await Invoke(async () =>
                     {
-                        _player = await _service.GetPlayerAsync(_credentials.PlayerId);
+                        _user = await _service.GetUserAsync(_credentials.UserId);
 
                         await DrawAsync();
 
@@ -73,7 +71,7 @@ namespace Rebus.Client.Windows.Forms
                         }
                     });
                 }
-                else if (e.Invader.Username.Equals(_credentials.Username, StringComparison.OrdinalIgnoreCase))
+                else if (e.Invader.Username.Equals(_user.Player.Name, StringComparison.OrdinalIgnoreCase))
                 {
                     if (e.InvasionSucceeded)
                     {
@@ -105,11 +103,13 @@ namespace Rebus.Client.Windows.Forms
                 HexagonHeight = hexagonSize
             };
 
-            _player = await _service.GetPlayerAsync(_credentials.PlayerId);
+            _user = await _service.GetUserAsync(_credentials.UserId);
+
+            usernameToolStripLabel.Text = _user.Player.Name;
 
             await RequestZonesAsync();
 
-            foreach (ILens lens in _lenses)
+            foreach (Lens lens in _lenses)
             {
                 lensComboBox.Items.Add(lens);
             }
@@ -137,13 +137,13 @@ namespace Rebus.Client.Windows.Forms
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
         private async void OnVisionPictureBoxMouseClick(object sender, MouseEventArgs e)
         {
-            _player.Location = _layout.GetHexPoint(e.Location.X, e.Location.Y);
+            _user.Location = _layout.GetHexPoint(e.Location.X, e.Location.Y);
 
             await RequestUnitsAsync();
 
-            myToolTip.ToolTipTitle = GetName(_player.Location);
+            myToolTip.ToolTipTitle = GetLocationName(_user.Location);
 
-            myToolTip.Show(_player.Location.ToString(), visionPictureBox, e.Location);
+            myToolTip.Show(_user.Location.ToString(), visionPictureBox, e.Location);
         }
 
         private async Task DrawAsync()
@@ -160,16 +160,15 @@ namespace Rebus.Client.Windows.Forms
             unitListView.Items.Clear();
             descriptionTextBox.Clear();
 
-            if (_zones.TryGetValue(_player.Location, out ZoneInfo? zone) && zone.Units.Count > 0 && zone.PlayerId == _credentials.PlayerId)
+            if (_zones.TryGetValue(_user.Location, out ZoneInfo? zone) && zone.Units.Count > 0 && zone.PlayerId == _user.Player.Id)
             {
                 foreach (Unit unit in zone.Units)
                 {
                     string sanctuary;
-                    string cargo = unit.CargoMass.ToString();
 
                     if (unit.SanctuaryLocation.HasValue)
                     {
-                        sanctuary = GetName(unit.SanctuaryLocation.Value);
+                        sanctuary = GetLocationName(unit.SanctuaryLocation.Value);
                     }
                     else
                     {
@@ -180,7 +179,7 @@ namespace Rebus.Client.Windows.Forms
                     {
                         unit.Name,
                         sanctuary,
-                        cargo
+                        GetCommodityName(unit.CargoMass)
                     })
                     {
                         Checked = true,
@@ -189,10 +188,19 @@ namespace Rebus.Client.Windows.Forms
                     });
                 }
             }
+            else
+            {
+                commandComboBox.SelectedItem = CommandType.Autopilot;
+
+                if (destinationComboBox.Items.Contains(_user.Location))
+                {
+                    destinationComboBox.SelectedItem = _user.Location;
+                }
+            }
 
             economyListView.Items.Clear();
 
-            Economy? economy = await _service.GetEconomyAsync(_credentials.PlayerId, _player.Location);
+            Economy? economy = await _service.GetEconomyAsync(_user.Player.Id, _user.Location);
 
             if (economy != null)
             {
@@ -200,31 +208,32 @@ namespace Rebus.Client.Windows.Forms
                 {
                     if (commodity.Quantity < 0)
                     {
-                        add(group: 0, -commodity.Quantity, commodity);
+                        add(group: 0, -commodity.Quantity);
                     }
                     else
                     {
-                        add(group: 1, commodity.Quantity, commodity);
+                        add(group: 1, commodity.Quantity);
+                    }
+
+                    void add(int group, int quantity)
+                    {
+                        string name = GetCommodityName(commodity.Mass);
+
+                        economyListView.Items.Add(new ListViewItem(new string[]
+                        {
+                            name,
+                            string.Format(Resources.PriceFormat, commodity.Price),
+                            string.Format(Resources.QuantityFormat, quantity)
+                        })
+                        {
+                            Group = economyListView.Groups[group],
+                            Text = name,
+                            Tag = commodity.Mass
+                        });
                     }
                 }
 
                 descriptionTextBox.Text = economy.Description;
-
-                void add(int group, int quantity, Commodity commodity)
-                {
-                    economyListView.Items.Add(new ListViewItem(new string[]
-                    {
-                        commodity.Name,
-                        commodity.Mass.ToString(),
-                        commodity.Price.ToString(),
-                        quantity.ToString()
-                    })
-                    {
-                        Group = economyListView.Groups[group],
-                        Text = commodity.Name,
-                        Tag = commodity.Mass
-                    });
-                }
             }
 
             await RequestDestinationsAsync();
@@ -234,7 +243,7 @@ namespace Rebus.Client.Windows.Forms
         {
             _zones.Clear();
 
-            await foreach (ZoneInfo zone in _service.GetZonesAsync(_credentials.PlayerId))
+            await foreach (ZoneInfo zone in _service.GetZonesAsync(_user.Player.Id))
             {
                 _zones.Add(zone.Location, zone);
             }
@@ -242,13 +251,13 @@ namespace Rebus.Client.Windows.Forms
 
         private void DrawZones()
         {
-            creditsToolStripLabel.Text = string.Format(Resources.CreditFormat, _player.Credits);
+            creditsToolStripLabel.Text = string.Format(Resources.CreditFormat, _user.Player.Credits);
 
             visionPictureBox.Image?.Dispose();
 
             using (MemoryStream memoryStream = new MemoryStream())
             using (SKManagedWStream output = new SKManagedWStream(memoryStream))
-            using (ZoneVisualizer drawable = new ZoneVisualizer(_zones.Values, (ILens)lensComboBox.SelectedItem, _credentials.PlayerId, _layout))
+            using (ZoneVisualizer drawable = new ZoneVisualizer(_zones.Values, (Lens)lensComboBox.SelectedItem, _user.Player.Id, _layout))
             {
                 _graphicsEngine.Draw(output, SKEncodedImageFormat.Png, drawable);
 
@@ -260,7 +269,19 @@ namespace Rebus.Client.Windows.Forms
             visionPictureBox.Refresh();
         }
 
-        private string GetName(HexPoint location)
+        private static string GetCommodityName(int mass)
+        {
+            if (mass == 0)
+            {
+                return Resources.NoneMessage;
+            }
+            else
+            {
+                return s_resourceManager.GetString($"Element{mass}") ?? mass.ToString();
+            }
+        }
+
+        private string GetLocationName(HexPoint location)
         {
             if (_zones.TryGetValue(location, out ZoneInfo? zone) && zone.Name != null)
             {
@@ -280,30 +301,28 @@ namespace Rebus.Client.Windows.Forms
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
         private async void OnSubmitButtonClick(object sender, System.EventArgs e)
         {
-            if (unitListView.CheckedItems.Count > 0)
+            if (unitListView.CheckedItems.Count > 0 && commandComboBox.SelectedItem is CommandType type && destinationComboBox.SelectedItem is HexPoint destination)
             {
-                CommandRequest request;
-                CommandType type = (CommandType)commandComboBox.SelectedItem;
                 HashSet<int> unitIds = unitListView.CheckedItems
                     .Cast<ListViewItem>()
                     .Select(x => (int)x.Tag)
                     .ToHashSet();
-                HexPoint destination = (HexPoint)destinationComboBox.SelectedItem;
+                CommandRequest request;
 
                 if (economyListView.CheckedItems.Count == 1)
                 {
-                    request = new CommandRequest(type, _credentials.PlayerId, unitIds, destination, (int)economyListView.CheckedItems[0].Tag);
+                    request = new CommandRequest(type, _credentials.UserId, unitIds, destination, (int)economyListView.CheckedItems[0].Tag);
                 }
                 else
                 {
-                    request = new CommandRequest(type, _credentials.PlayerId, unitIds, destination);
+                    request = new CommandRequest(type, _credentials.UserId, unitIds, destination);
                 }
 
                 CommandResponse response = await _service.ExecuteAsync(request);
 
                 if (response.Modified)
                 {
-                    _player = response.Player;
+                    _user = response.User;
 
                     await DrawAsync();
                 }
@@ -316,9 +335,9 @@ namespace Rebus.Client.Windows.Forms
 
             destinationComboBox.Items.Clear();
 
-            if (_zones.TryGetValue(_player.Location, out ZoneInfo? source) && commandComboBox.SelectedItem is CommandType type)
+            if (_zones.TryGetValue(_user.Location, out ZoneInfo? source) && commandComboBox.SelectedItem is CommandType type)
             {
-                await foreach (HexPoint destination in _service.GetDestinationsAsync(_credentials.PlayerId, type, source))
+                await foreach (HexPoint destination in _service.GetDestinationsAsync(_user.Player.Id, type, source))
                 {
                     destinationComboBox.Items.Add(destination);
                 }
@@ -344,7 +363,7 @@ namespace Rebus.Client.Windows.Forms
         {
             if (e.DesiredType == typeof(string) && e.ListItem is HexPoint destination)
             {
-                e.Value = GetName(destination);
+                e.Value = GetLocationName(destination);
             }
         }
 

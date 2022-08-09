@@ -3,6 +3,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -58,8 +59,18 @@ namespace Rebus.Server
                 .AddSingleton(x =>
                 {
                     StringCollectionLoader loader = x.GetRequiredService<StringCollectionLoader>();
+                    Namer namer = new Namer(x.GetRequiredService<FisherYatesShuffle>(), loader.Load(key: "Constellations"), loader.Load(key: "Stars"), loader.Load(key: "Planets"));
+                    Map map = x.GetRequiredService<Map>();
 
-                    return new Namer(x.GetRequiredService<FisherYatesShuffle>(), loader.Load(key: "Constellations"), loader.Load(key: "Stars"), loader.Load(key: "Planets"));
+                    foreach (HexPoint location in map.Origin.Spiral(map.Radius))
+                    {
+                        if (map.TryGetLayers(location, out IReadOnlyList<int>? layers))
+                        {
+                            namer.Name(layers);
+                        }
+                    }
+
+                    return namer;
                 })
                 .AddSingleton(x => new Random(x.GetRequiredService<Table>().Seed))
                 .AddSingleton(x =>
@@ -98,7 +109,7 @@ namespace Rebus.Server
 
                 serviceProvider
                    .GetRequiredService<RpcListener>()
-                   .Start();
+                               .Start();
             }
         }
     }

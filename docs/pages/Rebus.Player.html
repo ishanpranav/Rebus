@@ -132,6 +132,9 @@
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.User.html" title="User" class="">User</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
                           </li>
                           <li class="">
@@ -168,7 +171,10 @@
                             <a href="Rebus.Client.Lenses.ConstellationLens.html" title="ConstellationLens" class="">ConstellationLens</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.Client.Lenses.ILens.html" title="ILens" class="">ILens</a>
+                            <a href="Rebus.Client.Lenses.Lens.html" title="Lens" class="">Lens</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Client.Lenses.PopulationLens.html" title="PopulationLens" class="">PopulationLens</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Client.Lenses.StarLens.html" title="StarLens" class="">StarLens</a>
@@ -205,21 +211,6 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="Rebus.Server.NumeralSystems.html" title="Rebus.Server.NumeralSystems" class="">Rebus.Server.NumeralSystems</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.BayerNumeralSystem.html" title="BayerNumeralSystem" class="">BayerNumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.INumeralSystem.html" title="INumeralSystem" class="">INumeralSystem</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.NumeralSystems.RomanNumeralSystem.html" title="RomanNumeralSystem" class="">RomanNumeralSystem</a>
                           </li>
                         </ul>  </li>
                   </ul>        </div>
@@ -269,7 +260,7 @@
   <h6><strong>Assembly</strong>: Rebus.dll</h6>
   <h5 id="Rebus_Player_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Index(new string[]{&quot;Username&quot;}, IsUnique = true)]
+    <pre><code class="lang-csharp hljs">[Index(new string[]{&quot;Name&quot;}, IsUnique = true)]
 [MessagePackObject(false)]
 [Table(&quot;Player&quot;)]
 public class Player</code></pre>
@@ -284,7 +275,7 @@ public class Player</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Key(0)]
+    <pre><code class="lang-csharp hljs">[Key(2)]
 public int Credits { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -310,7 +301,7 @@ public int Credits { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreMember]
+    <pre><code class="lang-csharp hljs">[Key(0)]
 public int Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -330,119 +321,14 @@ public int Id { get; set; }</code></pre>
   </table>
   
   
-  <a id="Rebus_Player_Location_" data-uid="Rebus.Player.Location*"></a>
-  <h4 id="Rebus_Player_Location" data-uid="Rebus.Player.Location">Location</h4>
+  <a id="Rebus_Player_Name_" data-uid="Rebus.Player.Name*"></a>
+  <h4 id="Rebus_Player_Name" data-uid="Rebus.Player.Name">Name</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Key(1)]
-[NotMapped]
-public HexPoint Location { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Player_Password_" data-uid="Rebus.Player.Password*"></a>
-  <h4 id="Rebus_Player_Password" data-uid="Rebus.Player.Password">Password</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreMember]
-public string Password { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Player_Q_" data-uid="Rebus.Player.Q*"></a>
-  <h4 id="Rebus_Player_Q" data-uid="Rebus.Player.Q">Q</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreMember]
-public int Q { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Player_R_" data-uid="Rebus.Player.R*"></a>
-  <h4 id="Rebus_Player_R" data-uid="Rebus.Player.R">R</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreMember]
-public int R { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Player_Username_" data-uid="Rebus.Player.Username*"></a>
-  <h4 id="Rebus_Player_Username" data-uid="Rebus.Player.Username">Username</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreMember]
-public string Username { get; set; }</code></pre>
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

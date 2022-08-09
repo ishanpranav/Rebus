@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class JuliaSet
+    <title>Class User
    | Ishan Pranav's REBUS </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class JuliaSet
+    <meta name="title" content="Class User
    | Ishan Pranav's REBUS ">
     <meta name="generator" content="docfx 2.59.3.0">
     
@@ -131,8 +131,8 @@
                           <li class="">
                             <a href="Rebus.Unit.html" title="Unit" class="">Unit</a>
                           </li>
-                          <li class="">
-                            <a href="Rebus.User.html" title="User" class="">User</a>
+                          <li class="active">
+                            <a href="Rebus.User.html" title="User" class="active">User</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Zone.html" title="Zone" class="">Zone</a>
@@ -200,8 +200,8 @@
                           <li class="">
                             <a href="Rebus.Server.FisherYatesShuffle.html" title="FisherYatesShuffle" class="">FisherYatesShuffle</a>
                           </li>
-                          <li class="active">
-                            <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="active">JuliaSet</a>
+                          <li class="">
+                            <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -220,18 +220,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Rebus.Server.JuliaSet">
+            <article class="content wrap" id="_content" data-uid="Rebus.User">
   
   
-  <h1 id="Rebus_Server_JuliaSet" data-uid="Rebus.Server.JuliaSet" class="text-break">Class JuliaSet
+  <h1 id="Rebus_User" data-uid="Rebus.User" class="text-break">Class User
   </h1>
-  <div class="markdown level0 summary"><p>Performs the Julia set function.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">JuliaSet</span></div>
+    <div class="level1"><span class="xref">User</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -257,109 +256,26 @@
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.Server.html">Rebus.Server</a></h6>
-  <h6><strong>Assembly</strong>: Rebus.Server.dll</h6>
-  <h5 id="Rebus_Server_JuliaSet_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.html">Rebus</a></h6>
+  <h6><strong>Assembly</strong>: Rebus.dll</h6>
+  <h5 id="Rebus_User_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class JuliaSet</code></pre>
+    <pre><code class="lang-csharp hljs">[MessagePackObject(false)]
+[Table(&quot;User&quot;)]
+public class User</code></pre>
   </div>
-  <h5 id="Rebus_Server_JuliaSet_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>The implementation of this class was inspired by and based on <a href="https://en.wikipedia.org/wiki/Julia_set">this</a> Wikipedia article.</p>
-</div>
-  <h3 id="constructors">Constructors
-  </h3>
-  
-  
-  <a id="Rebus_Server_JuliaSet__ctor_" data-uid="Rebus.Server.JuliaSet.#ctor*"></a>
-  <h4 id="Rebus_Server_JuliaSet__ctor_System_Numerics_Complex_System_Double_" data-uid="Rebus.Server.JuliaSet.#ctor(System.Numerics.Complex,System.Double)">JuliaSet(Complex, Double)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Rebus.Server.JuliaSet.html">JuliaSet</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JuliaSet(Complex c, double r)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.complex">Complex</a></td>
-        <td><span class="parametername">c</span></td>
-        <td><p>The complex parameer <em>c</em>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">r</span></td>
-        <td><p>The escape radius <em>R</em>. The value of <em>R</em> must be greater than zero, while <em>R</em>-squared minus <em>R</em> must be greater than or equal to the magnitude of the complex parameter <em>c</em>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">r</code> is less than or equal to zero.</p>
-<p>-or-</p>
-<p><code data-dev-comment-type="paramref" class="paramref">r</code>-squared minus <code data-dev-comment-type="paramref" class="paramref">r</code> is less than the magnitude of <code data-dev-comment-type="paramref" class="paramref">c</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
   </h3>
   
   
-  <a id="Rebus_Server_JuliaSet_C_" data-uid="Rebus.Server.JuliaSet.C*"></a>
-  <h4 id="Rebus_Server_JuliaSet_C" data-uid="Rebus.Server.JuliaSet.C">C</h4>
-  <div class="markdown level1 summary"><p>Gets the complex parameter <em>c</em>.</p>
-</div>
+  <a id="Rebus_User_Id_" data-uid="Rebus.User.Id*"></a>
+  <h4 id="Rebus_User_Id" data-uid="Rebus.User.Id">Id</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Complex C { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.complex">Complex</a></td>
-        <td><p>The complex parameter <em>c</em>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Server_JuliaSet_MaxIterations_" data-uid="Rebus.Server.JuliaSet.MaxIterations*"></a>
-  <h4 id="Rebus_Server_JuliaSet_MaxIterations" data-uid="Rebus.Server.JuliaSet.MaxIterations">MaxIterations</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the maximum number of iterations.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxIterations { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -372,21 +288,21 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><p>The maximum number of iterations. The default is 100.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Rebus_Server_JuliaSet_R_" data-uid="Rebus.Server.JuliaSet.R*"></a>
-  <h4 id="Rebus_Server_JuliaSet_R" data-uid="Rebus.Server.JuliaSet.R">R</h4>
-  <div class="markdown level1 summary"><p>Gets the escape radius <em>R</em>.</p>
-</div>
+  <a id="Rebus_User_Location_" data-uid="Rebus.User.Location*"></a>
+  <h4 id="Rebus_User_Location" data-uid="Rebus.User.Location">Location</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double R { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Key(0)]
+[NotMapped]
+public HexPoint Location { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -398,126 +314,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><p>The escape radius <em>R</em>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  
-  
-  <a id="Rebus_Server_JuliaSet_Julia_" data-uid="Rebus.Server.JuliaSet.Julia*"></a>
-  <h4 id="Rebus_Server_JuliaSet_Julia_System_Double_System_Double_System_Double_System_Double_" data-uid="Rebus.Server.JuliaSet.Julia(System.Double,System.Double,System.Double,System.Double)">Julia(Double, Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Performs the Julia set function.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Julia(double x, double y, double width, double height)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>The <em>x</em> coordinate of the point.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>The <em>y</em> coordinate of the point.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">width</span></td>
-        <td><p>The width of the fractal map.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">height</span></td>
-        <td><p>The height of the fractal map.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><p>The intensity of the point.</p>
-</td>
+        <td><a class="xref" href="Rebus.HexPoint.html">HexPoint</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Rebus_Server_JuliaSet_Julia_" data-uid="Rebus.Server.JuliaSet.Julia*"></a>
-  <h4 id="Rebus_Server_JuliaSet_Julia_System_Double_System_Double_System_Double_System_Double_System_Double_" data-uid="Rebus.Server.JuliaSet.Julia(System.Double,System.Double,System.Double,System.Double,System.Double)">Julia(Double, Double, Double, Double, Double)</h4>
+  <a id="Rebus_User_Password_" data-uid="Rebus.User.Password*"></a>
+  <h4 id="Rebus_User_Password" data-uid="Rebus.User.Password">Password</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Julia(double x, double y, double width, double height, double zoom)</code></pre>
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public string Password { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">width</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">height</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">zoom</span></td>
-        <td><p>The zoom factor of the fractal map.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -527,15 +340,167 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><span><a href="https://en.wikipedia.org/wiki/Julia_set">Julia set - Wikipedia</a></span></div>
+  
+  
+  <a id="Rebus_User_Player_" data-uid="Rebus.User.Player*"></a>
+  <h4 id="Rebus_User_Player" data-uid="Rebus.User.Player">Player</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Key(1)]
+public Player Player { get; set; }</code></pre>
   </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_User_PlayerId_" data-uid="Rebus.User.PlayerId*"></a>
+  <h4 id="Rebus_User_PlayerId" data-uid="Rebus.User.PlayerId">PlayerId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int PlayerId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_User_Q_" data-uid="Rebus.User.Q*"></a>
+  <h4 id="Rebus_User_Q" data-uid="Rebus.User.Q">Q</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int Q { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_User_R_" data-uid="Rebus.User.R*"></a>
+  <h4 id="Rebus_User_R" data-uid="Rebus.User.R">R</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int R { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_User_Twin_" data-uid="Rebus.User.Twin*"></a>
+  <h4 id="Rebus_User_Twin" data-uid="Rebus.User.Twin">Twin</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public Player Twin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rebus.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rebus_User_TwinId_" data-uid="Rebus.User.TwinId*"></a>
+  <h4 id="Rebus_User_TwinId" data-uid="Rebus.User.TwinId">TwinId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[IgnoreMember]
+public int TwinId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           

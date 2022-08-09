@@ -14,6 +14,7 @@ namespace Rebus.Server
         public DbSet<Commodity> Commodities { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Zone> Zones { get; set; }
 #nullable enable
 
@@ -37,7 +38,7 @@ namespace Rebus.Server
             {
                 modelBuilder
                     .Entity<Player>()
-                    .Property(x => x.Username)
+                    .Property(x => x.Name)
                     .UseCollation(IgnoreCaseCollation);
 
                 modelBuilder

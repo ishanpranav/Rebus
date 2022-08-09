@@ -6,13 +6,13 @@ using SkiaSharp;
 
 namespace Rebus.Client.Lenses
 {
-    public class ConstellationLens : ILens
+    public class ConstellationLens : Lens
     {
-        public SKColor GetColor(ZoneInfo zone)
+        public override SKColor GetColor(ZoneInfo zone)
         {
             if (zone.Layers.Count >= Depths.Constellation)
             {
-                return Colors.Get(zone.Layers[Depths.Constellation - 1]);
+                return ColorTable.Get(zone.Layers[Depths.Constellation - 1]);
             }
             else
             {

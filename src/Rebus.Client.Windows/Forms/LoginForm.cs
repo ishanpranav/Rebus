@@ -52,22 +52,14 @@ namespace Rebus.Client.Windows.Forms
 
                             if (isLogin)
                             {
-                                _credentials.PlayerId = await service.LoginAsync(_credentials.Username, _credentials.Password);
+                                _credentials.UserId = await service.LoginAsync(_credentials.Username, _credentials.Password);
                             }
                             else
                             {
-                                _credentials.PlayerId = await service.RegisterAsync(_credentials.Username, _credentials.Password);
+                                _credentials.UserId = await service.RegisterAsync(_credentials.Username, _credentials.Password);
                             }
 
-                            if (_credentials.PlayerId != default)
-                            {
-                                Hide();
-
-                                _serviceProvider
-                                    .GetRequiredService<GameForm>()
-                                    .Show();
-                            }
-                            else
+                            if (_credentials.UserId == default)
                             {
                                 string errorMessage;
 
@@ -81,6 +73,14 @@ namespace Rebus.Client.Windows.Forms
                                 }
 
                                 MessageBox.Show(errorMessage, Resources.WarningMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                Hide();
+
+                                _serviceProvider
+                                    .GetRequiredService<GameForm>()
+                                    .Show();
                             }
                         }
                     }
