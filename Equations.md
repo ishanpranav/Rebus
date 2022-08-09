@@ -11,6 +11,14 @@ $$\pi\left(k_1,k_2\right)=\frac{\left(k_1+k_2\right)\left(k_1+k_2+1\right)}{2}+k
 $$\pi\left(k_1,k_2\right)=\frac{k_{1}^{2}+k_1+2k_1k_2+3k_2+k_{2}^{2}}{2}.$$
 
 This function comes from [Wikipedia](https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function).
+## Cubic coordinate system
+Let each hex-point be a vector with three components, $Q$, $R$, and $S$, such that
+
+$$ Q + R + S = 0, $$
+
+$$ S = -Q - R. $$
+
+This function comes from [Amit Patel\'s Red Blob Games](https://www.redblobgames.com/grids/hexagons/#coordinates).
 ## Julia set function
 Define a complex polynomial with a complex argument $c$:
 
@@ -26,7 +34,7 @@ The [Julia set](https://en.wikipedia.org/wiki/Julia_set) $J\left(f_c\right)$ of 
 ## Rebus conflict resolution system
 When a player attempts to invade a zone, the invading fleet and the defending fleet (all occupying units that did not retreat) are compared. This system is used when the two fleets do not contain the same number of units.
 
-Let $i_0$ be the initial size of the smaller (minor) fleet. The number of units captured by the larger fleet ($c$) is
+Let $i_0$ be the initial size of the smaller (minor) fleet. The number of units $c$ captured by the larger fleet is
 
 $$c=\max\left(1,\frac{i_0}{4}\right).$$
 
