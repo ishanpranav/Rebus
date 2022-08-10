@@ -11,6 +11,7 @@
     <Version>1.0.0</Version>
     <UserSecretsId>cae9e92a-960e-49fc-92e8-bc8be7c5f66d</UserSecretsId>
     <OutputType>Exe</OutputType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <StartupObject>Rebus.Server.Program</StartupObject>
   </PropertyGroup>
 

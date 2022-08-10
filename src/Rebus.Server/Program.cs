@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,8 +57,7 @@ namespace Rebus.Server
                 .AddSingleton<IReadOnlyDictionary<CommandType, ICommand>>(x => x
                     .GetServices<ICommand>()
                     .ToDictionary(x => x.Type))
-                .AddSingleton<JsonConverter, JsonComplexConverter>()
-                .AddSingleton<JsonConverter, JsonIPAddressConverter>()
+                .AddSingleton<JsonConverter, IPAddressConverter>()
                 .AddSingleton(x =>
                 {
                     StringCollectionLoader loader = x.GetRequiredService<StringCollectionLoader>();

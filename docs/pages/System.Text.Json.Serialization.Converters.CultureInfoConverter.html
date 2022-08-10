@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NegativeExponentialRandom
+    <title>Class CultureInfoConverter
    | Ishan Pranav's REBUS </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NegativeExponentialRandom
+    <meta name="title" content="Class CultureInfoConverter
    | Ishan Pranav's REBUS ">
     <meta name="generator" content="docfx 2.59.3.0">
     
@@ -203,8 +203,8 @@
                           <li class="">
                             <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
                           </li>
-                          <li class="active">
-                            <a href="Rebus.Server.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="active">NegativeExponentialRandom</a>
+                          <li class="">
+                            <a href="Rebus.Server.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="">NegativeExponentialRandom</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Server.PowerSet.html" title="PowerSet" class="">PowerSet</a>
@@ -224,8 +224,8 @@
                       <a href="System.Text.Json.Serialization.Converters.html" title="System.Text.Json.Serialization.Converters" class="">System.Text.Json.Serialization.Converters</a>
                         
                         <ul class="nav level2">
-                          <li class="">
-                            <a href="System.Text.Json.Serialization.Converters.CultureInfoConverter.html" title="CultureInfoConverter" class="">CultureInfoConverter</a>
+                          <li class="active">
+                            <a href="System.Text.Json.Serialization.Converters.CultureInfoConverter.html" title="CultureInfoConverter" class="active">CultureInfoConverter</a>
                           </li>
                           <li class="">
                             <a href="System.Text.Json.Serialization.Converters.IPAddressConverter.html" title="IPAddressConverter" class="">IPAddressConverter</a>
@@ -238,48 +238,34 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Rebus.Server.NegativeExponentialRandom">
+            <article class="content wrap" id="_content" data-uid="System.Text.Json.Serialization.Converters.CultureInfoConverter">
   
   
-  <h1 id="Rebus_Server_NegativeExponentialRandom" data-uid="Rebus.Server.NegativeExponentialRandom" class="text-break">Class NegativeExponentialRandom
+  <h1 id="System_Text_Json_Serialization_Converters_CultureInfoConverter" data-uid="System.Text.Json.Serialization.Converters.CultureInfoConverter" class="text-break">Class CultureInfoConverter
   </h1>
-  <div class="markdown level0 summary"><p>Represents a pseudo-random number generator whose outputs, when aggregated, approximate a negative exponential distribution.</p>
+  <div class="markdown level0 summary"><p>Converts a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a> value to or from JSON.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random">Random</a></div>
-    <div class="level2"><span class="xref">NegativeExponentialRandom</span></div>
+    <div class="level1"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter">JsonConverter</a></div>
+    <div class="level2"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1">JsonConverter</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a>&gt;</div>
+    <div class="level3"><span class="xref">CultureInfoConverter</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next">Random.Next()</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.canconvert#system-text-json-serialization-jsonconverter-1-canconvert(system-type)">JsonConverter&lt;CultureInfo&gt;.CanConvert(Type)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next(system-int32)">Random.Next(Int32)</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.readaspropertyname#system-text-json-serialization-jsonconverter-1-readaspropertyname(system-text-json-utf8jsonreader@-system-type-system-text-json-jsonserializeroptions)">JsonConverter&lt;CultureInfo&gt;.ReadAsPropertyName(Utf8JsonReader, Type, JsonSerializerOptions)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64">Random.NextInt64()</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.writeaspropertyname#system-text-json-serialization-jsonconverter-1-writeaspropertyname(system-text-json-utf8jsonwriter-0-system-text-json-jsonserializeroptions)">JsonConverter&lt;CultureInfo&gt;.WriteAsPropertyName(Utf8JsonWriter, CultureInfo, JsonSerializerOptions)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64(system-int64)">Random.NextInt64(Int64)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64(system-int64-system-int64)">Random.NextInt64(Int64, Int64)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-byte())">Random.NextBytes(Byte[])</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-span((system-byte)))">Random.NextBytes(Span&lt;Byte&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextsingle#system-random-nextsingle">Random.NextSingle()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.shared#system-random-shared">Random.Shared</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.handlenull#system-text-json-serialization-jsonconverter-1-handlenull">JsonConverter&lt;CultureInfo&gt;.HandleNull</a>
     </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
@@ -303,90 +289,23 @@
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.Server.html">Rebus.Server</a></h6>
-  <h6><strong>Assembly</strong>: Rebus.Server.dll</h6>
-  <h5 id="Rebus_Server_NegativeExponentialRandom_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="System.Text.Json.Serialization.Converters.html">System.Text.Json.Serialization.Converters</a></h6>
+  <h6><strong>Assembly</strong>: Rebus.Client.Windows.dll</h6>
+  <h5 id="System_Text_Json_Serialization_Converters_CultureInfoConverter_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NegativeExponentialRandom : Random</code></pre>
+    <pre><code class="lang-csharp hljs">public class CultureInfoConverter : JsonConverter&lt;CultureInfo&gt;</code></pre>
   </div>
-  <h5 id="Rebus_Server_NegativeExponentialRandom_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>The implementation of this class was inspired by and based on <a href="https://stackoverflow.com/questions/20385964/generate-random-number-between-0-and-1-with-negativeexponential-distribution">this</a> Stack Overflow question asked by <a href="https://stackoverflow.com/users/1763110/maxammann">@maxammann</a> and answered by <a href="https://stackoverflow.com/users/2166798/pjs">@pjs</a>.</p>
-</div>
-  <h3 id="constructors">Constructors
-  </h3>
-  
-  
-  <a id="Rebus_Server_NegativeExponentialRandom__ctor_" data-uid="Rebus.Server.NegativeExponentialRandom.#ctor*"></a>
-  <h4 id="Rebus_Server_NegativeExponentialRandom__ctor_System_Double_" data-uid="Rebus.Server.NegativeExponentialRandom.#ctor(System.Double)">NegativeExponentialRandom(Double)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Rebus.Server.NegativeExponentialRandom.html">NegativeExponentialRandom</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NegativeExponentialRandom(double lambda)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">lambda</span></td>
-        <td><p>The rate parameter <em>λ</em>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Server_NegativeExponentialRandom__ctor_" data-uid="Rebus.Server.NegativeExponentialRandom.#ctor*"></a>
-  <h4 id="Rebus_Server_NegativeExponentialRandom__ctor_System_Int32_System_Double_" data-uid="Rebus.Server.NegativeExponentialRandom.#ctor(System.Int32,System.Double)">NegativeExponentialRandom(Int32, Double)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NegativeExponentialRandom(int seed, double lambda)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">seed</span></td>
-        <td><p>A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td><span class="parametername">lambda</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="Rebus_Server_NegativeExponentialRandom_Next_" data-uid="Rebus.Server.NegativeExponentialRandom.Next*"></a>
-  <h4 id="Rebus_Server_NegativeExponentialRandom_Next_System_Int32_System_Int32_" data-uid="Rebus.Server.NegativeExponentialRandom.Next(System.Int32,System.Int32)">Next(Int32, Int32)</h4>
+  <a id="System_Text_Json_Serialization_Converters_CultureInfoConverter_Read_" data-uid="System.Text.Json.Serialization.Converters.CultureInfoConverter.Read*"></a>
+  <h4 id="System_Text_Json_Serialization_Converters_CultureInfoConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_" data-uid="System.Text.Json.Serialization.Converters.CultureInfoConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">Read(ref Utf8JsonReader, Type, JsonSerializerOptions)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int Next(int minValue, int maxValue)</code></pre>
+    <pre><code class="lang-csharp hljs">public override CultureInfo Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -399,13 +318,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">minValue</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.utf8jsonreader">Utf8JsonReader</a></td>
+        <td><span class="parametername">reader</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">maxValue</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a></td>
+        <td><span class="parametername">typeToConvert</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a></td>
+        <td><span class="parametername">options</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -420,73 +344,52 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next(system-int32-system-int32)">Random.Next(Int32, Int32)</a></div>
+  <div><span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Globalization.CultureInfo&gt;.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)</span></div>
   
   
-  <a id="Rebus_Server_NegativeExponentialRandom_NextDouble_" data-uid="Rebus.Server.NegativeExponentialRandom.NextDouble*"></a>
-  <h4 id="Rebus_Server_NegativeExponentialRandom_NextDouble" data-uid="Rebus.Server.NegativeExponentialRandom.NextDouble">NextDouble()</h4>
+  <a id="System_Text_Json_Serialization_Converters_CultureInfoConverter_Write_" data-uid="System.Text.Json.Serialization.Converters.CultureInfoConverter.Write*"></a>
+  <h4 id="System_Text_Json_Serialization_Converters_CultureInfoConverter_Write_System_Text_Json_Utf8JsonWriter_System_Globalization_CultureInfo_System_Text_Json_JsonSerializerOptions_" data-uid="System.Text.Json.Serialization.Converters.CultureInfoConverter.Write(System.Text.Json.Utf8JsonWriter,System.Globalization.CultureInfo,System.Text.Json.JsonSerializerOptions)">Write(Utf8JsonWriter, CultureInfo, JsonSerializerOptions)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override double NextDouble()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void Write(Utf8JsonWriter writer, CultureInfo value, JsonSerializerOptions options)</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.utf8jsonwriter">Utf8JsonWriter</a></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a></td>
+        <td><span class="parametername">options</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextdouble#system-random-nextdouble">Random.NextDouble()</a></div>
-  
-  
-  <a id="Rebus_Server_NegativeExponentialRandom_Sample_" data-uid="Rebus.Server.NegativeExponentialRandom.Sample*"></a>
-  <h4 id="Rebus_Server_NegativeExponentialRandom_Sample" data-uid="Rebus.Server.NegativeExponentialRandom.Sample">Sample()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override double Sample()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.sample#system-random-sample">Random.Sample()</a></div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><span><a href="https://stackoverflow.com/questions/20385964/generate-random-number-between-0-and-1-with-negativeexponential-distribution">java - Generate random number between 0 and 1 with (negative)exponential distribution - Stack Overflow</a></span></div>
-      <div><span><a href="https://stackoverflow.com/users/1763110/maxammann">@maxammann - Stack Overflow</a></span></div>
-      <div><span><a href="https://stackoverflow.com/users/2166798/pjs">@pjs - Stack Overflow</a></span></div>
-  </div>
+  <div><span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Globalization.CultureInfo&gt;.Write(System.Text.Json.Utf8JsonWriter, System.Globalization.CultureInfo, System.Text.Json.JsonSerializerOptions)</span></div>
 </article>
           </div>
           

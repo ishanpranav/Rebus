@@ -5,6 +5,7 @@
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Converters;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Rebus.Client.Lenses;
@@ -37,8 +38,8 @@ namespace Rebus.Client.Windows
                 .AddSingleton<Lens, ConstellationLens>()
                 .AddSingleton<Lens, PopulationLens>()
                 .AddSingleton<Lens, StarLens>()
-                .AddSingleton<JsonConverter, JsonCultureInfoConverter>()
-                .AddSingleton<JsonConverter, JsonIPAddressConverter>()
+                .AddSingleton<JsonConverter, CultureInfoConverter>()
+                .AddSingleton<JsonConverter, IPAddressConverter>()
                 .AddSingleton(x =>
                 {
                     JsonSerializerOptions result = new JsonSerializerOptions()
