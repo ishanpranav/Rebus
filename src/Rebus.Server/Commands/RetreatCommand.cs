@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Rebus.Server.ExecutionContexts;
 
 namespace Rebus.Server.Commands
@@ -21,7 +22,7 @@ namespace Rebus.Server.Commands
 
         public async Task ExecuteAsync(ExecutionContext context)
         {
-            Zone zone = await context.GetDestinationAsync();
+            Zone zone = await context.Database.Zones.SingleAsync(x => x.PlayerId == context.Player.Id && x.Q == context.Destination.Q && x.R == context.Destination.R);
 
             await foreach (Unit unit in context.GetUnitsAsync())
             {

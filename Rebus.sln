@@ -27,6 +27,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{39EB0D40-D93E-4EC4-8AAF-E4CC956C3154}"
 	ProjectSection(SolutionItems) = preProject
 		data\Constellations.txt = data\Constellations.txt
+		data\behaviors.xml = data\behaviors.xml
 		data\grammar.json = data\grammar.json
 		data\map.json = data\map.json
 		data\Planets.txt = data\Planets.txt

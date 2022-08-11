@@ -38,7 +38,7 @@ namespace Rebus.Server.Functions
             {
                 if (_map.TryGetLayers(neighbor, out IReadOnlyList<int>? layers) && layers.Count != Depths.Star)
                 {
-                    Zone? result = _zones.SingleOrDefault(x => x.Q == neighbor.Q && x.R == neighbor.R && x.PlayerId == _playerId);
+                    Zone? result = _zones.SingleOrDefault(x => x.PlayerId == _playerId && x.Q == neighbor.Q && x.R == neighbor.R);
 
                     if (result != null)
                     {

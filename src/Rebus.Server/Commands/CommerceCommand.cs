@@ -18,11 +18,9 @@ namespace Rebus.Server.Commands
         {
             if (context.Commodity > 0)
             {
-                Zone destination = await context.GetDestinationAsync();
-
                 await foreach (Unit unit in context.GetUnitsAsync())
                 {
-                    Commodity commodity = await context.Database.Commodities.SingleAsync(x => x.Q == destination.Q && x.R == destination.R && x.Mass == context.Commodity);
+                    Commodity commodity = await context.Database.Commodities.SingleAsync(x => x.Q == context.Destination.Q && x.R == context.Destination.R && x.Mass == context.Commodity);
 
                     if (commodity.Quantity == 0)
                     {

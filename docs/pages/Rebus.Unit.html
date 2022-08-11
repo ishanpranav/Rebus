@@ -212,6 +212,36 @@
                           <li class="">
                             <a href="Rebus.Server.PowerSet.html" title="PowerSet" class="">PowerSet</a>
                           </li>
+                          <li class="">
+                            <a href="Rebus.Server.SelectionContext.html" title="SelectionContext" class="">SelectionContext</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rebus.Server.Considerations.html" title="Rebus.Server.Considerations" class="">Rebus.Server.Considerations</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.Behavior.html" title="Behavior" class="">Behavior</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.BehaviorCollection.html" title="BehaviorCollection" class="">BehaviorCollection</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.Consideration.html" title="Consideration" class="">Consideration</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.ConsiderationCollection.html" title="ConsiderationCollection" class="">ConsiderationCollection</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.FunctionConsideration.html" title="FunctionConsideration" class="">FunctionConsideration</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.LinearConsideration.html" title="LinearConsideration" class="">LinearConsideration</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.QuadraticConsideration.html" title="QuadraticConsideration" class="">QuadraticConsideration</a>
+                          </li>
                         </ul>  </li>
                     <li class="">
                       <span class="expand-stub"></span>
@@ -267,7 +297,8 @@
   <h6><strong>Assembly</strong>: Rebus.dll</h6>
   <h5 id="Rebus_Unit_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Index(new string[]{&quot;Name&quot;}, IsUnique = true)]
+    <pre><code class="lang-csharp hljs">[Index(new string[]{&quot;Commodity&quot;})]
+[Index(new string[]{&quot;Name&quot;}, IsUnique = true)]
 [MessagePackObject(false)]
 [Table(&quot;Unit&quot;)]
 public class Unit : IEquatable&lt;Unit&gt;</code></pre>
@@ -413,6 +444,7 @@ public HexPoint? SanctuaryLocation { get; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[IgnoreMember]
+[Required]
 public Zone Zone { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -426,32 +458,6 @@ public Zone Zone { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Rebus.Zone.html">Zone</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rebus_Unit_ZoneId_" data-uid="Rebus.Unit.ZoneId*"></a>
-  <h4 id="Rebus_Unit_ZoneId" data-uid="Rebus.Unit.ZoneId">ZoneId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreMember]
-public int ZoneId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>

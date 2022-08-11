@@ -2,6 +2,7 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Generic;
 using MessagePack;
 
@@ -34,7 +35,7 @@ namespace Rebus
         [Key(7)]
         public ICollection<Arguments> Arguments { get; }
 
-        public ZoneInfo(HexPoint location, int playerId, string? name, Biome biome, IReadOnlyList<int> layers, IReadOnlyCollection<Unit> units, IReadOnlyCollection<HexPoint> neighbors) : this(location, playerId, name, biome, layers, units, neighbors, new HashSet<Arguments>()) { }
+        public ZoneInfo(HexPoint location, int playerId, string? name, Biome biome, IReadOnlyList<int> layers, IReadOnlyCollection<Unit> units, IReadOnlyCollection<HexPoint> neighbors) : this(location, playerId, name, biome, layers, units, neighbors, new List<Arguments>()) { }
 
         public ZoneInfo(HexPoint location, int playerId, string? name, Biome biome, IReadOnlyList<int> layers, IReadOnlyCollection<Unit> units, IReadOnlyCollection<HexPoint> neighbors, ICollection<Arguments> arguments)
         {

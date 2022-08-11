@@ -8,8 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Rebus.EventArgs;
-using Rebus.Server.CommandProviders;
+using Rebus.Server.ArgumentProviders;
 using Rebus.Server.Commands;
+using Rebus.Server.Considerations;
 using Rebus.Server.ExecutionContexts;
 using Tracery;
 using Tracery.ContentSelectors;
@@ -21,18 +22,20 @@ namespace Rebus.Server
         private readonly IDbContextFactory<RebusDbContext> _contextFactory;
         private readonly Grammar _grammar;
         private readonly IReadOnlyDictionary<CommandType, ICommand> _commands;
+        private readonly BehaviorCollection _decisionMaker;
         private readonly Map _map;
         private readonly Namer _namer;
 
         public event EventHandler<ConflictEventArgs>? ConflictResolved;
 
-        public Controller(IDbContextFactory<RebusDbContext> contextFactory, IReadOnlyDictionary<CommandType, ICommand> commands, Grammar grammar, Map map, Namer namer)
+        public Controller(IDbContextFactory<RebusDbContext> contextFactory, IReadOnlyDictionary<CommandType, ICommand> commands, BehaviorCollection decisionMaker, Grammar grammar, Map map, Namer namer)
         {
             grammar.AddTracery();
 
             _contextFactory = contextFactory;
             _grammar = grammar;
             _commands = commands;
+            _decisionMaker = decisionMaker;
             _map = map;
             _namer = namer;
         }
@@ -142,17 +145,11 @@ namespace Rebus.Server
 
         public async IAsyncEnumerable<ZoneInfo> GetZonesAsync(int playerId)
         {
-            ZoneCache cache = await ZoneCache.CreateAsync(playerId, _contextFactory, _map, _namer);
-            CommandProvider commandProvider = new CommandProvider(_commands);
+            ZoneCache cache = await ZoneCache.CreateAsync(playerId, _contextFactory, _map, _namer, new ArgumentProvider(_commands));
 
-            foreach (ZoneInfo source in cache.Zones.Values)
+            foreach (ZoneInfo zone in cache.Values)
             {
-                foreach (Arguments command in commandProvider.GetCommands(source, cache.Zones))
-                {
-                    source.Arguments.Add(command);
-                }
-
-                yield return source;
+                yield return zone;
             }
         }
 
@@ -183,19 +180,16 @@ namespace Rebus.Server
             {
                 await using (RebusDbContext dbContext = await _contextFactory.CreateDbContextAsync())
                 {
-                    Arguments? decision = null;
+                    Arguments decision = _decisionMaker.Select(new SelectionContext(), (await ZoneCache.CreateAsync(user.Twin.Id, _contextFactory, _map, _namer, new AIArgumentProvider(_commands))).Values.SelectMany(x => x.Arguments), out _);
 
-                    if (decision != null)
+                    await using (AIExecutionContext context = new AIExecutionContext(user, controller: this, dbContext, decision.UnitIds, decision.Commodity)
                     {
-                        await using (AIExecutionContext context = new AIExecutionContext(user, controller: this, dbContext, decision.UnitIds, decision.Commodity)
-                        {
-                            Destination = decision.Destination
-                        })
-                        {
-                            await _commands[decision.Type].ExecuteAsync(context);
+                        Destination = decision.Destination
+                    })
+                    {
+                        await _commands[decision.Type].ExecuteAsync(context);
 
-                            await dbContext.SaveChangesAsync();
-                        }
+                        await dbContext.SaveChangesAsync();
                     }
                 }
             }
@@ -209,7 +203,7 @@ namespace Rebus.Server
             {
                 return (await context.Users
                     .Include(x => x.Player)
-                    .SingleOrDefaultAsync(x => x.Player.Name == name && x.Password == password))?.Id ?? default;
+                    .SingleOrDefaultAsync(x => x.Password == password && x.Player.Name == name))?.Id ?? default;
             }
         }
 
@@ -240,17 +234,16 @@ namespace Rebus.Server
                     Zone playerZone = new Zone()
                     {
                         Player = user.Player,
-                        Location = await getLocationAsync(),
-                        Units = new Unit[]
-                        {
-                            new Unit()
-                            {
-                                Name = Guid
-                                    .NewGuid()
-                                    .ToString()
-                            }
-                        }
+                        Location = await getLocationAsync()
                     };
+
+                    playerZone.Units.Add(new Unit()
+                    {
+                        Name = Guid
+                            .NewGuid()
+                            .ToString()
+                    });
+
 
                     range.Remove(playerZone.Location);
                     range.Reverse();
@@ -258,17 +251,15 @@ namespace Rebus.Server
                     Zone twinZone = new Zone()
                     {
                         Player = user.Twin,
-                        Location = await getLocationAsync(),
-                        Units = new Unit[]
-                        {
-                            new Unit()
-                            {
-                                Name = Guid
-                                    .NewGuid()
-                                    .ToString()
-                            }
-                        }
+                        Location = await getLocationAsync()
                     };
+
+                    twinZone.Units.Add(new Unit()
+                    {
+                        Name = Guid
+                            .NewGuid()
+                            .ToString()
+                    });
 
                     await context.Users.AddAsync(user);
                     await context.Zones.AddAsync(playerZone);

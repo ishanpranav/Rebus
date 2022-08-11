@@ -4,19 +4,28 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using MessagePack;
 using Microsoft.EntityFrameworkCore;
 
 namespace Rebus
 {
-    [Index(nameof(Q), nameof(R), nameof(PlayerId), IsUnique = true)]
+    [Index(nameof(PlayerId), nameof(Q), nameof(R))]
     [MessagePackObject]
     [Table(nameof(Zone))]
     public class Zone : IEquatable<Zone>
     {
-        [IgnoreMember]
         public int Id { get; set; }
+
+        [IgnoreMember]
+        public int PlayerId { get; set; }
+
+        [IgnoreMember]
+        [NotNull]
+        [Required]
+        public Player? Player { get; set; }
 
         [IgnoreMember]
         public int Q { get; set; }
@@ -24,7 +33,7 @@ namespace Rebus
         [IgnoreMember]
         public int R { get; set; }
 
-        [Key(0)]
+        [MessagePack.Key(0)]
         [NotMapped]
         public HexPoint Location
         {
@@ -39,13 +48,7 @@ namespace Rebus
             }
         }
 
-        public int PlayerId { get; set; }
-
-#nullable disable
-        public Player Player { get; set; }
-#nullable enable
-
-        public ICollection<Unit> Units { get; set; } = new HashSet<Unit>();
+        public ICollection<Unit> Units { get; } = new HashSet<Unit>();
 
         public bool Equals(Zone? other)
         {

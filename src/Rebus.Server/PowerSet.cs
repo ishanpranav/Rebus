@@ -37,7 +37,7 @@ namespace Rebus.Server
                 for (int j = 0; j < count; j++)
                 {
                     int[] source = result[j];
-                    int[] destination = result[count + j] = new int[source.Length + 1];
+                    int[] destination = new int[source.Length + 1];
 
                     for (int k = 0; k < source.Length; k++)
                     {
@@ -45,6 +45,7 @@ namespace Rebus.Server
                     }
 
                     destination[source.Length] = current;
+                    result[count + j] = destination;
                 }
             }
 

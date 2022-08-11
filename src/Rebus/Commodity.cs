@@ -9,28 +9,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Rebus
 {
-    [Index(nameof(Q), nameof(R), nameof(Mass), IsUnique = true)]
     [MessagePackObject]
     [Table(nameof(Commodity))]
     public class Commodity : IComparable, IComparable<Commodity>
     {
         [IgnoreMember]
-        public int Id { get; set; }
-
-        [Key(0)]
-        public int Mass { get; set; }
-
-        [Key(1)]
-        public int Price { get; set; }
-
-        [Key(2)]
-        public int Quantity { get; set; }
-
-        [IgnoreMember]
         public int Q { get; set; }
 
         [IgnoreMember]
         public int R { get; set; }
+
+        [Key(0)]
+        public int Mass { get; set; }
 
         [IgnoreMember]
         [NotMapped]
@@ -46,6 +36,12 @@ namespace Rebus
                 R = value.R;
             }
         }
+
+        [Key(1)]
+        public int Price { get; set; }
+
+        [Key(2)]
+        public int Quantity { get; set; }
 
         public int CompareTo(object? obj)
         {

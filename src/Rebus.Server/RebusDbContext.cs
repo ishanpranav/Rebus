@@ -2,6 +2,7 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
 namespace Rebus.Server
@@ -10,13 +11,20 @@ namespace Rebus.Server
     {
         private const string IgnoreCaseCollation = "NOCASE";
 
-#nullable disable
-        public DbSet<Commodity> Commodities { get; set; }
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Unit> Units { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Zone> Zones { get; set; }
-#nullable enable
+        [NotNull]
+        public DbSet<Commodity>? Commodities { get; set; }
+
+        [NotNull]
+        public DbSet<Player>? Players { get; set; }
+
+        [NotNull]
+        public DbSet<Unit>? Units { get; set; }
+
+        [NotNull]
+        public DbSet<User>? Users { get; set; }
+
+        [NotNull]
+        public DbSet<Zone>? Zones { get; set; }
 
         public RebusDbContext(DbContextOptions<RebusDbContext> options) : base(options) { }
 
@@ -24,14 +32,22 @@ namespace Rebus.Server
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder
+                .Entity<Commodity>()
+                .HasKey(x => new
+                {
+                    x.Q,
+                    x.R,
+                    x.Mass
+                });
+
             modelBuilder.Entity<Unit>(x =>
             {
                 x.HasOne(x => x.Sanctuary)
                  .WithMany();
 
                 x.HasOne(x => x.Zone)
-                 .WithMany(x => x.Units)
-                 .HasForeignKey(x => x.ZoneId);
+                 .WithMany(x => x.Units);
             });
 
             if (Database.IsSqlite())

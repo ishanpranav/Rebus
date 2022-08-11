@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Rebus.Server.ArgumentProviders;
 
 namespace Rebus.Server
 {
@@ -16,31 +17,39 @@ namespace Rebus.Server
         private readonly IDbContextFactory<RebusDbContext> _contextFactory;
         private readonly Map _map;
         private readonly Namer _namer;
-        private readonly Dictionary<HexPoint, ZoneInfo> _sources = new Dictionary<HexPoint, ZoneInfo>();
+        private readonly Dictionary<HexPoint, ZoneInfo> _zones = new Dictionary<HexPoint, ZoneInfo>();
 
-        public IReadOnlyDictionary<HexPoint, ZoneInfo> Zones
+        public IEnumerable<ZoneInfo> Values
         {
             get
             {
-                return _sources;
+                return _zones.Values;
             }
         }
 
-        private ZoneCache(int playerId, IDbContextFactory<RebusDbContext> contextFactory, Map map, Namer namer)
+        private ZoneCache(int playerId, IDbContextFactory<RebusDbContext> contextFactory, Map map, Namer namer, ArgumentProvider argumentProvider)
         {
             _playerId = playerId;
             _contextFactory = contextFactory;
             _map = map;
             _namer = namer;
+
+            foreach (ZoneInfo zone in _zones.Values)
+            {
+                foreach (Arguments command in argumentProvider.GetArguments(zone, _zones))
+                {
+                    zone.Arguments.Add(command);
+                }
+            }
         }
 
-        private async Task InitializeAsync()
+        private async Task<ZoneCache> InitializeAsync()
         {
             await using (RebusDbContext context = await _contextFactory.CreateDbContextAsync())
             {
                 foreach (Zone zone in getZones())
                 {
-                    if (!_sources.ContainsKey(zone.Location) && _map.TryGetLayers(zone.Location, out IReadOnlyList<int>? layers))
+                    if (!_zones.ContainsKey(zone.Location) && _map.TryGetLayers(zone.Location, out IReadOnlyList<int>? layers))
                     {
                         HashSet<HexPoint> neighbors = new HashSet<HexPoint>();
                         string? name;
@@ -51,11 +60,11 @@ namespace Rebus.Server
 
                         foreach (HexPoint neighbor in zone.Location.Neighbors())
                         {
-                            if (!_sources.ContainsKey(neighbor) && _map.TryGetLayers(neighbor, out IReadOnlyList<int>? neighborLayers) && neighborLayers.Count == Depths.Star)
+                            if (!_zones.ContainsKey(neighbor) && _map.TryGetLayers(neighbor, out IReadOnlyList<int>? neighborLayers) && neighborLayers.Count == Depths.Star)
                             {
                                 ZoneInfo neighborResult = new ZoneInfo(neighbor, playerId: 0, _namer.Name(neighborLayers), _map.GetBiome(neighbor, neighborLayers), neighborLayers, Array.Empty<Unit>(), Array.Empty<HexPoint>());
 
-                                _sources.Add(neighbor, neighborResult);
+                                _zones.Add(neighbor, neighborResult);
                             }
                             else if (_map.Contains(neighbor))
                             {
@@ -65,7 +74,7 @@ namespace Rebus.Server
 
                         ZoneInfo result = new ZoneInfo(zone.Location, zone.PlayerId, name, biome, layers, new List<Unit>(zone.Units), neighbors);
 
-                        _sources.Add(zone.Location, result);
+                        _zones.Add(zone.Location, result);
                     }
                 }
 
@@ -91,15 +100,13 @@ namespace Rebus.Server
                     }
                 }
             }
+
+            return this;
         }
 
-        public static async Task<ZoneCache> CreateAsync(int playerId, IDbContextFactory<RebusDbContext> contextFactory, Map map, Namer namer)
+        public static Task<ZoneCache> CreateAsync(int playerId, IDbContextFactory<RebusDbContext> contextFactory, Map map, Namer namer, ArgumentProvider argumentProvider)
         {
-            ZoneCache result = new ZoneCache(playerId, contextFactory, map, namer);
-
-            await result.InitializeAsync();
-
-            return result;
+            return new ZoneCache(playerId, contextFactory, map, namer, argumentProvider).InitializeAsync();
         }
     }
 }

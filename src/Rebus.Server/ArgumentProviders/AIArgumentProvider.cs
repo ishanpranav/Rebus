@@ -5,11 +5,11 @@
 using System.Collections.Generic;
 using Rebus.Server.Commands;
 
-namespace Rebus.Server.CommandProviders
+namespace Rebus.Server.ArgumentProviders
 {
-    internal sealed class AICommandProvider : CommandProvider
+    internal sealed class AIArgumentProvider : ArgumentProvider
     {
-        public AICommandProvider(IReadOnlyDictionary<CommandType, ICommand> commands) : base(commands) { }
+        public AIArgumentProvider(IReadOnlyDictionary<CommandType, ICommand> commands) : base(commands) { }
 
         protected override IEnumerable<IReadOnlyList<int>> GetUnitIdCollections(ZoneInfo source)
         {

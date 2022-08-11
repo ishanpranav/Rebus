@@ -29,7 +29,7 @@ namespace Rebus.Server.Commands
         protected async Task<bool> ContinueAsync(ExecutionContext context, IList<Unit> invaders, Zone source, Zone destination, ZoneFunctions functions)
         {
             List<Unit> occupants = await context.Database.Units
-                .Where(x => x.Zone.Q == destination.Q && x.Zone.R == destination.R && x.Zone.Player != context.Player)
+                .Where(x => x.Zone.PlayerId == context.Player.Id && x.Zone.Q == destination.Q && x.Zone.R == destination.R)
                 .OrderByDescending(x => x.Commodity)
                 .Include(x => x.Zone)
                 .ThenInclude(x => x.Player)
@@ -152,7 +152,7 @@ namespace Rebus.Server.Commands
 
             if (invaders.Count > 0)
             {
-                await ExecuteAsync(context, invaders, invaders[0].Zone, await context.Database.Zones.SingleOrDefaultAsync(x => x.Q == context.Destination.Q && x.R == context.Destination.R && x.PlayerId == context.Player.Id), functions);
+                await ExecuteAsync(context, invaders, invaders[0].Zone, await context.Database.Zones.SingleAsync(x => x.PlayerId == context.Player.Id && x.Q == context.Destination.Q && x.R == context.Destination.R), functions);
             }
         }
 

@@ -26,13 +26,20 @@ namespace Rebus.Client.Windows.Forms
         private readonly RpcClient _client = new RpcClient();
         private readonly Dictionary<HexPoint, ZoneInfo> _zones = new Dictionary<HexPoint, ZoneInfo>();
 
-#nullable disable
-        private Configuration _configuration;
-        private GraphicsEngine _graphicsEngine;
-        private IGameService _service;
-        private Layout _layout;
-        private User _user;
-#nullable enable
+        [NotNull]
+        private Configuration? Configuration { get; set; }
+
+        [NotNull]
+        private GraphicsEngine? GraphicsEngine { get; set; }
+
+        [NotNull]
+        private IGameService? Service { get; set; }
+
+        [NotNull]
+        private Layout? GraphicsLayout { get; set; }
+
+        [NotNull]
+        private User? User { get; set; }
 
         public GameForm(IEnumerable<Lens> lenses, Credentials credentials)
         {
@@ -47,17 +54,17 @@ namespace Rebus.Client.Windows.Forms
         {
             myNotifyIcon.Icon = Resources.Icon;
 
-            _service = await _client.CreateAsync<IGameService>(_credentials.IPAddress, _credentials.Port);
+            Service = await _client.CreateAsync<IGameService>(_credentials.IPAddress, _credentials.Port);
 
-            _service.ConflictResolved += onConflictResolved;
+            Service.ConflictResolved += onConflictResolved;
 
             async void onConflictResolved(object? sender, ConflictEventArgs e)
             {
-                if (e.Occupant.Username.Equals(_user.Player.Name, StringComparison.OrdinalIgnoreCase))
+                if (e.Occupant.Username.Equals(User.Player.Name, StringComparison.OrdinalIgnoreCase))
                 {
                     await Invoke(async () =>
                     {
-                        _user = await _service.GetUserAsync(_credentials.UserId);
+                        User = await Service.GetUserAsync(_credentials.UserId);
 
                         await DrawAsync();
 
@@ -71,7 +78,7 @@ namespace Rebus.Client.Windows.Forms
                         }
                     });
                 }
-                else if (e.Invader.Username.Equals(_user.Player.Name, StringComparison.OrdinalIgnoreCase))
+                else if (e.Invader.Username.Equals(User.Player.Name, StringComparison.OrdinalIgnoreCase))
                 {
                     if (e.InvasionSucceeded)
                     {
@@ -91,21 +98,21 @@ namespace Rebus.Client.Windows.Forms
 
             _client.Start();
 
-            _configuration = await _service.GetConfigurationAsync();
+            Configuration = await Service.GetConfigurationAsync();
 
             const int hexagonSize = 16;
-            int offset = ((_configuration.Radius * 2) + 1) * hexagonSize;
+            int offset = ((Configuration.Radius * 2) + 1) * hexagonSize;
 
-            _graphicsEngine = new GraphicsEngine(offset * 2, offset * 2);
-            _layout = new Layout(offset, offset)
+            GraphicsEngine = new GraphicsEngine(offset * 2, offset * 2);
+            GraphicsLayout = new Layout(offset, offset)
             {
                 HexagonWidth = hexagonSize,
                 HexagonHeight = hexagonSize
             };
 
-            _user = await _service.GetUserAsync(_credentials.UserId);
+            User = await Service.GetUserAsync(_credentials.UserId);
 
-            usernameToolStripLabel.Text = _user.Player.Name;
+            usernameToolStripLabel.Text = User.Player.Name;
 
             await RequestZonesAsync();
 
@@ -125,7 +132,7 @@ namespace Rebus.Client.Windows.Forms
         private async void OnMainFormClosing(object sender, FormClosingEventArgs e)
         {
             myNotifyIcon.Dispose();
-            _service.Dispose();
+            Service.Dispose();
 
             await _client.DisposeAsync();
 
@@ -135,22 +142,22 @@ namespace Rebus.Client.Windows.Forms
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
         private async void OnVisionPictureBoxMouseClick(object sender, MouseEventArgs e)
         {
-            _user.Location = _layout.GetHexPoint(e.Location.X, e.Location.Y);
+            User.Location = GraphicsLayout.GetHexPoint(e.Location.X, e.Location.Y);
 
-            myToolTip.ToolTipTitle = GetLocationName(_user.Location);
+            myToolTip.ToolTipTitle = GetLocationName(User.Location);
 
-            myToolTip.Show(_user.Location.ToString(), visionPictureBox, e.Location);
+            myToolTip.Show(User.Location.ToString(), visionPictureBox, e.Location);
 
             await RequestUnitsAsync();
         }
 
         private async Task DrawAsync()
         {
-            myToolTip.ToolTipTitle = GetLocationName(_user.Location);
+            myToolTip.ToolTipTitle = GetLocationName(User.Location);
 
-            SKPoint point = _layout.GetCenter(_user.Location);
+            SKPoint point = GraphicsLayout.GetCenter(User.Location);
 
-            myToolTip.Show(_user.Location.ToString(), visionPictureBox, (int)point.X, (int)point.Y);
+            myToolTip.Show(User.Location.ToString(), visionPictureBox, (int)point.X, (int)point.Y);
 
             await RequestZonesAsync();
 
@@ -166,7 +173,7 @@ namespace Rebus.Client.Windows.Forms
 
             commandComboBox.DataSource = null;
 
-            if (_zones.TryGetValue(_user.Location, out ZoneInfo? zone) && zone.Units.Count > 0 && zone.PlayerId == _user.Player.Id)
+            if (_zones.TryGetValue(User.Location, out ZoneInfo? zone) && zone.Units.Count > 0 && zone.PlayerId == User.Player.Id)
             {
                 commandComboBox.DataSource = zone.Arguments
                     .Select(x => x.Type)
@@ -207,7 +214,7 @@ namespace Rebus.Client.Windows.Forms
 
             economyListView.Items.Clear();
 
-            Economy? economy = await _service.GetEconomyAsync(_user.Player.Id, _user.Location);
+            Economy? economy = await Service.GetEconomyAsync(User.Player.Id, User.Location);
 
             if (economy != null)
             {
@@ -248,7 +255,7 @@ namespace Rebus.Client.Windows.Forms
         {
             _zones.Clear();
 
-            await foreach (ZoneInfo zone in _service.GetZonesAsync(_user.Player.Id))
+            await foreach (ZoneInfo zone in Service.GetZonesAsync(User.Player.Id))
             {
                 _zones.Add(zone.Location, zone);
             }
@@ -256,15 +263,15 @@ namespace Rebus.Client.Windows.Forms
 
         private void DrawZones()
         {
-            creditsToolStripLabel.Text = string.Format(Resources.CreditFormat, _user.Player.Credits);
+            creditsToolStripLabel.Text = string.Format(Resources.CreditFormat, User.Player.Credits);
 
             visionPictureBox.Image?.Dispose();
 
             using (MemoryStream memoryStream = new MemoryStream())
             using (SKManagedWStream output = new SKManagedWStream(memoryStream))
-            using (ZoneVisualizer drawable = new ZoneVisualizer(_zones.Values, (Lens)lensComboBox.SelectedItem, _user.Player.Id, _layout))
+            using (ZoneVisualizer drawable = new ZoneVisualizer(_zones.Values, (Lens)lensComboBox.SelectedItem, User.Player.Id, GraphicsLayout))
             {
-                _graphicsEngine.Draw(output, SKEncodedImageFormat.Png, drawable);
+                GraphicsEngine.Draw(output, SKEncodedImageFormat.Png, drawable);
 
                 memoryStream.Position = 0;
 
@@ -318,11 +325,11 @@ namespace Rebus.Client.Windows.Forms
                     parameters.Commodity = (int)economyListView.CheckedItems[0].Tag;
                 }
 
-                CommandResponse response = await _service.ExecuteAsync(new CommandRequest(_credentials.UserId, parameters));
+                CommandResponse response = await Service.ExecuteAsync(new CommandRequest(_credentials.UserId, parameters));
 
                 if (response.Modified)
                 {
-                    _user = response.User;
+                    User = response.User;
 
                     await DrawAsync();
                 }
@@ -335,7 +342,7 @@ namespace Rebus.Client.Windows.Forms
 
             destinationComboBox.DataSource = null;
 
-            if (_zones.TryGetValue(_user.Location, out ZoneInfo? source) && commandComboBox.SelectedItem is CommandType type)
+            if (_zones.TryGetValue(User.Location, out ZoneInfo? source) && commandComboBox.SelectedItem is CommandType type)
             {
                 destinationComboBox.DataSource = source.Arguments
                     .Where(x => x.Type == type)

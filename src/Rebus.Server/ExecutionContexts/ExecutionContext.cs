@@ -49,11 +49,6 @@ namespace Rebus.Server.ExecutionContexts
             }
         }
 
-        public Task<Zone> GetDestinationAsync()
-        {
-            return Database.Zones.SingleAsync(x => x.Q == Destination.Q && x.R == Destination.R && x.PlayerId == Player.Id);
-        }
-
         public void OnConflictResolved(ConflictEventArgs e)
         {
             _controller.OnConflictResolved(e);

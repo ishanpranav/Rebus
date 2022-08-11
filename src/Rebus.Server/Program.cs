@@ -8,11 +8,14 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Rebus.Server.Commands;
+using Rebus.Server.Considerations;
 using Tracery;
 
 namespace Rebus.Server
@@ -40,6 +43,12 @@ namespace Rebus.Server
                 .AddObject<RuleSet>()
                 .AddObject<Table>()
                 .AddSingleton<Controller>()
+                .AddSingleton(x => x
+                    .GetRequiredService<BehaviorCollectionLoader>()
+                    .Load())
+                .AddSingleton(x => new BehaviorCollectionLoader(x
+                    .GetRequiredService<IConfiguration>()
+                    .GetConnectionString(nameof(BehaviorCollectionLoader))))
                 .AddSingleton<FisherYatesShuffle>()
                 .AddSingleton<ICommand, AutopilotCommand>()
                 .AddSingleton<ICommand, DefendCommand>()
@@ -61,18 +70,18 @@ namespace Rebus.Server
                 .AddSingleton(x =>
                 {
                     StringCollectionLoader loader = x.GetRequiredService<StringCollectionLoader>();
-                    Namer namer = new Namer(x.GetRequiredService<FisherYatesShuffle>(), loader.Load(key: "Constellations"), loader.Load(key: "Stars"), loader.Load(key: "Planets"));
+                    Namer result = new Namer(x.GetRequiredService<FisherYatesShuffle>(), loader.Load(key: "Constellations"), loader.Load(key: "Stars"), loader.Load(key: "Planets"));
                     Map map = x.GetRequiredService<Map>();
 
                     foreach (HexPoint location in map.Origin.Spiral(map.Radius))
                     {
                         if (map.TryGetLayers(location, out IReadOnlyList<int>? layers))
                         {
-                            namer.Name(layers);
+                            result.Name(layers);
                         }
                     }
 
-                    return namer;
+                    return result;
                 })
                 .AddSingleton(x => new Random(x.GetRequiredService<Table>().Seed))
                 .AddSingleton(x =>
