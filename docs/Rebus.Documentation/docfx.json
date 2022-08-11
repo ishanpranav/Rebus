@@ -74,11 +74,6 @@
         "src": "../../src/Rebus.Client.Windows/"
       }
     ],
-    "sitemap": {
-      "baseUrl": "https://ishanpranav.github.io/rebus/",
-      "priority": 0.1,
-      "changeFreq": "monthly"
-    },
     "template": [
       "statictoc"
     ],
