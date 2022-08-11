@@ -1,4 +1,4 @@
-﻿// Ishan Pranav's REBUS: 
+﻿// Ishan Pranav's REBUS: ConsiderationCollection.cs
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 

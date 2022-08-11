@@ -15,6 +15,9 @@ namespace Rebus
         [Key(1)]
         public User User { get; }
 
+        [Key(2)]
+        public Arguments Advice { get; set; }
+
         public CommandResponse(bool modified, User user)
         {
             Modified = modified;

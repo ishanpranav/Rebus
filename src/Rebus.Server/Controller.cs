@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Rebus.EventArgs;
 using Rebus.Server.ArgumentProviders;
 using Rebus.Server.Commands;
 using Rebus.Server.Considerations;
@@ -22,20 +21,20 @@ namespace Rebus.Server
         private readonly IDbContextFactory<RebusDbContext> _contextFactory;
         private readonly Grammar _grammar;
         private readonly IReadOnlyDictionary<CommandType, ICommand> _commands;
-        private readonly BehaviorCollection _decisionMaker;
+        private readonly Agent _agent;
         private readonly Map _map;
         private readonly Namer _namer;
 
         public event EventHandler<ConflictEventArgs>? ConflictResolved;
 
-        public Controller(IDbContextFactory<RebusDbContext> contextFactory, IReadOnlyDictionary<CommandType, ICommand> commands, BehaviorCollection decisionMaker, Grammar grammar, Map map, Namer namer)
+        public Controller(IDbContextFactory<RebusDbContext> contextFactory, IReadOnlyDictionary<CommandType, ICommand> commands, Agent agent, Grammar grammar, Map map, Namer namer)
         {
             grammar.AddTracery();
 
             _contextFactory = contextFactory;
             _grammar = grammar;
             _commands = commands;
-            _decisionMaker = decisionMaker;
+            _agent = agent;
             _map = map;
             _namer = namer;
         }
@@ -157,6 +156,8 @@ namespace Rebus.Server
         {
             User user;
             bool modified;
+            Arguments advice;
+            AIArgumentProvider argumentProvider = new AIArgumentProvider(_commands);
 
             await using (RebusDbContext dbContext = await _contextFactory.CreateDbContextAsync())
             {
@@ -165,7 +166,11 @@ namespace Rebus.Server
                    .Include(x => x.Twin)
                    .SingleAsync(x => x.Id == request.UserId);
 
-                await using (UserExecutionContext context = new UserExecutionContext(user, controller: this, dbContext, request.Arguments.UnitIds, request.Arguments.Commodity)
+                advice = _agent.Evaluate(new EvaluationContext(), (await ZoneCache.CreateAsync(user.Player.Id, _contextFactory, _map, _namer, argumentProvider)).Values
+                    .SelectMany(x => x.Arguments)
+                    .ToList());
+
+                await using (UserExecutionContext context = new UserExecutionContext(user, controller: this, dbContext, request.Arguments.Units, request.Arguments.Commodity)
                 {
                     Destination = request.Arguments.Destination
                 })
@@ -180,9 +185,11 @@ namespace Rebus.Server
             {
                 await using (RebusDbContext dbContext = await _contextFactory.CreateDbContextAsync())
                 {
-                    Arguments decision = _decisionMaker.Select(new SelectionContext(), (await ZoneCache.CreateAsync(user.Twin.Id, _contextFactory, _map, _namer, new AIArgumentProvider(_commands))).Values.SelectMany(x => x.Arguments), out _);
+                    Arguments decision = _agent.Evaluate(new EvaluationContext(), (await ZoneCache.CreateAsync(user.Twin.Id, _contextFactory, _map, _namer, argumentProvider)).Values
+                        .SelectMany(x => x.Arguments)
+                        .ToList());
 
-                    await using (AIExecutionContext context = new AIExecutionContext(user, controller: this, dbContext, decision.UnitIds, decision.Commodity)
+                    await using (AIExecutionContext context = new AIExecutionContext(user, controller: this, dbContext, decision.Units, decision.Commodity)
                     {
                         Destination = decision.Destination
                     })
@@ -194,7 +201,10 @@ namespace Rebus.Server
                 }
             }
 
-            return new CommandResponse(modified, user);
+            return new CommandResponse(modified, user)
+            {
+                Advice = advice
+            };
         }
 
         public async Task<int> LoginAsync(string name, string password)

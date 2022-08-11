@@ -2,7 +2,6 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
 using System.Collections.Generic;
 using MessagePack;
 
@@ -15,19 +14,27 @@ namespace Rebus
         public CommandType Type { get; }
 
         [Key(1)]
-        public IReadOnlyCollection<int> UnitIds { get; }
+        public IReadOnlyCollection<int> Units { get; }
 
         [Key(2)]
         public HexPoint Destination { get; }
 
         [Key(3)]
-        public int Commodity { get; set; }
+        public int Commodity { get; }
 
-        public Arguments(CommandType type, IReadOnlyCollection<int> unitIds, HexPoint destination)
+        [Key(4)]
+        public double Evaluation { get; set; }
+
+        public Arguments(CommandType type, IReadOnlyCollection<int> units, HexPoint destination)
         {
             Type = type;
-            UnitIds = unitIds;
+            Units = units;
             Destination = destination;
+        }
+
+        public Arguments(CommandType type, IReadOnlyCollection<int> units, HexPoint destination, int commodity) : this(type, units, destination)
+        {
+            Commodity = commodity;
         }
     }
 }

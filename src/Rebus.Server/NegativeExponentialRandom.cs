@@ -2,9 +2,7 @@
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
-
-namespace Rebus.Server
+namespace System
 {
     /// <summary>
     /// Represents a pseudo-random number generator whose outputs, when aggregated, approximate a negative exponential distribution.
@@ -21,6 +19,7 @@ namespace Rebus.Server
 
         /// <inheritdoc cref="NegativeExponentialRandom(double)"/>
         /// <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</param>
+        /// <param name="lambda">The rate parameter <em>λ</em>.</param>
         public NegativeExponentialRandom(int seed, double lambda) : base(seed)
         {
             _lambda = lambda;

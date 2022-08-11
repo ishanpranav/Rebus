@@ -32,7 +32,7 @@ namespace Rebus.Server
 
             int[] buffer = new int[depth];
 
-            foreach (HexPoint location in Origin.Range(Radius))
+            foreach (HexPoint location in origin.Range(radius))
             {
                 int index = (int)JuliaDepth(location);
 
@@ -44,7 +44,7 @@ namespace Rebus.Server
 
             Array.Fill(buffer, Depths.FirstValue);
 
-            foreach (HexPoint location in Origin.Spiral(Radius))
+            foreach (HexPoint location in origin.Spiral(radius))
             {
                 if (recurse(location))
                 {

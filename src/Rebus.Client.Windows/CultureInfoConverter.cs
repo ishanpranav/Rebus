@@ -1,4 +1,8 @@
-﻿using System.Globalization;
+﻿// Ishan Pranav's REBUS: CultureInfoConverter.cs
+// Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
+// Licensed under the MIT License.
+
+using System.Globalization;
 
 namespace System.Text.Json.Serialization.Converters
 {

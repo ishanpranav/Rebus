@@ -7,33 +7,26 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using MessagePack;
 using Microsoft.EntityFrameworkCore;
 
 namespace Rebus
 {
     [Index(nameof(PlayerId), nameof(Q), nameof(R))]
-    [MessagePackObject]
     [Table(nameof(Zone))]
     public class Zone : IEquatable<Zone>
     {
         public int Id { get; set; }
 
-        [IgnoreMember]
         public int PlayerId { get; set; }
 
-        [IgnoreMember]
         [NotNull]
         [Required]
         public Player? Player { get; set; }
 
-        [IgnoreMember]
         public int Q { get; set; }
 
-        [IgnoreMember]
         public int R { get; set; }
 
-        [MessagePack.Key(0)]
         [NotMapped]
         public HexPoint Location
         {

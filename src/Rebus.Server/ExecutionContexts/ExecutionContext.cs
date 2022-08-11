@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Rebus.EventArgs;
 
 namespace Rebus.Server.ExecutionContexts
 {
@@ -27,15 +26,15 @@ namespace Rebus.Server.ExecutionContexts
 
         public abstract Player Player { get; }
 
-        public IReadOnlyCollection<int> UnitIds { get; }
+        public IReadOnlyCollection<int> Units { get; }
         public HexPoint Destination { get; set; }
         public int Commodity { get; }
 
-        public ExecutionContext(Controller controller, RebusDbContext dbContext, IReadOnlyCollection<int> unitIds, int commodity)
+        public ExecutionContext(Controller controller, RebusDbContext dbContext, IReadOnlyCollection<int> units, int commodity)
         {
             _controller = controller;
             _dbContext = dbContext;
-            UnitIds = unitIds;
+            Units = units;
             Commodity = commodity;
         }
 
@@ -43,9 +42,9 @@ namespace Rebus.Server.ExecutionContexts
 
         public async IAsyncEnumerable<Unit> GetUnitsAsync()
         {
-            foreach (int unitId in UnitIds)
+            foreach (int unit in Units)
             {
-                yield return await Database.Units.SingleAsync(x => x.Id == unitId);
+                yield return await Database.Units.SingleAsync(x => x.Id == unit);
             }
         }
 

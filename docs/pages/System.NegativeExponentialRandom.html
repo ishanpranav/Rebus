@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RpcClient
+    <title>Class NegativeExponentialRandom
    | Ishan Pranav's REBUS </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RpcClient
+    <meta name="title" content="Class NegativeExponentialRandom
    | Ishan Pranav's REBUS ">
     <meta name="generator" content="docfx 2.59.3.0">
     
@@ -155,8 +155,8 @@
                           <li class="">
                             <a href="Rebus.Client.Layout.html" title="Layout" class="">Layout</a>
                           </li>
-                          <li class="active">
-                            <a href="Rebus.Client.RpcClient.html" title="RpcClient" class="active">RpcClient</a>
+                          <li class="">
+                            <a href="Rebus.Client.RpcClient.html" title="RpcClient" class="">RpcClient</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Client.ZoneVisualizer.html" title="ZoneVisualizer" class="">ZoneVisualizer</a>
@@ -248,8 +248,8 @@
                       <a href="System.html" title="System" class="">System</a>
                         
                         <ul class="nav level2">
-                          <li class="">
-                            <a href="System.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="">NegativeExponentialRandom</a>
+                          <li class="active">
+                            <a href="System.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="active">NegativeExponentialRandom</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -274,24 +274,49 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Rebus.Client.RpcClient">
+            <article class="content wrap" id="_content" data-uid="System.NegativeExponentialRandom">
   
   
-  <h1 id="Rebus_Client_RpcClient" data-uid="Rebus.Client.RpcClient" class="text-break">Class RpcClient
+  <h1 id="System_NegativeExponentialRandom" data-uid="System.NegativeExponentialRandom" class="text-break">Class NegativeExponentialRandom
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents a pseudo-random number generator whose outputs, when aggregated, approximate a negative exponential distribution.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">RpcClient</span></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+    <div class="level1"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random">Random</a></div>
+    <div class="level2"><span class="xref">NegativeExponentialRandom</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next">Random.Next()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next(system-int32)">Random.Next(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64">Random.NextInt64()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64(system-int64)">Random.NextInt64(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextint64#system-random-nextint64(system-int64-system-int64)">Random.NextInt64(Int64, Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-byte())">Random.NextBytes(Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-span((system-byte)))">Random.NextBytes(Span&lt;Byte&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextsingle#system-random-nextsingle">Random.NextSingle()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.shared#system-random-shared">Random.Shared</a>
+    </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
@@ -314,24 +339,27 @@
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Rebus.Client.html">Rebus.Client</a></h6>
-  <h6><strong>Assembly</strong>: Rebus.Client.dll</h6>
-  <h5 id="Rebus_Client_RpcClient_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="System.html">System</a></h6>
+  <h6><strong>Assembly</strong>: Rebus.Server.dll</h6>
+  <h5 id="System_NegativeExponentialRandom_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RpcClient : IAsyncDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class NegativeExponentialRandom : Random</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h5 id="System_NegativeExponentialRandom_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The implementation of this class was inspired by and based on <a href="https://stackoverflow.com/questions/20385964/generate-random-number-between-0-and-1-with-negativeexponential-distribution">this</a> Stack Overflow question asked by <a href="https://stackoverflow.com/users/1763110/maxammann">@maxammann</a> and answered by <a href="https://stackoverflow.com/users/2166798/pjs">@pjs</a>.</p>
+</div>
+  <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="Rebus_Client_RpcClient_CreateAsync_" data-uid="Rebus.Client.RpcClient.CreateAsync*"></a>
-  <h4 id="Rebus_Client_RpcClient_CreateAsync__1_System_Net_IPAddress_System_Int32_" data-uid="Rebus.Client.RpcClient.CreateAsync``1(System.Net.IPAddress,System.Int32)">CreateAsync&lt;T&gt;(IPAddress, Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="System_NegativeExponentialRandom__ctor_" data-uid="System.NegativeExponentialRandom.#ctor*"></a>
+  <h4 id="System_NegativeExponentialRandom__ctor_System_Double_" data-uid="System.NegativeExponentialRandom.#ctor(System.Double)">NegativeExponentialRandom(Double)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="System.NegativeExponentialRandom.html">NegativeExponentialRandom</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; CreateAsync&lt;T&gt;(IPAddress ipAddress, int port)
-    where T : class, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public NegativeExponentialRandom(double lambda)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -344,56 +372,107 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></td>
-        <td><span class="parametername">ipAddress</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">port</span></td>
-        <td></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">lambda</span></td>
+        <td><p>The rate parameter <em>λ</em>.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
+  
+  
+  <a id="System_NegativeExponentialRandom__ctor_" data-uid="System.NegativeExponentialRandom.#ctor*"></a>
+  <h4 id="System_NegativeExponentialRandom__ctor_System_Int32_System_Double_" data-uid="System.NegativeExponentialRandom.#ctor(System.Int32,System.Double)">NegativeExponentialRandom(Int32, Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NegativeExponentialRandom(int seed, double lambda)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
         <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">T</span></td>
-        <td></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">seed</span></td>
+        <td><p>A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">lambda</span></td>
+        <td><p>The rate parameter <em>λ</em>.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
   
   
-  <a id="Rebus_Client_RpcClient_DisposeAsync_" data-uid="Rebus.Client.RpcClient.DisposeAsync*"></a>
-  <h4 id="Rebus_Client_RpcClient_DisposeAsync" data-uid="Rebus.Client.RpcClient.DisposeAsync">DisposeAsync()</h4>
+  <a id="System_NegativeExponentialRandom_Next_" data-uid="System.NegativeExponentialRandom.Next*"></a>
+  <h4 id="System_NegativeExponentialRandom_Next_System_Int32_System_Int32_" data-uid="System.NegativeExponentialRandom.Next(System.Int32,System.Int32)">Next(Int32, Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async ValueTask DisposeAsync()</code></pre>
+    <pre><code class="lang-csharp hljs">public override int Next(int minValue, int maxValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">minValue</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.next#system-random-next(system-int32-system-int32)">Random.Next(Int32, Int32)</a></div>
+  
+  
+  <a id="System_NegativeExponentialRandom_NextDouble_" data-uid="System.NegativeExponentialRandom.NextDouble*"></a>
+  <h4 id="System_NegativeExponentialRandom_NextDouble" data-uid="System.NegativeExponentialRandom.NextDouble">NextDouble()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override double NextDouble()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -405,20 +484,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.nextdouble#system-random-nextdouble">Random.NextDouble()</a></div>
   
   
-  <a id="Rebus_Client_RpcClient_DisposeAsyncCore_" data-uid="Rebus.Client.RpcClient.DisposeAsyncCore*"></a>
-  <h4 id="Rebus_Client_RpcClient_DisposeAsyncCore" data-uid="Rebus.Client.RpcClient.DisposeAsyncCore">DisposeAsyncCore()</h4>
+  <a id="System_NegativeExponentialRandom_Sample_" data-uid="System.NegativeExponentialRandom.Sample*"></a>
+  <h4 id="System_NegativeExponentialRandom_Sample" data-uid="System.NegativeExponentialRandom.Sample">Sample()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual async ValueTask DisposeAsyncCore()</code></pre>
+    <pre><code class="lang-csharp hljs">protected override double Sample()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -430,24 +511,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Rebus_Client_RpcClient_Start_" data-uid="Rebus.Client.RpcClient.Start*"></a>
-  <h4 id="Rebus_Client_RpcClient_Start" data-uid="Rebus.Client.RpcClient.Start">Start()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Start()</code></pre>
-  </div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">System.IAsyncDisposable</a>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.random.sample#system-random-sample">Random.Sample()</a></div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><span><a href="https://stackoverflow.com/questions/20385964/generate-random-number-between-0-and-1-with-negativeexponential-distribution">java - Generate random number between 0 and 1 with (negative)exponential distribution - Stack Overflow</a></span></div>
+      <div><span><a href="https://stackoverflow.com/users/1763110/maxammann">@maxammann - Stack Overflow</a></span></div>
+      <div><span><a href="https://stackoverflow.com/users/2166798/pjs">@pjs - Stack Overflow</a></span></div>
   </div>
 </article>
           </div>

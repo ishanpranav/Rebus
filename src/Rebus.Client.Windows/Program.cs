@@ -61,7 +61,7 @@ namespace Rebus.Client.Windows
 
             Application.ApplicationExit += onApplicationExit;
 
-            async void onApplicationExit(object? sender, System.EventArgs e)
+            async void onApplicationExit(object? sender, EventArgs e)
             {
                 await serviceProvider.DisposeAsync();
             }

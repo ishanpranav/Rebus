@@ -5,7 +5,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using MessagePack;
-using Microsoft.EntityFrameworkCore;
 
 namespace Rebus
 {

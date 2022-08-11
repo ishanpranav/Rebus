@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2021-2022 Ishan Pranav. All rights reserved. -->
+<!-- Licensed under the MIT License. -->
+
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="agent" nillable="true" type="Agent" />
+  <xs:complexType name="Agent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="behavior" type="Behavior" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Behavior">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Consideration">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element minOccurs="0" maxOccurs="1" name="linear" type="LinearConsideration" />
+            <xs:element minOccurs="0" maxOccurs="1" name="quadratic" type="QuadraticConsideration" />
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="command-type" type="CommandType" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Consideration" abstract="true" />
+  <xs:complexType name="FunctionConsideration" abstract="true" mixed="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Consideration">
+        <xs:attribute default="1" name="a" type="xs:double" />
+        <xs:attribute default="1" name="b" type="xs:double" />
+        <xs:attribute default="0" name="h" type="xs:double" />
+        <xs:attribute default="0" name="k" type="xs:double" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QuadraticConsideration">
+    <xs:complexContent mixed="true">
+      <xs:extension base="FunctionConsideration" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LinearConsideration">
+    <xs:complexContent mixed="true">
+      <xs:extension base="FunctionConsideration" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="CommandType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="autopilot" />
+      <xs:enumeration value="defend" />
+      <xs:enumeration value="explore" />
+      <xs:enumeration value="jettison" />
+      <xs:enumeration value="purchase" />
+      <xs:enumeration value="retreat" />
+      <xs:enumeration value="sell" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

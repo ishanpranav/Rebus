@@ -67,8 +67,8 @@
   "depth": 3,
   "juliaSet": {
     "c": {
-      "real": -0.7269,
-      "imaginary": 0.1889
+      "imaginary": 0.1889,
+      "real": -0.7269
     },
     "maxIterations": 300,
     "r": 2.0

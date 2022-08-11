@@ -108,6 +108,9 @@
                             <a href="Rebus.Configuration.html" title="Configuration" class="">Configuration</a>
                           </li>
                           <li class="">
+                            <a href="Rebus.ConflictEventArgs.html" title="ConflictEventArgs" class="">ConflictEventArgs</a>
+                          </li>
+                          <li class="">
                             <a href="Rebus.Depths.html" title="Depths" class="">Depths</a>
                           </li>
                           <li class="">
@@ -124,9 +127,6 @@
                           </li>
                           <li class="">
                             <a href="Rebus.ILoginService.html" title="ILoginService" class="">ILoginService</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.JsonIPAddressConverter.html" title="JsonIPAddressConverter" class="">JsonIPAddressConverter</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Player.html" title="Player" class="">Player</a>
@@ -185,20 +185,14 @@
                         </ul>  </li>
                     <li class="">
                       <span class="expand-stub"></span>
-                      <a href="Rebus.EventArgs.html" title="Rebus.EventArgs" class="">Rebus.EventArgs</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="Rebus.EventArgs.ConflictEventArgs.html" title="ConflictEventArgs" class="">ConflictEventArgs</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
                       <a href="Rebus.Server.html" title="Rebus.Server" class="">Rebus.Server</a>
                         
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.Server.AStarSearch.html" title="AStarSearch" class="">AStarSearch</a>
+                          </li>
+                          <li class="">
+                            <a href="Rebus.Server.EvaluationContext.html" title="EvaluationContext" class="">EvaluationContext</a>
                           </li>
                           <li class="">
                             <a href="Rebus.Server.FisherYatesShuffle.html" title="FisherYatesShuffle" class="">FisherYatesShuffle</a>
@@ -207,13 +201,7 @@
                             <a href="Rebus.Server.JuliaSet.html" title="JuliaSet" class="">JuliaSet</a>
                           </li>
                           <li class="">
-                            <a href="Rebus.Server.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="">NegativeExponentialRandom</a>
-                          </li>
-                          <li class="">
                             <a href="Rebus.Server.PowerSet.html" title="PowerSet" class="">PowerSet</a>
-                          </li>
-                          <li class="">
-                            <a href="Rebus.Server.SelectionContext.html" title="SelectionContext" class="">SelectionContext</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -221,6 +209,9 @@
                       <a href="Rebus.Server.Considerations.html" title="Rebus.Server.Considerations" class="">Rebus.Server.Considerations</a>
                         
                         <ul class="nav level2">
+                          <li class="">
+                            <a href="Rebus.Server.Considerations.Agent.html" title="Agent" class="">Agent</a>
+                          </li>
                           <li class="active">
                             <a href="Rebus.Server.Considerations.Behavior.html" title="Behavior" class="active">Behavior</a>
                           </li>
@@ -250,6 +241,30 @@
                         <ul class="nav level2">
                           <li class="">
                             <a href="Rebus.Server.Functions.IFunctions-1.html" title="IFunctions&lt;T&gt;" class="">IFunctions&lt;T&gt;</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="System.html" title="System" class="">System</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="System.NegativeExponentialRandom.html" title="NegativeExponentialRandom" class="">NegativeExponentialRandom</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="System.Text.Json.Serialization.Converters.html" title="System.Text.Json.Serialization.Converters" class="">System.Text.Json.Serialization.Converters</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="System.Text.Json.Serialization.Converters.ComplexConverter.html" title="ComplexConverter" class="">ComplexConverter</a>
+                          </li>
+                          <li class="">
+                            <a href="System.Text.Json.Serialization.Converters.CultureInfoConverter.html" title="CultureInfoConverter" class="">CultureInfoConverter</a>
+                          </li>
+                          <li class="">
+                            <a href="System.Text.Json.Serialization.Converters.IPAddressConverter.html" title="IPAddressConverter" class="">IPAddressConverter</a>
                           </li>
                         </ul>  </li>
                   </ul>        </div>
@@ -337,7 +352,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ConsiderationCollection Considerations { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ConsiderationCollection Considerations { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -359,12 +374,12 @@
   
   
   <a id="Rebus_Server_Considerations_Behavior_Evaluate_" data-uid="Rebus.Server.Considerations.Behavior.Evaluate*"></a>
-  <h4 id="Rebus_Server_Considerations_Behavior_Evaluate_Rebus_Server_SelectionContext_" data-uid="Rebus.Server.Considerations.Behavior.Evaluate(Rebus.Server.SelectionContext)">Evaluate(SelectionContext)</h4>
+  <h4 id="Rebus_Server_Considerations_Behavior_Evaluate_Rebus_Server_EvaluationContext_" data-uid="Rebus.Server.Considerations.Behavior.Evaluate(Rebus.Server.EvaluationContext)">Evaluate(EvaluationContext)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override double Evaluate(SelectionContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public override double Evaluate(EvaluationContext context)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -377,7 +392,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rebus.Server.SelectionContext.html">SelectionContext</a></td>
+        <td><a class="xref" href="Rebus.Server.EvaluationContext.html">EvaluationContext</a></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -399,7 +414,7 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Rebus.Server.Considerations.Consideration.html#Rebus_Server_Considerations_Consideration_Evaluate_Rebus_Server_SelectionContext_">Consideration.Evaluate(SelectionContext)</a></div>
+  <div><a class="xref" href="Rebus.Server.Considerations.Consideration.html#Rebus_Server_Considerations_Consideration_Evaluate_Rebus_Server_EvaluationContext_">Consideration.Evaluate(EvaluationContext)</a></div>
 </article>
           </div>
           

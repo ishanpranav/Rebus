@@ -19,7 +19,7 @@ namespace Rebus.Client.Windows.Forms
         }
 
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
-        private async void OnAboutFormLoad(object sender, System.EventArgs e)
+        private async void OnAboutFormLoad(object sender, EventArgs e)
         {
             myPictureBox.Image = Image.FromFile(Path.ChangeExtension(Path.Combine(path1: "images", path2: "Rebus"), extension: "png"));
 
@@ -41,7 +41,7 @@ namespace Rebus.Client.Windows.Forms
             }
         }
 
-        private void OnListBoxSelectedIndexChanged(object sender, System.EventArgs e)
+        private void OnListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             Notice notice = (Notice)myListBox.SelectedItem;
 

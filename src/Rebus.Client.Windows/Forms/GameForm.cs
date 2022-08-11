@@ -12,7 +12,6 @@ using System.Resources;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rebus.Client.Lenses;
-using Rebus.EventArgs;
 using SkiaSharp;
 
 namespace Rebus.Client.Windows.Forms
@@ -50,7 +49,7 @@ namespace Rebus.Client.Windows.Forms
         }
 
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
-        private async void OnMainFormLoad(object sender, System.EventArgs e)
+        private async void OnMainFormLoad(object sender, EventArgs e)
         {
             myNotifyIcon.Icon = Resources.Icon;
 
@@ -305,27 +304,32 @@ namespace Rebus.Client.Windows.Forms
             }
         }
 
-        private void OnLensComboBoxSelectedIndexChanged(object sender, System.EventArgs e)
+        private void OnLensComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             DrawZones();
         }
 
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
-        private async void OnSubmitButtonClick(object sender, System.EventArgs e)
+        private async void OnSubmitButtonClick(object sender, EventArgs e)
         {
             if (unitListView.CheckedItems.Count > 0 && commandComboBox.SelectedItem is CommandType type && destinationComboBox.SelectedItem is HexPoint destination)
             {
-                Arguments parameters = new Arguments(type, unitListView.CheckedItems
+                Arguments arguments;
+                HashSet<int> units = unitListView.CheckedItems
                     .Cast<ListViewItem>()
                     .Select(x => (int)x.Tag)
-                    .ToHashSet(), destination);
+                    .ToHashSet();
 
                 if (economyListView.CheckedItems.Count == 1)
                 {
-                    parameters.Commodity = (int)economyListView.CheckedItems[0].Tag;
+                    arguments = new Arguments(type, units, destination, (int)economyListView.CheckedItems[0].Tag);
+                }
+                else
+                {
+                    arguments = new Arguments(type, units, destination);
                 }
 
-                CommandResponse response = await Service.ExecuteAsync(new CommandRequest(_credentials.UserId, parameters));
+                CommandResponse response = await Service.ExecuteAsync(new CommandRequest(_credentials.UserId, arguments));
 
                 if (response.Modified)
                 {
@@ -333,6 +337,8 @@ namespace Rebus.Client.Windows.Forms
 
                     await DrawAsync();
                 }
+
+                MessageBox.Show($"You know what you should've done? You should have sent units {string.Join(", ", response.Advice.Units)} to {s_resourceManager.GetString(response.Advice.Type.ToString())} at {GetLocationName(response.Advice.Destination)} (for commodity {GetCommodityName(response.Advice.Commodity)}). You really missed out.");
             }
         }
 
@@ -361,7 +367,7 @@ namespace Rebus.Client.Windows.Forms
             }
         }
 
-        private void OnCommandComboBoxSelectedIndexChanged(object sender, System.EventArgs e)
+        private void OnCommandComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             RequestArguments();
         }

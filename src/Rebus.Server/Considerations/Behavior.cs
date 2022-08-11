@@ -8,17 +8,16 @@ using System.Xml.Serialization;
 
 namespace Rebus.Server.Considerations
 {
-    [XmlType("behavior")]
     public class Behavior : Consideration
     {
-        [XmlAttribute("action")]
+        [XmlAttribute("command-type")]
         public CommandType CommandType { get; set; }
 
         [XmlElement("linear", typeof(LinearConsideration))]
         [XmlElement("quadratic", typeof(QuadraticConsideration))]
-        public ConsiderationCollection Considerations { get; set; } = new ConsiderationCollection();
+        public ConsiderationCollection Considerations { get; } = new ConsiderationCollection();
 
-        public override double Evaluate(SelectionContext context)
+        public override double Evaluate(EvaluationContext context)
         {
             switch (Considerations.Count)
             {

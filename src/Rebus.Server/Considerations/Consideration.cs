@@ -1,13 +1,11 @@
-﻿// Ishan Pranav's REBUS: 
+﻿// Ishan Pranav's REBUS: Consideration.cs
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
-
-using System.Xml.Serialization;
 
 namespace Rebus.Server.Considerations
 {
     public abstract class Consideration
     {
-        public abstract double Evaluate(SelectionContext context);
+        public abstract double Evaluate(EvaluationContext context);
     }
 }

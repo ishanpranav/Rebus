@@ -28,7 +28,7 @@ namespace Rebus.Server.Considerations
         [XmlText]
         public string X { get; set; } = string.Empty;
 
-        public override double Evaluate(SelectionContext context)
+        public override double Evaluate(EvaluationContext context)
         {
             return A * Evaluate(B * (context[X] - H)) + K;
         }

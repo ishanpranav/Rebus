@@ -4,7 +4,7 @@
 
 using MessagePack;
 
-namespace Rebus.EventArgs
+namespace Rebus
 {
     [MessagePackObject]
     public class ConflictEventArgs : System.EventArgs

@@ -17,6 +17,7 @@ namespace Rebus.Server
         private readonly IDbContextFactory<RebusDbContext> _contextFactory;
         private readonly Map _map;
         private readonly Namer _namer;
+        private readonly ArgumentProvider _argumentProvider;
         private readonly Dictionary<HexPoint, ZoneInfo> _zones = new Dictionary<HexPoint, ZoneInfo>();
 
         public IEnumerable<ZoneInfo> Values
@@ -33,14 +34,7 @@ namespace Rebus.Server
             _contextFactory = contextFactory;
             _map = map;
             _namer = namer;
-
-            foreach (ZoneInfo zone in _zones.Values)
-            {
-                foreach (Arguments command in argumentProvider.GetArguments(zone, _zones))
-                {
-                    zone.Arguments.Add(command);
-                }
-            }
+            _argumentProvider = argumentProvider;
         }
 
         private async Task<ZoneCache> InitializeAsync()
@@ -98,6 +92,14 @@ namespace Rebus.Server
                             .Include(x => x.Units)
                             .ThenInclude(x => x.Sanctuary);
                     }
+                }
+            }
+
+            foreach (ZoneInfo zone in _zones.Values)
+            {
+                foreach (Arguments command in _argumentProvider.GetArguments(zone, _zones))
+                {
+                    zone.Arguments.Add(command);
                 }
             }
 

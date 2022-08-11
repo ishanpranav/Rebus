@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2021-2022 Ishan Pranav. All rights reserved. -->
+<!-- Licensed under the MIT License. -->
+
+<agent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://ishanpranav.github.io/rebus agent.xsd">
+  <behavior command-type="none"/>
+  <behavior command-type="autopilot"/>
+  <behavior command-type="defend">
+    <quadratic>UNITS</quadratic>
+  </behavior>
+  <behavior command-type="explore"/>
+  <behavior command-type="jettison"/>
+  <behavior command-type="purchase"/>
+  <behavior command-type="retreat"/>
+  <behavior command-type="sell"/>
+</agent>

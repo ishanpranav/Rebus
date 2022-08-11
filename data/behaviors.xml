@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<behaviors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <behavior action="none">
-    <linear></linear>
-    <quadratic></quadratic>
-  </behavior>
-  <behavior action="defend"/>
-</behaviors>

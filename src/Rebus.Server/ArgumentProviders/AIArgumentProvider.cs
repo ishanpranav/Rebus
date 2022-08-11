@@ -1,4 +1,4 @@
-﻿// Ishan Pranav's REBUS: AICommandProvider.cs
+﻿// Ishan Pranav's REBUS: AIArgumentProvider.cs
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 

@@ -8,12 +8,12 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Rebus.Server.Commands;
-using Rebus.Server.Considerations;
 using Tracery;
 
 namespace Rebus.Server
@@ -42,11 +42,11 @@ namespace Rebus.Server
                 .AddObject<Table>()
                 .AddSingleton<Controller>()
                 .AddSingleton(x => x
-                    .GetRequiredService<BehaviorCollectionLoader>()
+                    .GetRequiredService<AgentLoader>()
                     .Load())
-                .AddSingleton(x => new BehaviorCollectionLoader(x
+                .AddSingleton(x => new AgentLoader(x
                     .GetRequiredService<IConfiguration>()
-                    .GetConnectionString(nameof(BehaviorCollectionLoader))))
+                    .GetConnectionString(nameof(AgentLoader))))
                 .AddSingleton<FisherYatesShuffle>()
                 .AddSingleton<ICommand, AutopilotCommand>()
                 .AddSingleton<ICommand, DefendCommand>()
@@ -63,6 +63,7 @@ namespace Rebus.Server
                 .AddSingleton<IReadOnlyDictionary<CommandType, ICommand>>(x => x
                     .GetServices<ICommand>()
                     .ToDictionary(x => x.Type))
+                .AddSingleton<JsonConverter, ComplexConverter>()
                 .AddSingleton<JsonConverter, IPAddressConverter>()
                 .AddSingleton(x =>
                 {

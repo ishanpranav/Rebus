@@ -76,7 +76,11 @@ namespace Rebus.Server
             return Julia(x, y, width, height, zoom: 1);
         }
 
-        /// <inheritdoc cref="Julia(double, double, int, int)"/>
+        /// <inheritdoc cref="Julia(double, double, double, double)"/>
+        /// <param name="x">The <em>x</em> coordinate of the point.</param>
+        /// <param name="y">The <em>y</em> coordinate of the point.</param>
+        /// <param name="width">The width of the fractal map.</param>
+        /// <param name="height">The height of the fractal map.</param>
         /// <param name="zoom">The zoom factor of the fractal map.</param>
         public double Julia(double x, double y, double width, double height, double zoom)
         {

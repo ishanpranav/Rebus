@@ -18,7 +18,7 @@ namespace Rebus.Server.ExecutionContexts
             }
         }
 
-        public AIExecutionContext(User user, Controller controller, RebusDbContext dbContext, IReadOnlyCollection<int> unitIds, int commodity) : base(controller, dbContext, unitIds, commodity)
+        public AIExecutionContext(User user, Controller controller, RebusDbContext dbContext, IReadOnlyCollection<int> units, int commodity) : base(controller, dbContext, units, commodity)
         {
             _user = user;
         }

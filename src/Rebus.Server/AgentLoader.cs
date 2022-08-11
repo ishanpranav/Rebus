@@ -9,24 +9,24 @@ using Rebus.Server.Considerations;
 
 namespace Rebus.Server
 {
-    internal sealed class BehaviorCollectionLoader
+    internal sealed class AgentLoader
     {
         private readonly string _connectionString;
-        private readonly XmlSerializer _xmlSerializer = new XmlSerializer(typeof(BehaviorCollection));
+        private readonly XmlSerializer _xmlSerializer = new XmlSerializer(typeof(Agent));
 
-        public BehaviorCollectionLoader(string connectionString)
+        public AgentLoader(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public BehaviorCollection Load()
+        public Agent Load()
         {
             using (XmlReader xmlReader = XmlReader.Create(_connectionString, new XmlReaderSettings()
             {
                 XmlResolver = null
             }))
             {
-                if (_xmlSerializer.Deserialize(xmlReader) is BehaviorCollection result)
+                if (_xmlSerializer.Deserialize(xmlReader) is Agent result)
                 {
                     return result;
                 }

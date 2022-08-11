@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Rebus.EventArgs;
 using Rebus.Server.ExecutionContexts;
 using Rebus.Server.Functions;
 
@@ -143,7 +142,7 @@ namespace Rebus.Server.Commands
         public async Task ExecuteAsync(ExecutionContext context)
         {
             List<Unit> invaders = await context.Database.Units
-                .Where(x => context.UnitIds.Contains(x.Id))
+                .Where(x => context.Units.Contains(x.Id))
                 .OrderByDescending(x => x.Commodity)
                 .Include(x => x.Sanctuary)
                 .Include(x => x.Zone)
@@ -152,7 +151,7 @@ namespace Rebus.Server.Commands
 
             if (invaders.Count > 0)
             {
-                await ExecuteAsync(context, invaders, invaders[0].Zone, await context.Database.Zones.SingleAsync(x => x.PlayerId == context.Player.Id && x.Q == context.Destination.Q && x.R == context.Destination.R), functions);
+                await ExecuteAsync(context, invaders, invaders[0].Zone, await context.Database.Zones.SingleOrDefaultAsync(x => x.PlayerId == context.Player.Id && x.Q == context.Destination.Q && x.R == context.Destination.R), functions);
             }
         }
 

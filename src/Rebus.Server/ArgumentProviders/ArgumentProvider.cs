@@ -1,4 +1,4 @@
-﻿// Ishan Pranav's REBUS: CommandProvider.cs
+﻿// Ishan Pranav's REBUS: ArgumentProvider.cs
 // Copyright (c) 2021-2022 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 

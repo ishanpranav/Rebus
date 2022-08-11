@@ -34,7 +34,7 @@ namespace Rebus.Client.Windows.Forms
         }
 
         [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Event")]
-        private async void OnSubmitButtonClick(object sender, System.EventArgs e)
+        private async void OnSubmitButtonClick(object sender, EventArgs e)
         {
             if (loginEntityGrid.ValidateObject())
             {
@@ -92,7 +92,7 @@ namespace Rebus.Client.Windows.Forms
             }
         }
 
-        private void OnAboutButtonClick(object sender, System.EventArgs e)
+        private void OnAboutButtonClick(object sender, EventArgs e)
         {
             using (AboutForm aboutForm = _serviceProvider.GetRequiredService<AboutForm>())
             {
